@@ -4,10 +4,25 @@
 <meta charset="utf-8">
 <title>عالجمر — مختبر مدخل الموقع: السجّادة والحرق</title>
 
-<!-- خطٌّ نسخيٌّ كلاسيكي. لا يُحمَّل في صندوق البناء (لا شبكة)، فتُرسَم
-     الكلمةُ هناك مربّعاتٍ فارغة. ويُحمَّل في متصفّحِ المالكِ طبيعياً.
-     ويُستبدَل بخطٍّ مستضافٍ محلياً حين يرفع المالكُ ملفَّ الخطّ. -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap">
+<!-- ══ الخطّ: رقعةُ عارف — اختيارُ المالك ══════════════════
+     مستضافٌ محلياً لا من Google: فلا يعتمد الموقعُ على طرفٍ ثالث،
+     ولا يُرسَل إليه زائرُك، ويُحمَّل أسرع، ويعمل بلا شبكةٍ خارجيّة.
+     ورخصةُ OFL تُجيز ذلك وتشترط إرفاقَ نصِّها — وهو في
+     assets/fonts/OFL-ArefRuqaa.txt
+     وجُلب الخطُّ من مستودعِ aliftype/aref-ruqaa (v1.008) عبر gh،
+     لأن fonts.googleapis.com محجوبٌ في هذا الصندوق (قِيس: 000). -->
+<style>
+@font-face{font-family:"Aref Ruqaa"; font-style:normal; font-weight:400;
+  src:url(../../assets/fonts/ArefRuqaa-Regular.ttf) format("truetype");
+  font-display:swap}
+@font-face{font-family:"Aref Ruqaa"; font-style:normal; font-weight:700;
+  src:url(../../assets/fonts/ArefRuqaa-Bold.ttf) format("truetype");
+  font-display:swap}
+/* نسخةُ الحبر: رقعةٌ بملمسِ القلمِ — أقربُ إلى اليدِ وأثقلُ حضوراً */
+@font-face{font-family:"Aref Ruqaa Ink"; font-style:normal; font-weight:400;
+  src:url(../../assets/fonts/ArefRuqaaInk-Regular.ttf) format("truetype");
+  font-display:swap}
+</style>
 
 <style>
 :root{

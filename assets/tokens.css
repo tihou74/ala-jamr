@@ -86,12 +86,17 @@
   --rule-strong: rgba(166, 130, 74, 0.5);
 
   /* ====== الخطوط ======
-     لا خطَّ هندسيّاً — قرارُ المالك. فنسخيٌّ خطّيٌّ:
-     ⚠️ اختيارٌ مؤقّتٌ ينتظر حسمَه، ولم أرَ شكلَه (الصندوقُ بلا شبكةٍ
-     لتحميلِ الخطوط). */
-  --font-display: "Amiri", "Noto Naskh Arabic", "Scheherazade New", Georgia,
-    serif;
-  --font-body: "Markazi Text", "Noto Naskh Arabic", "Amiri", Georgia, serif;
+     **خطُّ العرض: رقعةُ عارف — حسمَه المالكُ في 19 أكتوبر 2026.**
+     رقعةٌ كلاسيكيّةٌ خطّيّةٌ لا هندسيّة، ومستضافةٌ محلياً في
+     assets/fonts/ (انظر @font-face أسفلَ هذا الملفّ) فلا يعتمد الموقعُ
+     على طرفٍ ثالثٍ ولا يُرسَل إليه الزائر.
+     ✅ ورأيتُ شكلَها أخيراً: docs/preview/hero-ruqaa-1.png */
+  --font-display: "Aref Ruqaa", "Amiri", "Noto Naskh Arabic",
+    "Scheherazade New", Georgia, serif;
+  /* خطُّ النصّ: **أميري** — نسخيٌّ كلاسيكيٌّ إحياءً لحرفِ مطبعةِ بولاق،
+     ومن نفسِ بيتِ رقعةِ عارف (aliftype) فيتناغمان طبيعياً.
+     مستضافٌ محلياً كذلك، فلا طلبَ لطرفٍ ثالثٍ في الصفحةِ كلِّها. */
+  --font-body: "Amiri", "Noto Naskh Arabic", "Markazi Text", Georgia, serif;
 
   --t-hero: clamp(3rem, 11vw, 8.5rem);
   --t-h1: clamp(2.1rem, 5.2vw, 4rem);
@@ -146,4 +151,64 @@ body,
 .num {
   font-variant-numeric: lining-nums tabular-nums;
   font-feature-settings: "locl" 0, "lnum" 1, "tnum" 1;
+}
+
+/* ===========================================================
+   الخطّ: رقعةُ عارف — مستضافٌ محلياً
+   ===========================================================
+   اختيارُ المالك. وجُلب من مستودعِ aliftype/aref-ruqaa (v1.008)
+   عبر `gh` لأن fonts.googleapis.com محجوبٌ في صندوق البناء
+   (قِيس: 000) — ولا يُحتاج إلى الشبكةِ بعد اليوم.
+
+   ورخصةُ SIL OFL 1.1 تُجيز الاستعمالَ التجاريَّ والاستضافةَ
+   والشعار، **وتشترط إرفاقَ نصِّ الرخصة** — وهو مُرفَقٌ في
+   assets/fonts/OFL-ArefRuqaa.txt فلا يُحذَف.
+
+   و`font-display: swap` يُظهر النصَّ بالخطِّ الاحتياطيِّ فوراً ثم
+   يُبدّله، فلا تبقى الصفحةُ بلا عنوانٍ إن تأخّر الملفّ.
+   =========================================================== */
+@font-face {
+  font-family: "Aref Ruqaa";
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/ArefRuqaa-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aref Ruqaa";
+  font-style: normal;
+  font-weight: 700;
+  src: url("fonts/ArefRuqaa-Bold.ttf") format("truetype");
+  font-display: swap;
+}
+
+/* نسخةُ الحبر — رقعةٌ بملمسِ القلم. تُحمَّل ولا تُستعمل افتراضياً:
+   تُجرَّب على الاسمِ وحدَه إن أرادها المالك. */
+@font-face {
+  font-family: "Aref Ruqaa Ink";
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/ArefRuqaaInk-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+/* ===========================================================
+   خطُّ النصّ: أميري — مستضافٌ محلياً كذلك
+   ===========================================================
+   جُلب من aliftype/amiri (v1.003) بنفسِ الطريق. ووزنُه 428 ك.ب
+   وهو ثِقَلٌ يُقال ولا يُكتَم: والمقابلُ أنّ الصفحةَ **لا تطلب من
+   طرفٍ ثالثٍ شيئاً**، فلا يُرسَل زائرُك إلى Google ولا تنكسر
+   الصفحةُ إن حُجب. ويُخفَّض الوزنُ إلى نحوِ النصفِ بتحويلٍ إلى
+   woff2 متى توفّرت أداتُه — بندٌ مفتوحٌ لا منجَز.
+
+   ولم يُجلَب الوزنُ الغليظ (405 ك.ب أخرى): النصُّ في هذا الموقعِ
+   كلُّه عاديُّ الوزن، والعناوينُ برقعةِ عارف.
+   =========================================================== */
+@font-face {
+  font-family: "Amiri";
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/Amiri-Regular.ttf") format("truetype");
+  font-display: swap;
 }

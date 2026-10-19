@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>لقطةُ قسمٍ من index.html</title>
+<!-- ══════════════════════════════════════════════════════════
+     لماذا هذه الصفحة:
+     الواجهةُ `min-block-size: 100svh` فتَشغَل الشاشةَ كلَّها، وأداةُ
+     اللقطةِ لا تُمرِّر الصفحة، و`index.html#grill` لا يَقفِز لأنّ
+     `scroll-behavior: smooth` يُحوّل القفزَ إلى حركةٍ (قِيس: لقطتان
+     بمِرساتَين مختلفتَين خرجتا متطابقتَي الحجم).
+
+     فالصفحةُ **الحقيقيّةُ** تُحمَّل في إطارٍ بمقاسِ شاشةٍ عاديّة، ثمّ
+     تُمرَّر من داخلِه بـscrollTo فوريّاً. ولا نسخةَ ثانيةَ من الوسم:
+     المصدرُ index.html نفسُه، فلا تتباعد المعاينةُ عن الأصل.
+
+     الاستعمال:  section-shot.html?at=3200     (بالبكسل)
+                 section-shot.html?id=grill    (بمعرّفِ القسم)
+     ══════════════════════════════════════════════════════════ -->
+<style>
+  html,body{margin:0;padding:0;background:#090909;overflow:hidden}
+  iframe{display:block;width:1180px;height:1080px;border:0}
+  #err{position:fixed;inset-inline:0;top:0;z-index:9;color:#E6E2DA;
+       background:#5D1E21;font:14px/1.5 "Noto Sans",sans-serif;
+       padding:8px 12px;display:none}
+</style>
+</head>
+<body>
+<div id="err"></div>
+<iframe id="f" src="../../index.html" title="الصفحة الحقيقيّة"></iframe>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var at = parseInt(q.get("at") || "0", 10);
+  var id = q.get("id");
+  var f = document.getElementById("f");
+  var err = document.getElementById("err");
+
+  function fail(msg) { err.textContent = msg; err.style.display = "block"; }
+
+  f.addEventListener("load", function () {
+    var w, d;
+    try { w = f.contentWindow; d = w.document; }
+    catch (e) { fail("تعذّر الوصولُ إلى الإطار: " + e.message); return; }
+
+    /* التمريرُ فوريٌّ قسراً: الصفحةُ تضع scroll-behavior:smooth
+       فتصير الحركةُ بطيئةً وتُلتقَط اللقطةُ في منتصفِها. */
+    try { d.documentElement.style.scrollBehavior = "auto"; } catch (e) {}
+
+    var y = at;
+    if (id) {
+      var el = d.getElementById(id);
+      if (!el) { fail("لا قسمَ بهذا المعرّف: " + id); return; }
+      y = el.getBoundingClientRect().top + (w.scrollY || 0);
+    }
+    w.scrollTo(0, y);
+
+    /* تحقّقٌ صريح: إن لم يتحرّك التمريرُ فعلاً فاللقطةُ للواجهةِ
+       وليست للقسمِ المطلوب — ويُقال ولا يُكتَم، فلقطةٌ خطأٌ تُقرأ
+       حكماً على قسمٍ لم يُرَ. */
+    setTimeout(function () {
+      var got = w.scrollY || d.documentElement.scrollTop || 0;
+      if (y > 20 && got < 20) {
+        fail("لم يتحرّك التمرير: المطلوب " + Math.round(y) +
+             " والواقع " + Math.round(got));
+      }
+    }, 400);
+  });
+})();
+</script>
+</body>
+</html>

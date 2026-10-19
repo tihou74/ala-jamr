@@ -31,7 +31,12 @@ for _c in PERSIAN:
 
 SCAN_EXT = {".md", ".html", ".htm", ".css", ".js", ".mjs", ".json",
             ".py", ".txt", ".svg", ".webmanifest", ".yml", ".yaml"}
-SKIP_DIRS = {".git", "node_modules", "__pycache__", ".venv"}
+# `.tmp` مجلّدُ عملٍ مؤقّتٌ غيرُ مُودَعٍ (انظر .gitignore): تنزيلاتٌ
+# وفَكُّ ضغط. وقد أسقطَ هذا الحارسَ فعلاً بـ574 رقماً هنديّاً في
+# **توثيقِ خطِّ أميري** العربيِّ المنزَّل — وهو ليس محتوى المشروع.
+# ويُتخطّى **بإعلانٍ لا بصمت**: حارسٌ يتخطّى ما لا يُعلِنه يُقرأ
+# نجاحُه على الكلِّ وهو على الجزء.
+SKIP_DIRS = {".git", "node_modules", "__pycache__", ".venv", ".tmp"}
 
 
 def scan_text(text):
@@ -53,13 +58,20 @@ def scan_file(path):
         return []
 
 
+SKIPPED = []           # ما تُخطّي فعلاً — يُعلَن في التقرير لا يُكتَم
+
+
 def collect(roots):
     files = []
+    del SKIPPED[:]
     for root in roots:
         if os.path.isfile(root):
             files.append(root)
             continue
         for dirpath, dirnames, filenames in os.walk(root):
+            for d in dirnames:
+                if d in SKIP_DIRS and d != ".git":
+                    SKIPPED.append(os.path.join(dirpath, d))
             dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
             for name in filenames:
                 if os.path.splitext(name)[1].lower() in SCAN_EXT:
@@ -134,6 +146,9 @@ def main(argv):
         return 2
 
     print(f"نظيف: {len(files)} ملفّاً مفحوصاً، صفر أرقام هنديّة أو فارسيّة.")
+    if SKIPPED:
+        print("  وتُخطّيت (غيرُ مُودَعةٍ في المستودع): "
+              + " · ".join(sorted(os.path.basename(p) for p in set(SKIPPED))))
     return 0
 
 

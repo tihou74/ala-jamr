@@ -16,17 +16,22 @@
      الجافاسكربت وجب أن يظهر كل شيء بدل أن تبقى الصفحة فارغة. -->
 <script>document.documentElement.className += " js";</script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Markazi+Text:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap">
+<!-- الخطوط **مستضافةٌ محلياً** في assets/fonts/ بـ@font-face داخل
+     tokens.css — رقعةُ عارف للعرضِ (اختيارُ المالك) وأميري للنصّ.
+     فلا طلبَ لطرفٍ ثالثٍ في هذه الصفحةِ إطلاقاً: لا يُرسَل زائرُك
+     إلى Google، ولا تنكسر الكتابةُ إن حُجب، ويُحمَّل الخطُّ من نفسِ
+     الخادم. ورخصةُ OFL تشترط إرفاقَ نصِّها — وهو في assets/fonts/.
+     وتُحمَّل الخطوطُ مُسبَقاً لأنّ العنوانَ أوّلُ ما يُرى. -->
+<link rel="preload" href="assets/fonts/ArefRuqaa-Regular.ttf?v=7" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="assets/fonts/Amiri-Regular.ttf?v=7" as="font" type="font/ttf" crossorigin>
 
-<!-- ترتيب التحميل مقصود: tokens ← base ← sadu ← ember ← sections
+<!-- ترتيب التحميل مقصود: tokens ← base ← ember ← sections
      وأرقام الإصدار ?v=N تُزاد في كل دفعة — العميل رأى نسخاً قديمة
      ثلاث مرّات في مشروع سابق. -->
-<link rel="stylesheet" href="assets/tokens.css?v=6">
-<link rel="stylesheet" href="assets/base.css?v=6">
-<link rel="stylesheet" href="assets/ember.css?v=6">
-<link rel="stylesheet" href="assets/sections.css?v=6">
+<link rel="stylesheet" href="assets/tokens.css?v=7">
+<link rel="stylesheet" href="assets/base.css?v=7">
+<link rel="stylesheet" href="assets/ember.css?v=7">
+<link rel="stylesheet" href="assets/sections.css?v=7">
 </head>
 <body>
 
@@ -59,6 +64,8 @@
 
 <!-- =========================== الواجهة =========================== -->
 <section class="stage hero heat" aria-labelledby="hero-name">
+  <!-- جمرٌ حقيقيٌّ من صورةِ المالك: هي بعينها موضوعُ الاسم -->
+  <span class="photo photo--embers" aria-hidden="true"></span>
   <span class="smoke" aria-hidden="true"></span>
   <span class="embers" data-embers aria-hidden="true"></span>
   <span class="heat__veil" aria-hidden="true"></span>
@@ -172,6 +179,7 @@
 
 <!-- =========================== الجمر =========================== -->
 <section class="section surface--coal-lit" id="fire">
+  <span class="photo photo--flame" aria-hidden="true"></span>
   <div class="wrap wrap--narrow">
     <div>
       <span class="eyebrow" data-reveal>الجمر</span>
@@ -278,6 +286,7 @@
 
 <!-- =========================== الكباب =========================== -->
 <section class="section surface--burgundy" id="grill">
+  <span class="photo photo--kebab" aria-hidden="true"></span>
   <div class="wrap">
     <div style="max-width:52ch">
       <span class="eyebrow" data-reveal>الكباب</span>
@@ -390,6 +399,7 @@
 
 <!-- =========================== المجلس =========================== -->
 <section class="section surface--emerald-lit" id="majlis">
+  <span class="photo photo--tea" aria-hidden="true"></span>
   <div class="wrap wrap--narrow">
 
     <div>
@@ -488,6 +498,6 @@
   </div>
 </footer>
 
-<script defer src="assets/app.js?v=6"></script>
+<script defer src="assets/app.js?v=7"></script>
 </body>
 </html>
