@@ -219,7 +219,7 @@ button {
     var(--ember-deep) 100%
   );
   border-color: transparent;
-  color: #1a0d05;
+  color: var(--charcoal);
   font-weight: 600;
 }
 

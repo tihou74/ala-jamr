@@ -35,12 +35,16 @@ run "فحوصُ حارسِ الأرقامِ الذاتيّة" \
     python3 .kiro/tools/check_numerals.py --selftest
 run "فحوصُ حارسِ الوصلةِ الذاتيّة" \
     python3 .kiro/tools/check_wiring.py --selftest
+run "فحوصُ حارسِ اللوحةِ الذاتيّة" \
+    python3 .kiro/tools/check_palette.py --selftest
 
 # ثمّ الحوارسُ على المشروع
 run "لا أرقامَ بالرسمِ الهنديِّ أو الفارسيّ" \
     python3 .kiro/tools/check_numerals.py
 run "كلُّ مرجعٍ يُصيب هدفاً موجوداً" \
     python3 .kiro/tools/check_wiring.py index.html
+run "لا لونَ إلّا من لوحةِ المالك" \
+    python3 .kiro/tools/check_palette.py
 run "لا صورةَ تتجاوز 2000 بكسل" \
     bash -c 'python3 .kiro/tools/imgguard.py check docs/preview/*.png'
 

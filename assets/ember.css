@@ -23,16 +23,16 @@
   background:
     radial-gradient(
       120% 80% at 50% 118%,
-      rgba(194, 65, 12, 0.5) 0%,
-      rgba(140, 47, 16, 0.22) 32%,
-      rgba(11, 9, 8, 0) 62%
+      rgba(93, 30, 33, 0.55) 0%,
+      rgba(166, 130, 74, 0.16) 30%,
+      rgba(9, 9, 9, 0) 62%
     ),
     radial-gradient(
       90% 60% at 50% 0%,
       rgba(58, 50, 46, 0.55) 0%,
       rgba(11, 9, 8, 0) 70%
     ),
-    linear-gradient(180deg, var(--coal-900) 0%, var(--coal-950) 55%, #090706 100%);
+    linear-gradient(180deg, var(--coal-900) 0%, var(--coal-950) 55%, var(--coal-950) 100%);
 }
 
 /* حبيبات الفحم: ضوضاء ساكنة خفيفة تمنع انبساط التدرّج */
@@ -81,13 +81,15 @@
   inset-inline: -10%;
   inset-block-end: -12%;
   block-size: 112%;
+  /* لوحةُ المالكِ بلا برتقالي: القلبُ ذهبٌ عتيقٌ والقاعُ نبيذيٌّ عميق */
   background: radial-gradient(
     68% 100% at 50% 100%,
-    rgba(250, 214, 168, 0.72) 0%,
-    rgba(240, 169, 92, 0.56) 18%,
-    rgba(226, 107, 44, 0.36) 38%,
-    rgba(194, 65, 12, 0.2) 56%,
-    rgba(140, 47, 16, 0) 76%
+    rgba(206, 190, 163, 0.6) 0%,
+    rgba(185, 159, 117, 0.48) 16%,
+    rgba(166, 130, 74, 0.34) 32%,
+    rgba(115, 61, 63, 0.3) 50%,
+    rgba(93, 30, 33, 0.22) 66%,
+    rgba(56, 18, 20, 0) 84%
   );
   animation: bedBreathe 7.5s var(--ease-in-out) infinite;
 }
@@ -113,11 +115,11 @@
     bottom 0 left 53px;
   background-size: 61px 30px, 43px 24px, 89px 38px, 29px 19px, 71px 44px;
   background-image:
-    radial-gradient(26px 15px at 50% 100%, #0a0807 0 100%, rgba(0, 0, 0, 0) 100%),
-    radial-gradient(18px 11px at 50% 100%, #15110f 0 100%, rgba(0, 0, 0, 0) 100%),
-    radial-gradient(35px 19px at 50% 100%, #050403 0 100%, rgba(0, 0, 0, 0) 100%),
-    radial-gradient(13px 9px at 50% 100%, #1b1513 0 100%, rgba(0, 0, 0, 0) 100%),
-    radial-gradient(23px 22px at 50% 100%, #0d0a09 0 100%, rgba(0, 0, 0, 0) 100%);
+    radial-gradient(26px 15px at 50% 100%, var(--coal-900) 0 100%, rgba(0, 0, 0, 0) 100%),
+    radial-gradient(18px 11px at 50% 100%, var(--coal-850) 0 100%, rgba(0, 0, 0, 0) 100%),
+    radial-gradient(35px 19px at 50% 100%, var(--coal-950) 0 100%, rgba(0, 0, 0, 0) 100%),
+    radial-gradient(13px 9px at 50% 100%, var(--coal-800) 0 100%, rgba(0, 0, 0, 0) 100%),
+    radial-gradient(23px 22px at 50% 100%, var(--coal-950) 0 100%, rgba(0, 0, 0, 0) 100%);
   -webkit-mask-image: linear-gradient(
     to top, #000 0%, #000 52%, rgba(0, 0, 0, 0.5) 80%, rgba(0, 0, 0, 0) 100%
   );
@@ -146,11 +148,13 @@
   border-radius: var(--r-pill);
   background: linear-gradient(
     90deg,
-    rgba(122, 42, 12, 0) 0%,
-    var(--ember) 26%,
-    var(--glow-soft) 50%,
-    var(--ember) 74%,
-    rgba(122, 42, 12, 0) 100%
+    rgba(56, 18, 20, 0) 0%,
+    var(--burgundy) 24%,
+    var(--gold) 42%,
+    var(--gold-200) 50%,
+    var(--gold) 58%,
+    var(--burgundy) 76%,
+    rgba(56, 18, 20, 0) 100%
   );
   opacity: var(--o, 0.7);
   animation: crackFlicker var(--sp, 3.4s) var(--ease-in-out) infinite;
@@ -321,17 +325,17 @@
 /* سطح فاتح — العيش. ضروري لكسر توالي الأسطح الغامقة:
    ثلاثة أسطح غامقة متتالية كانت عطلاً حقيقياً في مشروع سابق. */
 .surface--bone {
-  background: linear-gradient(180deg, var(--bone) 0%, var(--bone-dim) 100%);
-  color: #221c16;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dim) 100%);
+  color: var(--charcoal);
 }
 
 .surface--bone .lead,
 .surface--bone .muted {
-  color: #5c5047;
+  color: var(--ash-600);
 }
 
 .surface--bone .faint {
-  color: #857a70;
+  color: var(--ash-500);
 }
 
 .surface--bone .eyebrow {
@@ -354,4 +358,57 @@
 
 .surface--ash {
   background: linear-gradient(180deg, var(--coal-800), var(--coal-700) 70%, var(--coal-800));
+}
+
+
+/* ---------------- أسطحُ الزمرّدي والنبيذي ----------------
+   لونانِ من الخمسةِ التي أرسلها المالك، ولم يكونا مستعملَين في النسخةِ
+   الأولى إطلاقاً. والإيقاعُ الآن يَمُرّ على الخمسةِ كلِّها، ولا يتجاور
+   سطحانِ متشابهان — وتوالي ثلاثةِ أسطحٍ غامقةٍ متماثلةٍ كان عطلاً
+   حقيقياً شكا منه عميلٌ سابق. */
+
+.surface--emerald {
+  background:
+    radial-gradient(
+      90% 70% at 78% 8%,
+      rgba(166, 130, 74, 0.12) 0%,
+      rgba(12, 38, 28, 0) 62%
+    ),
+    linear-gradient(180deg, var(--emerald-800) 0%, var(--emerald-900) 100%);
+}
+
+.surface--emerald-lit {
+  background: linear-gradient(180deg, var(--emerald) 0%, var(--emerald-800) 100%);
+}
+
+.surface--burgundy {
+  background:
+    radial-gradient(
+      90% 70% at 22% 10%,
+      rgba(206, 190, 163, 0.1) 0%,
+      rgba(56, 18, 20, 0) 60%
+    ),
+    linear-gradient(180deg, var(--burgundy-800) 0%, var(--burgundy-900) 100%);
+}
+
+/* على الزمرّدي والنبيذي يُرفَع الذهبيُّ درجةً:
+   الذهبيُّ الأساسُ على الزمرّديِّ = 3.1:1 فقط، والفاتحُ = 4.47:1.
+   فنصُّ المتنِ يأخذ gold-200 والعناوينُ الكبيرةُ تكفيها gold-400. */
+.surface--emerald .eyebrow,
+.surface--burgundy .eyebrow,
+.surface--emerald .brass,
+.surface--burgundy .brass {
+  color: var(--gold-200);
+}
+
+.surface--emerald .eyebrow::before,
+.surface--burgundy .eyebrow::before {
+  background: linear-gradient(to left, var(--gold-200), rgba(206, 190, 163, 0));
+}
+
+.surface--emerald .lead,
+.surface--burgundy .lead,
+.surface--emerald .muted,
+.surface--burgundy .muted {
+  color: var(--cream-dim);
 }

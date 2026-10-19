@@ -29,7 +29,6 @@ HEAD = """<!doctype html>
 <title>{title}</title>
 <link rel="stylesheet" href="{rel}/assets/tokens.css">
 <link rel="stylesheet" href="{rel}/assets/base.css">
-<link rel="stylesheet" href="{rel}/assets/sadu.css">
 <link rel="stylesheet" href="{rel}/assets/ember.css">
 <link rel="stylesheet" href="{rel}/assets/sections.css">
 <style>
@@ -70,79 +69,32 @@ def write(name, body, direction="rtl", title="preview"):
 
 def main():
     html = read_index()
-    figs = extract_figures(html)
 
-    # محاسبة: إن لم يُقتطَع ما نتوقّعه فالفجوةُ في الأداةِ لا في الصفحة
-    if len(figs) != 2:
-        print(f"خطأ في الأداة: توقّعتُ رسمَين واقتطعتُ {len(figs)}.",
-              file=sys.stderr)
-        print("إن أُضيف رسمٌ ثالثٌ فحدِّث العدّ صريحاً — ولا تُمرَّر بصمت.",
-              file=sys.stderr)
+    # الرسومُ المتجهيّةُ والرموزُ حُذفت كلُّها بقرارِ المالك
+    # («لا تستعمل خطوط هندسية ولا رسوم هندسية»، و«نستعمل كلشيء حقيقي»).
+    # فالمعاينةُ الباقيةُ شيئان: سريرُ الجمر (بلا نصّ) وصفحةُ نصٍّ لاتينيّة.
+    figs = extract_figures(html)
+    if figs:
+        print(f"خطأ: وُجد {len(figs)} رسماً متجهيّاً والمتوقَّع صفر — "
+              f"الرسومُ الهندسيّةُ محذوفةٌ بقرارِ المالك.", file=sys.stderr)
+        return 1
+    if "<symbol" in html:
+        print("خطأ: بقيت مجموعةُ رموزٍ هندسيّةٍ في الصفحة.", file=sys.stderr)
         return 1
 
     made = []
 
-    # 1) الرسومُ المتجهيّةُ وحدَها — خاليةٌ من النصّ، فاللقطةُ صحيحةٌ تماماً
-    made.append(write(
-        "art-brazier.html",
-        '<div class="lbl">ART 1 / BRAZIER — no text, screenshot is valid</div>'
-        '<div style="padding:24px;background:var(--coal-950)">' + figs[0] + "</div>",
-        title="art brazier"))
-
-    made.append(write(
-        "art-dallah.html",
-        '<div class="lbl">ART 2 / DALLAH — no text, screenshot is valid</div>'
-        '<div style="padding:24px;background:var(--coal-950)">' + figs[1] + "</div>",
-        title="art dallah"))
-
-    # 2) سريرُ الجمر وحدَه — بلا نصّ
     made.append(write(
         "ember-bed.html",
-        '<div class="lbl">EMBER BED — generated coals, no text</div>'
+        '<div class="lbl">EMBER BED — burgundy base, antique gold core; '
+        'no text, screenshot is valid</div>'
         '<section class="stage heat" style="min-block-size:520px">'
-        '<span class="mashrabiya"></span><span class="smoke"></span>'
+        '<span class="smoke"></span>'
         '<span class="embers" data-embers></span>'
         '<span class="heat__veil"></span></section>'
         '<script src="../../assets/app.js"></script>',
         title="ember bed"))
 
-    # 3) شرائطُ السدو والوَزرة — هندسةٌ بلا نصّ
-    made.append(write(
-        "sadu.html",
-        '<div class="lbl">SADU / NAJDI GEOMETRY — generated, no text</div>'
-        '<div style="background:var(--coal-900);padding:34px;display:grid;gap:30px">'
-        '<div class="sadu"></div>'
-        '<div class="sadu sadu--fine"></div>'
-        '<div class="sadu sadu--ember"></div>'
-        '<div class="sadu-diamond"></div>'
-        '<div class="dado" style="block-size:150px;background:var(--coal-800)"></div>'
-        '<div class="dado dado--bone" style="block-size:150px;background:var(--bone)"></div>'
-        "</div>",
-        title="sadu"))
-
-    # 4) الرموزُ كلّها — بلا نصّ
-    symbols = re.findall(r'<symbol id="([^"]+)"', html)
-    cells = "".join(
-        f'<div style="display:grid;gap:6px;justify-items:center;'
-        f'padding:14px;border:1px solid var(--rule);border-radius:6px">'
-        f'<svg class="ico" style="inline-size:34px;block-size:34px;'
-        f'color:var(--glow)"><use href="#{s}"/></svg>'
-        f'<code style="font-size:9px;color:var(--brass);direction:ltr">{s}</code>'
-        f"</div>"
-        for s in symbols)
-    # تُدرَج مجموعةُ الرموزِ كما هي من الأصل
-    sprite = re.search(r'(<svg hidden.*?</svg>)', html, re.S)
-    made.append(write(
-        "icons.html",
-        '<div class="lbl">ICON SET — ' + str(len(symbols)) +
-        ' symbols, geometric, no imported art</div>' +
-        (sprite.group(1) if sprite else "") +
-        '<div style="background:var(--coal-900);padding:26px;display:grid;'
-        'gap:12px;grid-template-columns:repeat(7,1fr)">' + cells + "</div>",
-        title="icons"))
-
-    # 5) صفحةُ اختبارٍ بنصٍّ **لاتيني** — الوحيدةُ التي يصحُّ الحكمُ بها
-    #    على التبايُنِ والتخطيطِ والمقاسات، لأنّ الصندوقَ بلا خطوطٍ عربيّة.
     latin = """
 <div class="lbl">LATIN TYPE TEST — the only valid basis to judge contrast,
 sizing and layout in this sandbox (zero Arabic fonts installed)</div>
@@ -303,8 +255,8 @@ judge spacing and measure only)</div>
   </div>
 </section>
 """
-    sprite_tag = sprite.group(1) if sprite else ""
-    made.append(write("latin-type.html", sprite_tag + latin,
+
+    made.append(write("latin-type.html", latin,
                       direction="ltr", title="latin type test"))
 
     print(f"بُنيت {len(made)} صفحةَ معاينة في docs/preview-harness/:")

@@ -392,7 +392,7 @@
   font-family: var(--font-display);
   font-size: var(--t-h3);
   font-weight: 600;
-  color: #221c16;
+  color: var(--charcoal);
 }
 
 .rice__origin {
@@ -405,7 +405,7 @@
 .rice__desc {
   font-size: var(--t-small);
   line-height: 1.8;
-  color: #5c5047;
+  color: var(--ash-500);
 }
 
 /* ================= صفّ المشاوي ================= */
@@ -670,7 +670,7 @@
 .foot {
   position: relative;
   padding-block: var(--sp-7) var(--sp-6);
-  background: linear-gradient(180deg, var(--coal-900), #070505);
+  background: linear-gradient(180deg, var(--coal-900), var(--coal-950));
   border-block-start: 1px solid var(--rule);
 }
 
