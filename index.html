@@ -22,16 +22,16 @@
      إلى Google، ولا تنكسر الكتابةُ إن حُجب، ويُحمَّل الخطُّ من نفسِ
      الخادم. ورخصةُ OFL تشترط إرفاقَ نصِّها — وهو في assets/fonts/.
      وتُحمَّل الخطوطُ مُسبَقاً لأنّ العنوانَ أوّلُ ما يُرى. -->
-<link rel="preload" href="assets/fonts/ArefRuqaa-Regular.ttf?v=8" as="font" type="font/ttf" crossorigin>
-<link rel="preload" href="assets/fonts/Amiri-Regular.ttf?v=8" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="assets/fonts/ArefRuqaa-Regular.ttf?v=11" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="assets/fonts/Amiri-Regular.ttf?v=11" as="font" type="font/ttf" crossorigin>
 
 <!-- ترتيب التحميل مقصود: tokens ← base ← ember ← sections
      وأرقام الإصدار ?v=N تُزاد في كل دفعة — العميل رأى نسخاً قديمة
      ثلاث مرّات في مشروع سابق. -->
-<link rel="stylesheet" href="assets/tokens.css?v=8">
-<link rel="stylesheet" href="assets/base.css?v=8">
-<link rel="stylesheet" href="assets/ember.css?v=8">
-<link rel="stylesheet" href="assets/sections.css?v=8">
+<link rel="stylesheet" href="assets/tokens.css?v=11">
+<link rel="stylesheet" href="assets/base.css?v=11">
+<link rel="stylesheet" href="assets/ember.css?v=11">
+<link rel="stylesheet" href="assets/sections.css?v=11">
 </head>
 <body>
 
@@ -275,7 +275,7 @@
         <p class="rice__desc">عيشُ السمك: بصلٌ مُحمَّرٌ حتى يَسوَدّ لونُه، ومرقُ الحمور، وسمكٌ فوقه.</p>
       </article>
 
-      <article class="rice" data-reveal>
+      <article class="rice rice--signature" data-reveal>
         <h3 class="rice__name">عيش وكباب</h3>
         <p class="rice__origin">الطلبُ الأوّل</p>
         <p class="rice__desc">عيشٌ أبيضٌ مُفلفَلٌ وكبابٌ من الجمر، ودقّوسٌ ولبنٌ بالنعنع. الصحنُ الذي سُمّي به المطعم.</p>
@@ -374,7 +374,7 @@
         </ul>
       </section>
 
-      <section class="menu-card" data-reveal>
+      <section class="menu-card menu-card--wide" data-reveal>
         <h3 class="menu-card__head">الحلو والقهوة
         </h3>
         <ul class="menu-list">
@@ -492,12 +492,18 @@
     </a>
     <p class="foot__meta">
       مطعمٌ خليجي · مشاوي وعيش · يُفتتح قريباً<br>
-      جميعُ رسومِ هذا الموقعِ مرسومةٌ خصّيصاً له — لا صورَ ولا أعمالَ فنّيّةَ غيرِنا.<br>
+      <!-- كان مكتوباً هنا «لا صورَ ولا أعمالَ فنّيّةَ غيرِنا»، وكان صحيحاً
+           يومَ كان الموقعُ رسومَ SVG كلَّه. ثمّ دخلت **أربعُ صورٍ للمالك**
+           في الدفعةِ السابقةِ ولم يُصحَّح السطر، فصار الموقعُ **يَنفي عن
+           نفسِه ما فيه**. وبيانٌ عن الحقوقِ يَكذِب — ولو في اتّجاهِ
+           التحفُّظ — أسوأُ من غيابِه، لأنّه بعينُه ما يُقرأ عند النزاع.
+           فيُقال ما هو: الصورُ للمالكِ، والرسمُ لنا، ولا أصلَ لطرفٍ ثالث. -->
+      الصورُ للمالك، وما عداها مرسومٌ خصّيصاً لهذا الموقع — لا أصولَ لطرفٍ ثالثٍ فيه.<br>
       <span data-year>2026</span> — نسخةُ عرضٍ أوّليّة
     </p>
   </div>
 </footer>
 
-<script defer src="assets/app.js?v=8"></script>
+<script defer src="assets/app.js?v=11"></script>
 </body>
 </html>
