@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>عالجمر — مختبر مدخل الموقع: السجّادة والحرق</title>
+
+<!-- خطٌّ نسخيٌّ كلاسيكي. لا يُحمَّل في صندوق البناء (لا شبكة)، فتُرسَم
+     الكلمةُ هناك مربّعاتٍ فارغة. ويُحمَّل في متصفّحِ المالكِ طبيعياً.
+     ويُستبدَل بخطٍّ مستضافٍ محلياً حين يرفع المالكُ ملفَّ الخطّ. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap">
+
+<style>
+:root{
+  /* لوحةُ المالكِ الخمس — ولا لونَ نارٍ مكتوبٌ بالرقم:
+     النارُ كلُّها فوتوغرافيّةٌ من صورِ المالك */
+  --charcoal:#101111; --gold:#A6824A; --cream:#E6E2DA;
+  --burgundy:#5D1E21; --emerald:#154230;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#1a1a1a; color:var(--cream); padding:20px;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  display:grid; grid-template-columns:1fr 1fr; gap:20px; width:1240px;
+}
+.tile{position:relative; width:580px; height:580px; overflow:hidden;
+      background:var(--charcoal); border:1px solid #2a2a2a}
+.tag{position:absolute; inset-inline-start:10px; top:10px; z-index:40;
+     font:12px/1.4 "Noto Sans",sans-serif;
+     background:rgba(16,17,17,.86); color:var(--gold);
+     padding:5px 9px; border:1px solid rgba(166,130,74,.5)}
+.warn{position:absolute; inset-inline-end:10px; bottom:10px; z-index:40;
+      font:10px/1.3 "Noto Sans",sans-serif; color:var(--cream);
+      background:rgba(93,30,33,.92); padding:4px 8px}
+
+.layer{position:absolute; inset:0; background-repeat:no-repeat;
+       background-position:center; background-size:cover}
+
+/* ── السجّادة ──────────────────────────────────────────
+   تُكبَّر 150% لتُدفَع الخلفيّةُ البيضاءُ (حافّةُ القصِّ في صورةِ
+   المنتج) خارجَ الإطار، فلا يطلّ الأبيضُ من زاوية. */
+.rug{background-image:url(../../inbox/b2-logo.jpeg);
+     background-size:205%; background-position:24% 42%}
+
+/* ── النار: تُقرَّب وتُنعَّم ─────────────────────────────
+   تقريبُ 260% يُخرج يدَ الشوّاءِ والقضبانَ من الإطار، والضبابُ
+   يُذيب ما بقي منها فتبقى نارٌ لا «صورةُ مشاوٍ ملصوقة».
+   والحدودُ تُنعَّم بقناعٍ شعاعيٍّ فلا يبقى مستطيلٌ حادّ. */
+.flame{background-image:url(../../inbox/b2-grill.jpeg);
+  background-size:260%; background-position:48% 24%;
+  mix-blend-mode:screen; filter:blur(3px) saturate(1.25) contrast(1.06);
+  -webkit-mask-image:radial-gradient(58% 64% at 50% 54%,
+      #000 26%, rgba(0,0,0,.55) 52%, transparent 78%);
+          mask-image:radial-gradient(58% 64% at 50% 54%,
+      #000 26%, rgba(0,0,0,.55) 52%, transparent 78%)}
+
+/* الجمرُ مصدرَ ضوءٍ لا صورةَ شبكة: ضبابٌ قويٌّ يُذيب القضبانَ
+   ويُبقي لونَ الجمرِ ووهجَه */
+.emberglow{background-image:url(../../inbox/b2-embers.jpeg);
+  background-size:170%; mix-blend-mode:screen;
+  filter:blur(22px) saturate(1.5) brightness(1.12)}
+
+.word{position:absolute; z-index:30; inset-inline:0; text-align:center;
+      font-family:"Amiri","Aref Ruqaa","Scheherazade New",serif;
+      color:var(--cream);
+      text-shadow:0 2px 20px rgba(16,17,17,.95),
+                  0 0 56px rgba(166,130,74,.45)}
+body.nw .word{visibility:hidden}
+body.nw .tile .slot{display:block}
+.slot{display:none; position:absolute; z-index:31; inset-inline:0;
+  text-align:center; font:12px "Noto Sans",sans-serif;
+  color:rgba(230,226,218,.5)}
+
+/* ══ أ · المُقترَحُ الأوّل: نسيجٌ محروقٌ ووهجٌ من أسفل ═══
+   أهدأُ الأربعة. السجّادةُ تُقرأ **نسيجاً** لا صورةَ سجّادةٍ
+   معروضةٍ للبيع، والنارُ وهجٌ لا لهبٌ مرسوم. */
+#a .rug{filter:saturate(.5) brightness(.3) contrast(1.14)}
+#a .emberglow{top:58%; opacity:.9}
+#a .veil{position:absolute; inset:0; z-index:12;
+  background:linear-gradient(to top, rgba(16,17,17,.82) 0 14%,
+     rgba(16,17,17,.35) 46%, rgba(16,17,17,.72) 100%)}
+#a .hair{position:absolute; inset:7.5%; z-index:24;
+  border:1px solid rgba(166,130,74,.55)}
+#a .word{top:40%; font-size:104px; line-height:1;
+  color:var(--gold); text-shadow:0 2px 26px rgba(16,17,17,.95)}
+#a .slot{top:46%}
+
+/* ══ ب · الحافّةُ السفلى تحترقُ والجمرُ يأكلُ النسيج ════
+   الحدُّ يُزاح بالتشويشِ الكسريِّ فيصيرُ مُسنَّناً كنسيجٍ احترق،
+   والجمرُ خلفَه يطلّ من مواضعِ الأكل. */
+#b .emberglow{top:34%; filter:blur(18px) saturate(1.5) brightness(1.1)}
+#b .rug{filter:url(#burn) saturate(.7) brightness(.46) contrast(1.08);
+  -webkit-mask-image:linear-gradient(to top,
+      transparent 26%, rgba(0,0,0,.5) 33%, #000 44%);
+          mask-image:linear-gradient(to top,
+      transparent 26%, rgba(0,0,0,.5) 33%, #000 44%);
+  z-index:10}
+#b .ring{position:absolute; inset-inline:-4%; top:52%; height:20%;
+  z-index:8;
+  background:radial-gradient(70% 100% at 50% 100%,
+      rgba(255,172,70,.85), rgba(140,47,16,.4) 48%, transparent 74%);
+  filter:blur(13px)}
+#b .word{top:30%; font-size:92px; z-index:20}
+#b .slot{top:34%}
+
+/* ══ ج · مُستديرٌ: قُرصٌ من النسيجِ وحلقةُ جمر ══════════ */
+#c{background:#0c0c0c}
+#c .disc{position:absolute; inset:15%; border-radius:50%;
+  overflow:hidden; z-index:10;
+  box-shadow:0 0 0 1px rgba(166,130,74,.9),
+             0 0 50px 12px rgba(214,88,22,.35),
+             inset 0 -40px 70px rgba(16,17,17,.8)}
+#c .disc .rug{filter:saturate(.62) brightness(.4) contrast(1.06)}
+#c .disc .emberglow{top:52%; opacity:.95}
+#c .halo{position:absolute; inset:9%; border-radius:50%; z-index:4;
+  background:radial-gradient(closest-side,
+      rgba(214,88,22,.45), transparent 76%); filter:blur(20px)}
+#c .word{top:44%; font-size:72px; z-index:20; color:var(--cream)}
+#c .slot{top:48%}
+
+/* ══ د · لهبٌ حقيقيٌّ يتصاعدُ والنسيجُ خلفه ════════════ */
+#d .rug{filter:saturate(.55) brightness(.26) contrast(1.12)}
+/* اللهبُ كان يحترقُ بياضاً: نواةُ اللهبِ في الصورةِ الأصليّةِ مُشبَعةٌ
+   بالضوء، والدمجُ بـscreen يضاعفها فتصيرُ سحابةً بيضاء.
+   فيُخفَّض السطوعُ وتُقلَّل الشفافيّةُ حتى يُقرأ لهباً لا وهجاً. */
+#d .flame{top:10%; height:90%; opacity:.52;
+  filter:blur(4px) brightness(.72) saturate(1.45) contrast(1.12)}
+#d .emberglow{top:66%; opacity:.8}
+#d .veil{position:absolute; inset:0; z-index:12;
+  background:linear-gradient(to top, rgba(16,17,17,.7) 0 10%,
+     transparent 42%)}
+#d .word{bottom:16%; font-size:98px; z-index:30}
+#d .slot{bottom:20%}
+</style>
+</head>
+<body>
+
+<!-- مرشّحُ الحرق: تشويشٌ كسريٌّ يُزيح حدَّ القناعِ فيصيرُ مُسنَّناً
+     كحافّةِ نسيجٍ احترق، لا دائرةً هندسيّةً مستقيمةَ الحدّ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="burn" x="-25%" y="-25%" width="150%" height="150%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.02"
+                  numOctaves="5" seed="3" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="26"
+                       xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<section class="tile" id="a">
+  <span class="tag">أ · نسيجٌ محروقٌ ووهجٌ من أسفل — الأهدأ</span>
+  <div class="layer rug"></div>
+  <div class="layer emberglow"></div>
+  <div class="veil"></div>
+  <div class="hair"></div>
+  <div class="word">عالجمر</div><div class="slot">[ موضعُ الكلمة ]</div>
+  <span class="warn">السجّادةُ صورةُ منتجٍ — لا تُنشَر</span>
+</section>
+
+<section class="tile" id="b">
+  <span class="tag">ب · ثقبٌ محروقٌ والجمرُ من خلفه</span>
+  <div class="layer emberglow"></div>
+  <div class="ring"></div>
+  <div class="layer rug rug-burn"></div>
+  <div class="word">عالجمر</div><div class="slot">[ موضعُ الكلمة ]</div>
+  <span class="warn">السجّادةُ صورةُ منتجٍ — لا تُنشَر</span>
+</section>
+
+<section class="tile" id="c">
+  <span class="tag">ج · قُرصٌ مستديرٌ بحلقةِ جمر</span>
+  <div class="halo"></div>
+  <div class="disc">
+    <div class="layer rug"></div>
+    <div class="layer emberglow"></div>
+  </div>
+  <div class="word">عالجمر</div><div class="slot">[ موضعُ الكلمة ]</div>
+  <span class="warn">السجّادةُ صورةُ منتجٍ — لا تُنشَر</span>
+</section>
+
+<section class="tile" id="d">
+  <span class="tag">د · لهبٌ حقيقيٌّ يتصاعدُ والنسيجُ خلفه</span>
+  <div class="layer rug"></div>
+  <div class="layer emberglow"></div>
+  <div class="layer flame"></div>
+  <div class="veil"></div>
+  <div class="word">عالجمر</div><div class="slot">[ موضعُ الكلمة ]</div>
+  <span class="warn">السجّادةُ صورةُ منتجٍ — لا تُنشَر</span>
+</section>
+
+<script>
+/* ?nw=1 يُخفي الكلمةَ لأُحكِمَ على النارِ والنسيجِ وحدَهما:
+   صندوقُ البناءِ بلا خطوطٍ عربيّة (قِيس: 10 خطوطٍ · صفر عربي)،
+   فالكلمةُ تُرسَم مربّعاتٍ فارغةً تُفسِد الحكمَ البصريّ. */
+if (location.search.indexOf("nw=1") > -1) document.body.classList.add("nw");
+</script>
+</body>
+</html>
