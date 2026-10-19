@@ -48,6 +48,8 @@ run "فحوصُ أداةِ القصِّ الذاتيّة" \
     python3 .kiro/tools/crop.py --selftest
 run "فحوصُ أداةِ قياسِ السطوعِ الذاتيّة" \
     python3 .kiro/tools/measure_luma.py --selftest
+run "فحوصُ أداةِ أشرطةِ الصفحةِ الذاتيّة" \
+    python3 .kiro/tools/page_band.py --selftest
 
 # ثمّ الحوارسُ على المشروع
 run "لا أرقامَ بالرسمِ الهنديِّ أو الفارسيّ" \
