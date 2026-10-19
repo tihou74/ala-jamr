@@ -144,11 +144,16 @@
   }
 }
 
+/* رقعةُ عارف ذاتُ صواعدَ عاليةٍ ونَزَلاتٍ عميقة، فسطرٌ بـ0.96 **يقطع
+   أعلى الحروف** — قِيس بلقطة: رأسُ اللامِ والجيمِ مقصوصٌ في الاسم.
+   ومعه: `letter-spacing` السالبُ خطأٌ في العربيّةِ أصلاً — العربيّةُ
+   خطٌّ موصولٌ فالتضييقُ يُقحِم فجواتٍ بين حروفٍ يجب أن تتّصل. */
 .hero__name {
   font-size: var(--t-hero);
   font-weight: 600;
-  line-height: 0.96;
-  letter-spacing: -0.03em;
+  line-height: 1.34;
+  letter-spacing: 0;
+  padding-block: 0.08em;
   background: linear-gradient(
     172deg,
     var(--bone) 0%,

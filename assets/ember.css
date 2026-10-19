@@ -412,3 +412,113 @@
 .surface--burgundy .muted {
   color: var(--cream-dim);
 }
+
+/* ===========================================================
+   الطبقةُ الفوتوغرافيّة — صورُ المالك
+   ===========================================================
+   أربعُ صورٍ من مطعميه في قطر بعدسةِ مصوّرِه. تُستعمل **أسطحاً
+   خلفيّةً** لا بطاقاتٍ معروضة: مُعتَّمةٌ تحت حجابٍ فحميٍّ يبقي
+   النصَّ مقروءاً، فالصورةُ تُسند المعنى ولا تُزاحم الكلمة.
+
+   وثلاثةُ قيودٍ مقصودة:
+   · `background-attachment: fixed` **ممنوع** (جمودُ تمريرٍ مقيسٌ
+     في مشروعٍ سابق) — فالثباتُ هنا بـcover وموضعٍ محسوبٍ لا به.
+   · لا لونَ مكتوبٌ بالرقمِ هنا: كلُّ تعتيمٍ بـrgba من الفحمِ
+     المُعطى في اللوحة، فحارسُ اللوحةِ يبقى أخضر.
+   · الصورُ محجوبةٌ عن قارئِ الشاشةِ (`aria-hidden` في الوسم) فلا
+     تُقرأ زخرفةٌ على أنها محتوى.
+   =========================================================== */
+.photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  pointer-events: none;
+}
+
+/* الحجاب: يُحفظ التباينُ أعلى الصورةِ وأسفلَها معاً. وبلا هذا
+   الحجابِ تُقرأ العناوينُ على مواضعَ فاتحةٍ من الصورة. */
+.photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(9, 9, 9, 0.82) 0%,
+    rgba(9, 9, 9, 0.62) 38%,
+    rgba(9, 9, 9, 0.78) 100%
+  );
+}
+
+/* ---- الواجهة: جمرٌ حقيقيٌّ خلفَ الاسم ----
+   أعتمُ الأربعة: الاسمُ هو البطلُ، والجمرُ وقودُه لا شريكُه. */
+/* قِيس بلقطة: بـ0.52 واختُفت الجمرةُ كلُّها فصارت الواجهةُ سوداءَ
+   صمّاء — والصورةُ تحت حجابَين (مرشّحٍ + تدرّجٍ) فالتعتيمُ يتضاعف. */
+.photo--embers {
+  background-image: url("img/embers.jpg");
+  filter: saturate(1.08) brightness(0.86) contrast(1.04);
+}
+
+.photo--embers::after {
+  background: radial-gradient(
+      76% 64% at 50% 48%,
+      rgba(9, 9, 9, 0.18) 0%,
+      rgba(9, 9, 9, 0.72) 76%
+    ),
+    linear-gradient(to bottom, rgba(9, 9, 9, 0.5) 0%, rgba(9, 9, 9, 0.8) 100%);
+}
+
+/* ---- المجمر المكشوف ---- */
+.photo--flame {
+  background-image: url("img/grill-flame.jpg");
+  background-position: 48% 32%;
+  filter: saturate(1.04) brightness(0.6);
+}
+
+/* ---- ما يَستحقُّ الجمر ----
+   الكبابُ أقربُ صورةٍ إلى الطبق، فتُترك أوضحَ قليلاً. */
+.photo--kebab {
+  background-image: url("img/kebab.jpg");
+  background-position: 50% 62%;
+  filter: saturate(1.02) brightness(0.66);
+}
+
+.photo--kebab::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(9, 9, 9, 0.74) 0%,
+    rgba(9, 9, 9, 0.5) 42%,
+    rgba(9, 9, 9, 0.8) 100%
+  );
+}
+
+/* ---- المجلس: الشايُ والسجّادة ---- */
+.photo--tea {
+  background-image: url("img/tea.jpg");
+  background-position: 50% 38%;
+  filter: saturate(0.95) brightness(0.56);
+}
+
+/* المحتوى فوق الصورةِ دائماً: `.section` مُنشئةُ سياقٍ بـrelative،
+   فيكفي رفعُ الغلافِ طبقةً واحدة. */
+.section > .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+/* تقليلُ الحركةِ لا يُلغي الصور، لكنّ التعتيمَ يُشدَّد قليلاً
+   لمن طلب تخفيفَ المؤثّرات. */
+@media (prefers-reduced-motion: reduce) {
+  .photo {
+    filter: saturate(0.85) brightness(0.48);
+  }
+}
+
+/* الواجهةُ تُرتَّب طبقاتُها أصلاً بـz-index سالبٍ للزخرفةِ و2 للمحتوى
+   (`.hero__inner`). فتُدَسُّ الصورةُ تحت حبيباتِ الفحمِ (-1) لا فوقها،
+   وإلّا انبسطَ التدرّجُ وضاعت الحبيبات. */
+.stage > .photo {
+  z-index: -2;
+}
