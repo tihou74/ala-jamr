@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>art dallah</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../../assets/sadu.css">
+<link rel="stylesheet" href="../../assets/ember.css">
+<link rel="stylesheet" href="../../assets/sections.css">
+<style>
+  /* [data-reveal] يبدأ opacity:0 — يُعطَّل في المعاينة وإلّا خرجت اللقطة فارغة */
+  html.js [data-reveal], [data-reveal] { opacity:1 !important; transform:none !important; }
+  .ico { fill:none; stroke:currentColor; stroke-width:1.5;
+         stroke-linecap:round; stroke-linejoin:round; }
+  body { padding: 0; }
+  .lbl { font-family: var(--font-body); font-size: 11px; letter-spacing:.18em;
+         color: var(--brass); padding: 10px 14px; border-block-end:1px solid var(--rule); }
+</style>
+</head>
+<body>
+<div class="lbl">ART 2 / DALLAH — no text, screenshot is valid</div><div style="padding:24px;background:var(--coal-950)"><figure class="split__art brass-edge" data-reveal style="margin:0">
+      <svg viewBox="0 0 640 480" role="img" aria-labelledby="art-dallah-t">
+        <title id="art-dallah-t">رسمٌ لدلّةِ قهوةٍ عربيّةٍ نحاسيّةٍ بمنقشٍ نجديٍّ، وفنجانَين، وصحنِ تمرٍ على شريطِ سدو</title>
+        <defs>
+          <linearGradient id="dlBg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1a1615"/><stop offset="1" stop-color="#0b0908"/>
+          </linearGradient>
+          <radialGradient id="dlWarm" cx="44%" cy="46%" r="56%">
+            <stop offset="0" stop-color="#c2410c" stop-opacity=".16"/>
+            <stop offset="100%" stop-color="#c2410c" stop-opacity="0"/>
+          </radialGradient>
+          <!-- نحاسٌ مطروق: الضوءُ من اليسارِ الأعلى -->
+          <linearGradient id="dlBrass" x1="0" y1="0" x2="1" y2="0.3">
+            <stop offset="0" stop-color="#8a6c3c"/><stop offset="18%" stop-color="#c9a76c"/>
+            <stop offset="36%" stop-color="#f0e0bc"/><stop offset="52%" stop-color="#c9a76c"/>
+            <stop offset="74%" stop-color="#8a6c3c"/><stop offset="100%" stop-color="#5a4526"/>
+          </linearGradient>
+          <linearGradient id="dlBrassDim" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#6b5431"/><stop offset="40%" stop-color="#a98a55"/>
+            <stop offset="70%" stop-color="#7d6238"/><stop offset="100%" stop-color="#4a3a20"/>
+          </linearGradient>
+          <linearGradient id="dlPorcelain" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#fdfaf4"/><stop offset="55%" stop-color="#f0e8db"/>
+            <stop offset="100%" stop-color="#d4c8b6"/>
+          </linearGradient>
+          <linearGradient id="dlDate" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#7a4522"/><stop offset="60%" stop-color="#4e2812"/>
+            <stop offset="100%" stop-color="#2d150a"/>
+          </linearGradient>
+        </defs>
+
+        <rect width="640" height="480" fill="url(#dlBg)"/>
+        <ellipse cx="290" cy="240" rx="300" ry="220" fill="url(#dlWarm)"/>
+
+        <!-- ظلٌّ أرضيٌّ يُجلس العناصرَ على سطح -->
+        <ellipse cx="282" cy="424" rx="118" ry="14" fill="#000" fill-opacity=".45"/>
+        <ellipse cx="472" cy="400" rx="56" ry="9" fill="#000" fill-opacity=".35"/>
+
+        <!-- ================= صحنُ التمر ================= -->
+        <g>
+          <ellipse cx="124" cy="404" rx="64" ry="17" fill="#1d1917"
+                   stroke="#b08d57" stroke-opacity=".5" stroke-width="1.6"/>
+          <ellipse cx="124" cy="401" rx="52" ry="12" fill="#14100e"/>
+          <g fill="url(#dlDate)" stroke="#1d0c05" stroke-width="1">
+            <ellipse cx="100" cy="396" rx="15" ry="10" transform="rotate(-16 100 396)"/>
+            <ellipse cx="128" cy="393" rx="15" ry="10" transform="rotate(9 128 393)"/>
+            <ellipse cx="154" cy="397" rx="14" ry="9" transform="rotate(-7 154 397)"/>
+            <ellipse cx="114" cy="385" rx="14" ry="9" transform="rotate(20 114 385)"/>
+            <ellipse cx="142" cy="384" rx="13" ry="9" transform="rotate(-12 142 384)"/>
+          </g>
+        </g>
+
+        <!-- ================= الدلّة ================= -->
+        <!-- المقبض: قوسُ C خلف البدن -->
+        <path d="M240 276C202 288 182 310 182 338s20 50 58 62"
+              fill="none" stroke="url(#dlBrassDim)" stroke-width="14" stroke-linecap="round"/>
+        <path d="M240 276C202 288 182 310 182 338s20 50 58 62"
+              fill="none" stroke="#f0e0bc" stroke-opacity=".3" stroke-width="3"
+              stroke-linecap="round"/>
+
+        <!-- الفُنطاس: المِنقارُ الطويلُ المنحني -->
+        <path d="M318 266c26-8 58-32 86-66 10-12 18-24 24-36-11 6-23 14-33 22-28 24-55 42-83 54Z"
+              fill="url(#dlBrass)" stroke="#5a4526" stroke-width="1.8"/>
+        <path d="M330 252c22-10 48-30 70-56" fill="none"
+              stroke="#f0e0bc" stroke-opacity=".4" stroke-width="2.4" stroke-linecap="round"/>
+
+        <!-- البدن: كمثريٌّ متناظر -->
+        <path d="M258 232c0 18-10 30-20 42-16 18-26 44-24 70 2 28 16 48 32 56h68c16-8 30-28 32-56 2-26-8-52-24-70-10-12-20-24-20-42Z"
+              fill="url(#dlBrass)" stroke="#5a4526" stroke-width="2"/>
+        <!-- وميضٌ عمودي -->
+        <path d="M250 268c-12 22-18 48-16 70 2 22 10 38 20 46"
+              fill="none" stroke="#f6ecd4" stroke-opacity=".3" stroke-width="7"
+              stroke-linecap="round"/>
+        <path d="M316 272c10 20 16 44 14 64" fill="none"
+              stroke="#3d2d16" stroke-opacity=".4" stroke-width="6" stroke-linecap="round"/>
+
+        <!-- القدم -->
+        <path d="M246 400h68l8 18h-84Z" fill="url(#dlBrassDim)"
+              stroke="#5a4526" stroke-width="1.8"/>
+
+        <!-- العُنق -->
+        <path d="M256 206h48l-2 26h-44Z" fill="url(#dlBrass)" stroke="#5a4526" stroke-width="1.8"/>
+        <!-- الشفة -->
+        <rect x="246" y="192" width="68" height="14" rx="5"
+              fill="url(#dlBrass)" stroke="#5a4526" stroke-width="1.8"/>
+
+        <!-- الغطاءُ المقبّب -->
+        <path d="M254 192c0-30 10-50 26-50s26 20 26 50Z"
+              fill="url(#dlBrass)" stroke="#5a4526" stroke-width="1.8"/>
+        <path d="M268 188c0-22 4-36 10-40" fill="none"
+              stroke="#f6ecd4" stroke-opacity=".35" stroke-width="3.4" stroke-linecap="round"/>
+        <!-- الرمّانة -->
+        <path d="M280 142v-18" stroke="#5a4526" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="280" cy="118" r="8" fill="url(#dlBrass)" stroke="#5a4526" stroke-width="1.8"/>
+
+        <!-- ================= النقشُ النجديّ على البدن =================
+             مثلّثاتٌ هندسيّةٌ بين خطّين — لا زخرفةَ هنديّة. -->
+        <g stroke="#f6ecd4" stroke-opacity=".5" stroke-width="2" fill="none" stroke-linecap="round">
+          <path d="M224 318h114"/>
+          <path d="M230 318l11-17 11 17M256 318l11-17 11 17M282 318l11-17 11 17M308 318l11-17 11 17"/>
+          <path d="M222 342h118"/>
+          <path d="M232 356l10-10 10 10-10 10-10-10ZM272 356l10-10 10 10-10 10-10-10ZM312 356l10-10 10 10-10 10-10-10Z"/>
+        </g>
+
+        <!-- ================= الفنجانان ================= -->
+        <g>
+          <!-- الخلفيُّ الأصغر -->
+          <ellipse cx="552" cy="392" rx="34" ry="7" fill="#17120f"
+                   stroke="#b08d57" stroke-opacity=".4" stroke-width="1.2"/>
+          <path d="M526 348h52c-2 26-10 42-26 42s-24-16-26-42Z"
+                fill="url(#dlPorcelain)" stroke="#a2927c" stroke-width="1.6"/>
+          <path d="M528 352h48" stroke="#b08d57" stroke-opacity=".8" stroke-width="2"/>
+          <ellipse cx="552" cy="350" rx="23" ry="4.4" fill="#2e1a10"/>
+
+          <!-- الأماميُّ -->
+          <ellipse cx="470" cy="396" rx="46" ry="10" fill="#1d1917"
+                   stroke="#b08d57" stroke-opacity=".5" stroke-width="1.4"/>
+          <path d="M438 336h64c-3 32-13 52-32 52s-29-20-32-52Z"
+                fill="url(#dlPorcelain)" stroke="#a2927c" stroke-width="1.8"/>
+          <path d="M440 341h60" stroke="#b08d57" stroke-opacity=".85" stroke-width="2.4"/>
+          <ellipse cx="470" cy="339" rx="29" ry="5.4" fill="#33200f"/>
+          <ellipse cx="462" cy="338" rx="9" ry="2.4" fill="#6b4524" fill-opacity=".8"/>
+        </g>
+
+        <!-- بخار -->
+        <g stroke="#f0a95c" stroke-opacity=".3" stroke-width="1.6" fill="none" stroke-linecap="round">
+          <path d="M452 316c10-16-8-24 2-40"/>
+          <path d="M480 310c10-16-8-24 2-40"/>
+          <path d="M546 326c8-13-6-20 2-33"/>
+          <path d="M432 146c12-18-10-28 2-44"/>
+        </g>
+
+        <!-- ================= شريطُ السدو ================= -->
+        <g>
+          <path d="M0 440h640" stroke="#b08d57" stroke-opacity=".45" stroke-width="1.8"/>
+          <g stroke="#b08d57" stroke-opacity=".3" stroke-width="1.4" fill="none">
+            <path d="M12 462l12-17 12 17M60 462l12-17 12 17M108 462l12-17 12 17M156 462l12-17 12 17M204 462l12-17 12 17M252 462l12-17 12 17M300 462l12-17 12 17M348 462l12-17 12 17M396 462l12-17 12 17M444 462l12-17 12 17M492 462l12-17 12 17M540 462l12-17 12 17M588 462l12-17 12 17"/>
+            <path d="M0 462h640"/>
+          </g>
+        </g>
+      </svg>
+    </figure></div>
+</body>
+</html>

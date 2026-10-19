@@ -1,0 +1,357 @@
+/* ===========================================================
+   عالجمر — الجمر: المسرح الفحمي، سرير الجمر، التوهّج، الحرارة
+
+   قواعد أداء محفوظة من مشروع سابق:
+   · لا background-attachment: fixed — يُجبر إعادة رسم كل إطار
+   · الحركة على opacity وtransform فقط (الطبقة المركّبة)،
+     لا على filter ولا box-shadow في عناصر متكرّرة
+   · اهتزاز الحرارة على منطقة اللهب وحدها عبر mask، لا على الصورة كلّها
+   =========================================================== */
+
+/* ---------------- المسرح ---------------- */
+
+.stage {
+  position: relative;
+  min-block-size: 100svh;
+  display: grid;
+  align-content: center;
+  isolation: isolate;
+  /* .smoke عرضُه 150% ويبدأ من -25% فيَفيض. بلا هذا السطر يَفيض المسرحُ
+     أفقياً — وفي RTL يمتدّ الفيضُ يساراً فتظهر الصفحةُ مُزاحةً. مُقاسٌ
+     بلقطة: شريطٌ أسودُ بعرض 275 بكسلاً ومحتوى مقطوعٌ من اليمين. */
+  overflow: hidden;
+  background:
+    radial-gradient(
+      120% 80% at 50% 118%,
+      rgba(194, 65, 12, 0.5) 0%,
+      rgba(140, 47, 16, 0.22) 32%,
+      rgba(11, 9, 8, 0) 62%
+    ),
+    radial-gradient(
+      90% 60% at 50% 0%,
+      rgba(58, 50, 46, 0.55) 0%,
+      rgba(11, 9, 8, 0) 70%
+    ),
+    linear-gradient(180deg, var(--coal-900) 0%, var(--coal-950) 55%, #090706 100%);
+}
+
+/* حبيبات الفحم: ضوضاء ساكنة خفيفة تمنع انبساط التدرّج */
+.stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    radial-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 1px 2px;
+}
+
+/* ---------------- سرير الجمر ----------------
+
+   المنطقُ البصريُّ **معكوسٌ عمّا جرّبتُ أوّلاً**، ومُقاسٌ بلقطتَي شاشة:
+   أوّلُ نسختَين وضعتا عشراتَ عناصرِ DOM فاتحةً (برتقاليّةً ثمّ رماديّةً)
+   على خلفيّةٍ عاتمة، فقُرئت **كُراتٍ طافيةً** مرّتَين — لا جمراً.
+
+   والصوابُ أنّ الفحمَ في سريرٍ حقيقيٍّ **ظِلٌّ غامقٌ أمام ضوء**: التوهّجُ
+   يأتي من تحتِه وبينَه، وهو نفسُه أعتمُ ما في الصورة. فصارت الفحماتُ
+   تدرّجاتٍ غامقةً متكرّرةً (طبقةٌ واحدةٌ لا سبعون عنصراً) والضوءُ خلفَها،
+   ولم يبقَ في DOM إلّا الشقوقُ الحارّةُ والشرارات.
+
+   وربحٌ تبعيٌّ في الأداء: 70 عنصراً يتحرّك كلٌّ منها بـanimation صار
+   طبقتَي تدرّجٍ وعشرينَ عنصراً. */
+
+.embers {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  block-size: clamp(130px, 22vh, 230px);
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* 1) قاعُ التوهّج — يُرسَم أوّلاً فيكون خلف ظلالِ الفحم */
+.embers::before {
+  content: "";
+  position: absolute;
+  inset-inline: -10%;
+  inset-block-end: -12%;
+  block-size: 112%;
+  background: radial-gradient(
+    68% 100% at 50% 100%,
+    rgba(250, 214, 168, 0.72) 0%,
+    rgba(240, 169, 92, 0.56) 18%,
+    rgba(226, 107, 44, 0.36) 38%,
+    rgba(194, 65, 12, 0.2) 56%,
+    rgba(140, 47, 16, 0) 76%
+  );
+  animation: bedBreathe 7.5s var(--ease-in-out) infinite;
+}
+
+/* 2) ظلالُ الفحم: خمسُ طبقاتٍ **بعروضٍ أوّليّةٍ** (29·43·61·71·89)
+      فأقصرُ دورةٍ مشتركةٍ لها أطولُ من أي شاشة، ولا يُرى تكرار.
+      ومُقاسٌ بلقطة: ثلاثُ طبقاتٍ بنفسِ شكلِ القبّةِ أخرجت **صفّاً منتظماً**
+      يُقرأ أقبيةً متماثلة؛ فاختلفت نسبةُ كلِّ قبّةٍ (rx ≠ ry) فاختلفت
+      ارتفاعاتُها وصار الحدُّ الأعلى حدَّ فحمٍ لا مُشطاً. */
+
+.embers::after {
+  content: "";
+  position: absolute;
+  inset-inline: -6%;
+  inset-block-end: 0;
+  block-size: 46%;
+  background-repeat: repeat-x;
+  background-position:
+    bottom 0 left 0,
+    bottom 0 left 17px,
+    bottom 0 left 31px,
+    bottom 0 left 7px,
+    bottom 0 left 53px;
+  background-size: 61px 30px, 43px 24px, 89px 38px, 29px 19px, 71px 44px;
+  background-image:
+    radial-gradient(26px 15px at 50% 100%, #0a0807 0 100%, rgba(0, 0, 0, 0) 100%),
+    radial-gradient(18px 11px at 50% 100%, #15110f 0 100%, rgba(0, 0, 0, 0) 100%),
+    radial-gradient(35px 19px at 50% 100%, #050403 0 100%, rgba(0, 0, 0, 0) 100%),
+    radial-gradient(13px 9px at 50% 100%, #1b1513 0 100%, rgba(0, 0, 0, 0) 100%),
+    radial-gradient(23px 22px at 50% 100%, #0d0a09 0 100%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(
+    to top, #000 0%, #000 52%, rgba(0, 0, 0, 0.5) 80%, rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to top, #000 0%, #000 52%, rgba(0, 0, 0, 0.5) 80%, rgba(0, 0, 0, 0) 100%
+  );
+}
+
+@keyframes bedBreathe {
+  0%,
+  100% {
+    opacity: 0.76;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* شقُّ جمرٍ بين الفحمات: خطٌّ حارٌّ رفيعٌ — وهو كلُّ ما بقي في DOM */
+.coal--crack {
+  position: absolute;
+  inset-block-end: var(--y, 0%);
+  inset-inline-start: var(--x, 50%);
+  inline-size: var(--d, 30px);
+  block-size: 3px;
+  border-radius: var(--r-pill);
+  background: linear-gradient(
+    90deg,
+    rgba(122, 42, 12, 0) 0%,
+    var(--ember) 26%,
+    var(--glow-soft) 50%,
+    var(--ember) 74%,
+    rgba(122, 42, 12, 0) 100%
+  );
+  opacity: var(--o, 0.7);
+  animation: crackFlicker var(--sp, 3.4s) var(--ease-in-out) infinite;
+  animation-delay: var(--dl, 0s);
+}
+
+@keyframes crackFlicker {
+  0%,
+  100% {
+    opacity: calc(var(--o, 0.7) * 0.4);
+    transform: scaleX(0.9);
+  }
+  44% {
+    opacity: var(--o, 0.7);
+    transform: scaleX(1);
+  }
+  70% {
+    opacity: calc(var(--o, 0.7) * 0.62);
+  }
+}
+
+/* ---------------- شرارة صاعدة ---------------- */
+
+.spark {
+  position: absolute;
+  inset-block-end: 8%;
+  inset-inline-start: var(--x, 50%);
+  inline-size: 2px;
+  block-size: 2px;
+  border-radius: 50%;
+  background: var(--glow-soft);
+  box-shadow: 0 0 6px 1px rgba(240, 169, 92, 0.7);
+  opacity: 0;
+  animation: sparkRise var(--sp, 5s) linear infinite;
+  animation-delay: var(--dl, 0s);
+}
+
+@keyframes sparkRise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.6);
+  }
+  12% {
+    opacity: 0.95;
+  }
+  70% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--drift, 14px), -190px, 0) scale(0.3);
+  }
+}
+
+/* ---------------- اهتزاز الحرارة ----------------
+   يُطبَّق على منطقة محدودة فقط. تطبيقه على سطح كامل يُرجّف كل شيء
+   فيفسد الإيهام ويُثقل الرسم. */
+
+.heat {
+  position: relative;
+  isolation: isolate;
+}
+
+.heat__veil {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  block-size: 46%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(240, 169, 92, 0.12) 0%,
+    rgba(226, 107, 44, 0.06) 45%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0) 100%);
+  animation: heatWave 6.5s var(--ease-in-out) infinite;
+}
+
+@keyframes heatWave {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: translateY(0) scaleY(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-6px) scaleY(1.06);
+  }
+}
+
+/* ---------------- الدخان ----------------
+   نسيج ساكن يتحرّك بـtransform فقط — لا turbulence متحرّك. */
+
+.smoke {
+  position: absolute;
+  inset-block-start: -30%;
+  inset-inline-start: -25%;
+  inline-size: 150%;
+  block-size: 160%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.16;
+  background: radial-gradient(
+      42% 32% at 28% 62%,
+      rgba(214, 203, 190, 0.5) 0%,
+      rgba(214, 203, 190, 0) 70%
+    ),
+    radial-gradient(
+      36% 28% at 68% 44%,
+      rgba(186, 174, 162, 0.42) 0%,
+      rgba(186, 174, 162, 0) 72%
+    ),
+    radial-gradient(
+      30% 24% at 48% 26%,
+      rgba(160, 150, 140, 0.36) 0%,
+      rgba(160, 150, 140, 0) 74%
+    );
+  animation: smokeDrift 34s linear infinite alternate;
+}
+
+@keyframes smokeDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(5%, -7%, 0) scale(1.14);
+  }
+}
+
+/* ---------------- توهّج خلف العناصر ---------------- */
+
+.glow-pad {
+  position: relative;
+}
+
+.glow-pad::before {
+  content: "";
+  position: absolute;
+  inset: -22%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    closest-side,
+    rgba(194, 65, 12, 0.3) 0%,
+    rgba(194, 65, 12, 0) 100%
+  );
+}
+
+/* ---------------- سطح مُسخَّن: القسم الفحمي ---------------- */
+
+.surface--coal {
+  background: linear-gradient(180deg, var(--coal-950), var(--coal-900) 60%, var(--coal-850));
+}
+
+.surface--coal-lit {
+  background:
+    radial-gradient(
+      100% 70% at 82% 10%,
+      rgba(194, 65, 12, 0.14) 0%,
+      rgba(11, 9, 8, 0) 60%
+    ),
+    linear-gradient(180deg, var(--coal-900), var(--coal-850));
+}
+
+/* سطح فاتح — العيش. ضروري لكسر توالي الأسطح الغامقة:
+   ثلاثة أسطح غامقة متتالية كانت عطلاً حقيقياً في مشروع سابق. */
+.surface--bone {
+  background: linear-gradient(180deg, var(--bone) 0%, var(--bone-dim) 100%);
+  color: #221c16;
+}
+
+.surface--bone .lead,
+.surface--bone .muted {
+  color: #5c5047;
+}
+
+.surface--bone .faint {
+  color: #857a70;
+}
+
+.surface--bone .eyebrow {
+  color: var(--brass-dim);
+}
+
+.surface--bone .eyebrow::before {
+  background: linear-gradient(to left, var(--brass-dim), rgba(125, 98, 56, 0));
+}
+
+.surface--bone .hairline {
+  background: linear-gradient(
+    to left,
+    rgba(125, 98, 56, 0) 0%,
+    rgba(125, 98, 56, 0.4) 22%,
+    rgba(125, 98, 56, 0.4) 78%,
+    rgba(125, 98, 56, 0) 100%
+  );
+}
+
+.surface--ash {
+  background: linear-gradient(180deg, var(--coal-800), var(--coal-700) 70%, var(--coal-800));
+}

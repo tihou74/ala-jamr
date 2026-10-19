@@ -1,0 +1,107 @@
+/* ===========================================================
+   عالجمر — نظام التصميم (tokens)
+   الاسم هو الهويّة: فحم ساكن، جمرة متوهّجة، عيش أبيض.
+   قاعدة المالك: لا رسوم هنديّة — لا أرقام هنديّة ولا زخرفة هنديّة.
+   =========================================================== */
+
+:root {
+  /* ---------- الفحم: الأسطح ---------- */
+  --coal-950: #0b0908;
+  --coal-900: #121010;
+  --coal-850: #171414;
+  --coal-800: #1b1715;
+  --coal-700: #262120;
+  --ash-600: #3a322e;
+  --ash-500: #564b45;
+  --ash-400: #7a6c63;
+
+  /* ---------- الجمرة: الضوء الوحيد ---------- */
+  --ember-deep: #8c2f10;
+  --ember: #c2410c;
+  --ember-lit: #e26b2c;
+  --glow: #f0a95c;
+  --glow-soft: #f6c893;
+
+  /* ---------- الزعفران والنحاس: الترف المضبوط ---------- */
+  --saffron: #d9a520;
+  --saffron-dim: #a87c14;
+  --brass: #b08d57;
+  --brass-lit: #dcc08a;
+  --brass-dim: #7d6238;
+
+  /* ---------- العيش: النصّ والأسطح الفاتحة ---------- */
+  --bone: #f3ede3;
+  --bone-dim: #e4dacb;
+  --sand: #ded1bc;
+  --sand-dim: #b9a98f;
+
+  /* ---------- أدوار دلاليّة ---------- */
+  --bg: var(--coal-950);
+  --bg-raised: var(--coal-850);
+  --fg: var(--bone);
+  --fg-muted: #b3a79b;
+  --fg-faint: #887c71;
+  --rule: rgba(176, 141, 87, 0.22);
+  --rule-strong: rgba(176, 141, 87, 0.45);
+
+  /* ---------- الخطوط ---------- */
+  --font-display: "Reem Kufi", "Noto Kufi Arabic", "Segoe UI", system-ui,
+    -apple-system, sans-serif;
+  --font-body: "IBM Plex Sans Arabic", "Noto Sans Arabic", "Segoe UI",
+    system-ui, -apple-system, sans-serif;
+
+  /* سلّم المقاسات — متدرّج مع العرض بلا نقاط توقّف */
+  --t-hero: clamp(3rem, 11vw, 8.5rem);
+  --t-h1: clamp(2.1rem, 5.2vw, 4rem);
+  --t-h2: clamp(1.6rem, 3.4vw, 2.6rem);
+  --t-h3: clamp(1.15rem, 2vw, 1.5rem);
+  --t-lead: clamp(1.05rem, 1.65vw, 1.3rem);
+  --t-body: clamp(0.98rem, 1.15vw, 1.08rem);
+  --t-small: clamp(0.82rem, 1vw, 0.92rem);
+  --t-micro: 0.74rem;
+
+  /* ---------- الإيقاع ---------- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4.5rem;
+  --sp-9: 7rem;
+  --sp-10: 10rem;
+
+  --wrap: 78rem;
+  --wrap-narrow: 46rem;
+
+  --r-sm: 3px;
+  --r-md: 6px;
+  --r-lg: 14px;
+  --r-pill: 999px;
+
+  /* ---------- الظلال والتوهّج ---------- */
+  --sh-low: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --sh-mid: 0 10px 30px -12px rgba(0, 0, 0, 0.75);
+  --sh-high: 0 28px 70px -24px rgba(0, 0, 0, 0.85);
+  --glow-ember: 0 0 44px -6px rgba(194, 65, 12, 0.5);
+  --glow-brass: 0 0 0 1px rgba(176, 141, 87, 0.3),
+    0 12px 34px -16px rgba(176, 141, 87, 0.35);
+
+  /* ---------- الحركة ---------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 180ms;
+  --dur: 420ms;
+  --dur-slow: 900ms;
+}
+
+/* الأرقام: الرسم الغربي إلزاماً.
+   بعض الخطوط العربيّة تستبدل 0-9 بالرسم الهندي عبر خاصّية locl عند lang="ar".
+   القرار الصريح للمالك: لا رسوم هنديّة — فتُطفأ locl، وتُثبَّت أرقام مصطفّة. */
+:root,
+body,
+.num {
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "locl" 0, "lnum" 1, "tnum" 1;
+}

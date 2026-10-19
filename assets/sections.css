@@ -1,0 +1,704 @@
+/* ===========================================================
+   عالجمر — الأقسام
+   =========================================================== */
+
+/* ================= الشريط العلوي ================= */
+
+.nav {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 100;
+  transition: background var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out),
+    backdrop-filter var(--dur) var(--ease-out);
+  border-block-end: 1px solid transparent;
+}
+
+.nav.is-stuck {
+  background: rgba(11, 9, 8, 0.82);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  border-block-end-color: var(--rule);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-5);
+  min-block-size: 4.6rem;
+}
+
+.nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.nav__brand svg {
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  flex: none;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: clamp(var(--sp-3), 1.6vw, var(--sp-6));
+  font-size: var(--t-small);
+}
+
+.nav__links a {
+  position: relative;
+  color: var(--fg-muted);
+  padding-block: 0.4em;
+  transition: color var(--dur-fast) var(--ease-out);
+  white-space: nowrap;
+}
+
+.nav__links a::after {
+  content: "";
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  inline-size: 100%;
+  block-size: 1px;
+  background: var(--glow);
+  transform: scaleX(0);
+  transform-origin: inline-end;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.nav__links a:hover {
+  color: var(--bone);
+}
+
+.nav__links a:hover::after {
+  transform: scaleX(1);
+}
+
+.nav__cta {
+  flex: none;
+}
+
+@media (max-width: 62rem) {
+  .nav__links {
+    display: none;
+  }
+}
+
+/* ================= الواجهة ================= */
+
+.hero {
+  position: relative;
+  text-align: center;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: var(--sp-5);
+  padding-block: var(--sp-9) var(--sp-10);
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 0.5em 1.25em;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--rule-strong);
+  background: rgba(27, 23, 21, 0.55);
+  font-family: var(--font-display);
+  font-size: var(--t-small);
+  letter-spacing: 0.1em;
+  color: var(--brass-lit);
+}
+
+.hero__pulse {
+  inline-size: 7px;
+  block-size: 7px;
+  border-radius: 50%;
+  background: var(--ember-lit);
+  box-shadow: 0 0 0 0 rgba(226, 107, 44, 0.65);
+  animation: pulse 2.6s var(--ease-out) infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(226, 107, 44, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(226, 107, 44, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(226, 107, 44, 0);
+  }
+}
+
+.hero__name {
+  font-size: var(--t-hero);
+  font-weight: 600;
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  background: linear-gradient(
+    172deg,
+    var(--bone) 0%,
+    var(--sand) 34%,
+    var(--brass-lit) 58%,
+    var(--glow) 82%,
+    var(--ember-lit) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  padding-block-end: 0.08em;
+}
+
+.hero__rule {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  inline-size: min(26rem, 80vw);
+  color: var(--brass);
+}
+
+.hero__rule::before,
+.hero__rule::after {
+  content: "";
+  flex: 1;
+  block-size: 1px;
+  background: linear-gradient(
+    to left,
+    rgba(176, 141, 87, 0),
+    var(--rule-strong),
+    rgba(176, 141, 87, 0)
+  );
+}
+
+.hero__rule svg {
+  inline-size: 1.4rem;
+  block-size: 1.4rem;
+  flex: none;
+}
+
+.hero__tagline {
+  font-family: var(--font-display);
+  font-size: var(--t-h3);
+  font-weight: 400;
+  color: var(--sand);
+  letter-spacing: 0.04em;
+}
+
+.hero__sub {
+  max-width: 44ch;
+  color: var(--fg-muted);
+  font-size: var(--t-lead);
+  line-height: 1.85;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+  justify-content: center;
+  margin-block-start: var(--sp-3);
+}
+
+.hero__scroll {
+  position: absolute;
+  inset-block-end: var(--sp-5);
+  inset-inline-start: 50%;
+  transform: translateX(50%);
+  z-index: 3;
+  display: grid;
+  justify-items: center;
+  gap: var(--sp-2);
+  font-size: var(--t-micro);
+  letter-spacing: 0.22em;
+  color: var(--fg-faint);
+}
+
+.hero__scroll span {
+  inline-size: 1px;
+  block-size: 2.4rem;
+  background: linear-gradient(to bottom, var(--brass), rgba(176, 141, 87, 0));
+  animation: scrollHint 2.4s var(--ease-in-out) infinite;
+  transform-origin: top;
+}
+
+@keyframes scrollHint {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* ================= شريط الشعار المتكرّر ================= */
+
+.ticker {
+  position: relative;
+  border-block: 1px solid var(--rule);
+  background: var(--coal-900);
+  overflow: hidden;
+  padding-block: var(--sp-4);
+}
+
+.ticker__track {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-6);
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: var(--t-small);
+  letter-spacing: 0.2em;
+  color: var(--brass);
+  /* في RTL المحتوى الزائد يمتدّ يساراً، فالكشف عنه يحتاج تحريكاً
+     بـtranslateX **موجب**. السالب يدفعه بعيداً فيبدو أن لا شيء يتحرّك. */
+  animation: tickerRTL 42s linear infinite;
+  will-change: transform;
+}
+
+@keyframes tickerRTL {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
+.ticker__dot {
+  color: var(--ember-lit);
+  flex: none;
+}
+
+/* ================= كتلة نصّ + رسم ================= */
+
+.split {
+  display: grid;
+  gap: clamp(var(--sp-6), 6vw, var(--sp-8));
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 58rem) {
+  .split {
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+
+  .split--flip > :first-child {
+    order: 2;
+  }
+}
+
+.split__art {
+  position: relative;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--coal-900);
+  box-shadow: var(--sh-high);
+}
+
+.split__art svg {
+  inline-size: 100%;
+  block-size: auto;
+}
+
+/* ================= الاقتباس ================= */
+
+.pull {
+  position: relative;
+  max-width: 38ch;
+  margin-inline: auto;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: var(--t-h2);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bone);
+  text-wrap: balance;
+}
+
+.pull::before {
+  content: "";
+  display: block;
+  inline-size: 2.6rem;
+  block-size: 1px;
+  background: var(--brass);
+  margin: 0 auto var(--sp-5);
+}
+
+.pull__by {
+  display: block;
+  margin-block-start: var(--sp-5);
+  font-family: var(--font-body);
+  font-size: var(--t-small);
+  letter-spacing: 0.14em;
+  color: var(--brass-lit);
+}
+
+/* ================= شبكة الأرزّ ================= */
+
+.rice-grid {
+  display: grid;
+  gap: clamp(var(--sp-4), 2vw, var(--sp-5));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15.5rem), 1fr));
+  margin-block-start: var(--sp-7);
+}
+
+.rice {
+  position: relative;
+  display: grid;
+  gap: var(--sp-3);
+  padding: clamp(var(--sp-5), 2.2vw, var(--sp-6));
+  border-radius: var(--r-md);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(125, 98, 56, 0.22);
+  transition: transform var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out),
+    background var(--dur) var(--ease-out);
+}
+
+.rice:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(125, 98, 56, 0.45);
+  box-shadow: 0 20px 44px -26px rgba(60, 42, 20, 0.5);
+}
+
+.rice__mark {
+  inline-size: 2.6rem;
+  block-size: 2.6rem;
+  color: var(--brass-dim);
+}
+
+.rice__name {
+  font-family: var(--font-display);
+  font-size: var(--t-h3);
+  font-weight: 600;
+  color: #221c16;
+}
+
+.rice__origin {
+  font-size: var(--t-micro);
+  letter-spacing: 0.1em;
+  color: var(--brass-dim);
+  text-transform: none;
+}
+
+.rice__desc {
+  font-size: var(--t-small);
+  line-height: 1.8;
+  color: #5c5047;
+}
+
+/* ================= صفّ المشاوي ================= */
+
+.grill-row {
+  display: grid;
+  gap: var(--sp-5);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  margin-block-start: var(--sp-7);
+}
+
+.grill {
+  position: relative;
+  display: grid;
+  gap: var(--sp-4);
+  padding: clamp(var(--sp-5), 2.4vw, var(--sp-6));
+  border-radius: var(--r-md);
+  background: linear-gradient(
+    168deg,
+    rgba(38, 33, 32, 0.9) 0%,
+    rgba(18, 16, 16, 0.95) 100%
+  );
+  overflow: hidden;
+  transition: transform var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out);
+}
+
+.grill::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  block-size: 2px;
+  background: linear-gradient(
+    to left,
+    rgba(194, 65, 12, 0),
+    var(--ember),
+    rgba(194, 65, 12, 0)
+  );
+  transform: scaleX(0.2);
+  opacity: 0.5;
+  transition: transform var(--dur) var(--ease-out),
+    opacity var(--dur) var(--ease-out);
+}
+
+.grill:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sh-high), var(--glow-ember);
+}
+
+.grill:hover::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.grill__mark {
+  inline-size: 2.4rem;
+  block-size: 2.4rem;
+  color: var(--glow);
+}
+
+.grill__name {
+  font-family: var(--font-display);
+  font-size: var(--t-h3);
+  font-weight: 600;
+}
+
+.grill__desc {
+  font-size: var(--t-small);
+  color: var(--fg-muted);
+  line-height: 1.8;
+}
+
+/* ================= المائدة: قوائم بقاطع منقّط ================= */
+
+.menu-cols {
+  display: grid;
+  gap: clamp(var(--sp-6), 5vw, var(--sp-8));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
+  margin-block-start: var(--sp-7);
+}
+
+.menu-card {
+  display: grid;
+  gap: var(--sp-4);
+  align-content: start;
+}
+
+.menu-card__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-family: var(--font-display);
+  font-size: var(--t-h3);
+  font-weight: 600;
+  color: var(--brass-lit);
+  padding-block-end: var(--sp-3);
+  border-block-end: 1px solid var(--rule);
+}
+
+.menu-card__head svg {
+  inline-size: 1.4rem;
+  block-size: 1.4rem;
+  flex: none;
+  color: var(--glow);
+}
+
+.menu-list {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.menu-item {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.menu-item__row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+}
+
+.menu-item__name {
+  font-weight: 500;
+  color: var(--bone);
+  flex: none;
+}
+
+.menu-item__fill {
+  flex: 1;
+  border-block-end: 1px dotted rgba(176, 141, 87, 0.35);
+  transform: translateY(-0.28em);
+  min-inline-size: var(--sp-5);
+}
+
+.menu-item__note {
+  font-size: var(--t-small);
+  color: var(--fg-faint);
+  flex: none;
+}
+
+.menu-item__desc {
+  font-size: var(--t-small);
+  color: var(--fg-muted);
+  line-height: 1.7;
+}
+
+/* ================= أعمدة التجربة ================= */
+
+.pillars {
+  display: grid;
+  gap: clamp(var(--sp-5), 3vw, var(--sp-6));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  margin-block-start: var(--sp-7);
+}
+
+.pillar {
+  display: grid;
+  gap: var(--sp-4);
+  align-content: start;
+  padding-inline-start: var(--sp-5);
+  border-inline-start: 1px solid var(--rule);
+}
+
+.pillar__n {
+  font-family: var(--font-display);
+  font-size: var(--t-small);
+  letter-spacing: 0.18em;
+  color: var(--brass);
+}
+
+.pillar__name {
+  font-family: var(--font-display);
+  font-size: var(--t-h3);
+  font-weight: 600;
+}
+
+.pillar__desc {
+  font-size: var(--t-small);
+  color: var(--fg-muted);
+  line-height: 1.8;
+}
+
+/* ================= التواصل ================= */
+
+.contact-grid {
+  display: grid;
+  gap: clamp(var(--sp-6), 5vw, var(--sp-8));
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+@media (min-width: 58rem) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.facts {
+  display: grid;
+  gap: var(--sp-4);
+}
+
+.fact {
+  display: grid;
+  gap: 0.2rem;
+  padding-block-end: var(--sp-4);
+  border-block-end: 1px solid var(--rule);
+}
+
+.fact__k {
+  font-size: var(--t-micro);
+  letter-spacing: 0.16em;
+  color: var(--brass);
+}
+
+.fact__v {
+  font-family: var(--font-display);
+  font-size: var(--t-h3);
+  font-weight: 500;
+}
+
+/* الحقل الذي لم يُحسم بعد — يُعلَن ولا يُزيَّف.
+   حقلٌ يوهم باليقين وهو فارغ أسوأ من حقلٍ معلَن النقص. */
+.fact__v--pending {
+  color: var(--fg-faint);
+  font-weight: 400;
+}
+
+.fact__v--pending::after {
+  content: "";
+  display: inline-block;
+  inline-size: 0.5em;
+  block-size: 0.5em;
+  margin-inline-start: 0.5em;
+  border-radius: 50%;
+  background: var(--saffron-dim);
+  vertical-align: middle;
+}
+
+.note {
+  padding: var(--sp-5);
+  border-radius: var(--r-md);
+  border: 1px solid var(--rule);
+  background: rgba(27, 23, 21, 0.6);
+  font-size: var(--t-small);
+  line-height: 1.85;
+  color: var(--fg-muted);
+}
+
+.note__head {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--t-body);
+  color: var(--brass-lit);
+  margin-block-end: var(--sp-2);
+}
+
+/* ================= التذييل ================= */
+
+.foot {
+  position: relative;
+  padding-block: var(--sp-7) var(--sp-6);
+  background: linear-gradient(180deg, var(--coal-900), #070505);
+  border-block-start: 1px solid var(--rule);
+}
+
+.foot__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-5);
+}
+
+.foot__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.foot__brand svg {
+  inline-size: 1.6rem;
+  block-size: 1.6rem;
+  flex: none;
+}
+
+.foot__meta {
+  font-size: var(--t-micro);
+  color: var(--fg-faint);
+  line-height: 1.9;
+}

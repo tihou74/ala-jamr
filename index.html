@@ -1,0 +1,932 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>عالجمر — مطعم خليجي · مشاوي وعيش</title>
+<meta name="description" content="عالجمر: مطعم خليجي يُفتتح قريباً. مجمرٌ مكشوف في الصالة، ومشاوٍ على الجمر، وكل أنواع الأرزّ الخليجي — مجبوس وكبسة ومضغوط ومظبي ومندي وبخاري ومعمّر وصيادية.">
+<meta name="theme-color" content="#0b0908">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="عالجمر — مطعم خليجي · مشاوي وعيش">
+<meta property="og:description" content="جمرٌ مكشوف، وعيشٌ على أصوله. يُفتتح قريباً.">
+<meta property="og:locale" content="ar_AR">
+
+<!-- html.js يُضاف قبل الرسم: الكشف عند التمرير يُخفي المحتوى، فإن سقط
+     الجافاسكربت وجب أن يظهر كل شيء بدل أن تبقى الصفحة فارغة. -->
+<script>document.documentElement.className += " js";</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap">
+
+<!-- ترتيب التحميل مقصود: tokens ← base ← sadu ← ember ← sections
+     وأرقام الإصدار ?v=N تُزاد في كل دفعة — العميل رأى نسخاً قديمة
+     ثلاث مرّات في مشروع سابق. -->
+<link rel="stylesheet" href="assets/tokens.css?v=4">
+<link rel="stylesheet" href="assets/base.css?v=4">
+<link rel="stylesheet" href="assets/sadu.css?v=4">
+<link rel="stylesheet" href="assets/ember.css?v=4">
+<link rel="stylesheet" href="assets/sections.css?v=4">
+</head>
+<body>
+
+<a class="skip-link" href="#main">تجاوز إلى المحتوى</a>
+
+<!-- =========== مجموعة الرموز: مرسومة هندسيّاً، لا أيقونات مستوردة =========== -->
+<svg hidden aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <g id="stroke-defaults"></g>
+  </defs>
+  <symbol id="i-ember" viewBox="0 0 24 24">
+    <path d="M12 2.5c2.9 3.6 5 5.7 5 8.9A5 5 0 0 1 7 11.4c0-3.2 2.1-5.3 5-8.9Z"/>
+    <path d="M12 11.2c1.3 1.6 2.2 2.6 2.2 4a2.2 2.2 0 1 1-4.4 0c0-1.4.9-2.4 2.2-4Z"/>
+  </symbol>
+  <symbol id="i-fire" viewBox="0 0 24 24">
+    <path d="M8.4 21c-2.1-1.4-3.2-3.5-3.2-5.7 0-3.6 3-5.4 3.6-8.8.9 1.3 1.2 2.6 1.2 3.8 1.5-1.7 2-3.6 2-6.3 2.6 2.3 4.6 5.6 4.6 9.3 0 3.3-1.7 6-4.2 7.7"/>
+    <path d="M10.3 21.2a3.4 3.4 0 0 1-1.5-2.8c0-1.9 2-2.8 2.3-4.7.9 1.2 2.4 2.6 2.4 4.5a3.4 3.4 0 0 1-1.6 2.9"/>
+  </symbol>
+  <symbol id="i-skewer" viewBox="0 0 24 24">
+    <path d="M2.5 19.5 21.5 4.5"/>
+    <rect x="5.6" y="13.4" width="4.6" height="4.6" rx="1" transform="rotate(-38 7.9 15.7)"/>
+    <rect x="10.2" y="9.8" width="4.6" height="4.6" rx="1" transform="rotate(-38 12.5 12.1)"/>
+    <rect x="14.8" y="6.2" width="4.6" height="4.6" rx="1" transform="rotate(-38 17.1 8.5)"/>
+  </symbol>
+  <symbol id="i-ribs" viewBox="0 0 24 24">
+    <path d="M4 7c3.4-1.6 7.4-1.6 10.8 0"/><path d="M4 12c3.4-1.6 7.4-1.6 10.8 0"/>
+    <path d="M4 17c3.4-1.6 7.4-1.6 10.8 0"/>
+    <circle cx="17.3" cy="6.4" r="2.1"/><circle cx="17.3" cy="11.4" r="2.1"/><circle cx="17.3" cy="16.4" r="2.1"/>
+  </symbol>
+  <symbol id="i-fish" viewBox="0 0 24 24">
+    <path d="M21 12c-2.6 3.6-5.9 5.4-9.2 5.4S5.1 15.6 3 12c2.1-3.6 5.5-5.4 8.8-5.4S18.4 8.4 21 12Z"/>
+    <path d="M3 12 .8 8.6M3 12 .8 15.4"/><circle cx="16.4" cy="10.9" r=".9"/>
+  </symbol>
+  <symbol id="i-shrimp" viewBox="0 0 24 24">
+    <path d="M19.4 6.6c0 5.6-4.3 10.2-9.6 10.2-3.2 0-5.4-1.9-5.4-4.4 0-2.2 1.7-3.8 3.9-3.8 1.9 0 3.2 1.2 3.2 2.8"/>
+    <path d="M9.8 16.8c1.2 2 3.2 3.2 5.6 3.2"/><path d="M19.4 6.6 22 4.4M19.4 6.6l2.8 1.2"/>
+    <circle cx="17.6" cy="8.4" r=".85"/>
+  </symbol>
+  <symbol id="i-chicken" viewBox="0 0 24 24">
+    <path d="M14.6 3.6a5.4 5.4 0 0 1 3.6 9.2l-5.6 5.6a3.1 3.1 0 1 1-2.2-2.2l5.6-5.6"/>
+    <path d="M10.4 16.2 6.6 20a2.4 2.4 0 1 1-2.6-2.6l3.8-3.8"/>
+  </symbol>
+  <symbol id="i-grill" viewBox="0 0 24 24">
+    <path d="M3 11.5h18l-1.8 6.2a2 2 0 0 1-1.9 1.4H6.7a2 2 0 0 1-1.9-1.4L3 11.5Z"/>
+    <path d="M6.6 19.1 5.2 22M17.4 19.1 18.8 22"/>
+    <path d="M8.6 8.4c0-1.6 1.4-2.2 1.4-4 1.1 1 1.6 2.1 1.6 3.3.8-.9 1.1-1.9 1.1-3.3 1.3 1.2 2.4 2.8 2.4 4.6"/>
+  </symbol>
+  <symbol id="i-rice-dome" viewBox="0 0 24 24">
+    <path d="M3.4 16.6c0-4.2 3.9-8.6 8.6-8.6s8.6 4.4 8.6 8.6"/>
+    <path d="M2 16.6h20"/><path d="M2.6 19.4h18.8"/><path d="M12 8V5.4"/><circle cx="12" cy="4.1" r="1.3"/>
+  </symbol>
+  <symbol id="i-pot" viewBox="0 0 24 24">
+    <path d="M4.4 9h15.2l-1.1 8.5a2.2 2.2 0 0 1-2.2 1.9H7.7a2.2 2.2 0 0 1-2.2-1.9L4.4 9Z"/>
+    <path d="M3 9h18"/><path d="M4.6 11.6H2.2M19.4 11.6h2.4"/>
+    <path d="M9.4 6.2c0-1.1.9-1.4.9-2.6M13.7 6.2c0-1.1.9-1.4.9-2.6"/>
+  </symbol>
+  <symbol id="i-grain" viewBox="0 0 24 24">
+    <ellipse cx="8" cy="9.4" rx="2.1" ry="4.1" transform="rotate(-24 8 9.4)"/>
+    <ellipse cx="15.4" cy="11.4" rx="2.1" ry="4.1" transform="rotate(18 15.4 11.4)"/>
+    <ellipse cx="10.8" cy="17" rx="2.1" ry="4.1" transform="rotate(-8 10.8 17)"/>
+  </symbol>
+  <symbol id="i-saffron" viewBox="0 0 24 24">
+    <path d="M7 3.5c2.4 3.2 2.4 6.4 0 9.6-1.6 2.2-1.9 4.6-.8 7.4"/>
+    <path d="M12 3c2.6 3.4 2.6 7 0 10.4-1.7 2.4-2 5-.8 8"/>
+    <path d="M17 3.5c2.4 3.2 2.4 6.4 0 9.6-1.6 2.2-1.9 4.6-.8 7.4"/>
+  </symbol>
+  <symbol id="i-stone" viewBox="0 0 24 24">
+    <path d="M5.4 18.8h13.2a1.6 1.6 0 0 0 1.3-2.5l-1.5-2.2H5.6l-1.5 2.2a1.6 1.6 0 0 0 1.3 2.5Z"/>
+    <path d="M7.4 14.1 8.6 11h6.8l1.2 3.1"/><path d="M9.6 11l1.1-2.8h2.6L14.4 11"/><path d="M12 8.2V5.6"/>
+  </symbol>
+  <symbol id="i-pit" viewBox="0 0 24 24">
+    <ellipse cx="12" cy="7.4" rx="8.6" ry="3"/>
+    <path d="M3.4 7.4c0 5.2 3.9 11.6 8.6 11.6s8.6-6.4 8.6-11.6"/>
+    <path d="M6.8 11.2c1.8.9 8.6.9 10.4 0"/><path d="M8.4 15c1.2.7 6 .7 7.2 0"/>
+  </symbol>
+  <symbol id="i-mezze" viewBox="0 0 24 24">
+    <path d="M3.2 11.6h17.6a8.8 8.8 0 0 1-17.6 0Z"/><path d="M2 20.4h20"/>
+    <path d="M8.6 8.4c0-1 .8-1.3.8-2.4M12 7.8c0-1.2.9-1.6.9-2.9M15.4 8.4c0-1 .8-1.3.8-2.4"/>
+  </symbol>
+  <symbol id="i-sweet" viewBox="0 0 24 24">
+    <circle cx="8.6" cy="15.4" r="3.2"/><circle cx="15.4" cy="15.4" r="3.2"/><circle cx="12" cy="9.4" r="3.2"/>
+    <path d="M6.6 5.4c1.6 1.2 3.4 1.2 5 0s3.4-1.2 5 0"/>
+  </symbol>
+  <symbol id="i-bread" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="8.8"/>
+    <circle cx="9.4" cy="9.8" r=".9"/><circle cx="14.6" cy="10.6" r=".9"/>
+    <circle cx="11.4" cy="14.6" r=".9"/><circle cx="15.8" cy="14.8" r=".9"/>
+  </symbol>
+  <symbol id="i-dallah" viewBox="0 0 24 24">
+    <path d="M8 20.4h7.6a1.8 1.8 0 0 0 1.8-1.8v-6.4c0-2.4-1.4-4-1.4-4H9.6s-1.4 1.6-1.4 4v6.4A1.8 1.8 0 0 0 8 20.4Z"/>
+    <path d="M9.6 8.2V6.4h6.2v1.8"/><path d="M12.7 6.4V4.2"/><path d="M15.8 10.4 20.4 7"/>
+    <path d="M8.2 12.6c-2.2.5-3.4 1.9-3.4 3.4s1.2 2.6 3.4 3"/>
+  </symbol>
+  <symbol id="i-majlis" viewBox="0 0 24 24">
+    <path d="M2.6 19.4h18.8"/>
+    <path d="M4.4 19.4v-3.2a1.8 1.8 0 0 1 1.8-1.8h11.6a1.8 1.8 0 0 1 1.8 1.8v3.2"/>
+    <path d="M6.4 14.4V9.8a1.8 1.8 0 0 1 1.8-1.8h7.6a1.8 1.8 0 0 1 1.8 1.8v4.6"/>
+    <path d="M9.6 8V5.6M14.4 8V5.6"/>
+  </symbol>
+  <symbol id="i-triangle" viewBox="0 0 24 24">
+    <path d="M12 4.4 20.4 19H3.6L12 4.4Z"/><path d="M12 10.6 16.2 18H7.8L12 10.6Z"/>
+  </symbol>
+</svg>
+
+<style>
+  /* نمط موحّد لكل الرموز — تُرسم بالخطّ لا بالتعبئة */
+  .ico { fill: none; stroke: currentColor; stroke-width: 1.5;
+         stroke-linecap: round; stroke-linejoin: round; }
+</style>
+
+<!-- =========================== الشريط العلوي =========================== -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__brand" href="#top">
+      <svg class="ico" style="color:var(--ember-lit)" aria-hidden="true"><use href="#i-ember"/></svg>
+      <span>عالجمر</span>
+    </a>
+    <nav class="nav__links" aria-label="أقسام الصفحة">
+      <a href="#idea">الفكرة</a>
+      <a href="#fire">الجمر</a>
+      <a href="#rice">العيش</a>
+      <a href="#grill">الكباب</a>
+      <a href="#table">المائدة</a>
+      <a href="#majlis">المجلس</a>
+    </nav>
+    <a class="btn nav__cta" href="#contact">
+      <span class="btn__dot"></span><span>الافتتاح</span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- =========================== الواجهة =========================== -->
+<section class="stage hero heat" aria-labelledby="hero-name">
+  <span class="mashrabiya" aria-hidden="true"></span>
+  <span class="smoke" aria-hidden="true"></span>
+  <span class="embers" data-embers aria-hidden="true"></span>
+  <span class="heat__veil" aria-hidden="true"></span>
+
+  <div class="wrap hero__inner">
+    <span class="hero__badge">
+      <span class="hero__pulse" aria-hidden="true"></span>
+      يُفتتح قريباً
+    </span>
+
+    <h1 class="hero__name" id="hero-name">عالجمر</h1>
+
+    <div class="hero__rule" aria-hidden="true">
+      <svg class="ico"><use href="#i-ember"/></svg>
+    </div>
+
+    <p class="hero__tagline">مطعم خليجي · مشاوي وعيش</p>
+
+    <p class="hero__sub">
+      جمرٌ مكشوف في الصالة، وعيشٌ على أصوله. كلُّ أنواع الأرزّ الخليجي،
+      ولحمٌ لا يعرف غير الجمر.
+    </p>
+
+    <div class="hero__actions">
+      <a class="btn btn--ember" href="#table">المائدة</a>
+      <a class="btn" href="#rice">أنواع العيش</a>
+    </div>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <span></span>
+  </div>
+</section>
+
+<span data-nav-sentinel aria-hidden="true"></span>
+
+<!-- =========================== الشريط المتكرّر =========================== -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track" data-ticker>
+    <span>عيش وكباب</span><span class="ticker__dot">◆</span>
+    <span>مجبوس</span><span class="ticker__dot">◆</span>
+    <span>كبسة</span><span class="ticker__dot">◆</span>
+    <span>مضغوط</span><span class="ticker__dot">◆</span>
+    <span>مظبي</span><span class="ticker__dot">◆</span>
+    <span>مندي</span><span class="ticker__dot">◆</span>
+    <span>رز بخاري</span><span class="ticker__dot">◆</span>
+    <span>معمّر</span><span class="ticker__dot">◆</span>
+    <span>صيادية</span><span class="ticker__dot">◆</span>
+    <span>مشاوي الجمر</span><span class="ticker__dot">◆</span>
+  </div>
+</div>
+
+<!-- =========================== الفكرة =========================== -->
+<section class="section surface--coal-lit" id="idea">
+  <span class="saffron-threads" aria-hidden="true"></span>
+  <div class="wrap wrap--narrow" style="text-align:center">
+    <span class="eyebrow" data-reveal>الفكرة</span>
+    <h2 class="title" data-reveal>الجمرُ هو الطاهي</h2>
+    <p class="lead" data-reveal style="margin-inline:auto">
+      النارُ تُعطي لهباً وسخاماً. والجمرُ يُعطي حرارةً صافيةً ثابتة،
+      تُنضج اللحمَ من داخله وتتركه طريّاً، وتُعطي العيشَ قاعاً ذهبياً
+      لا يُصنَع على موقد.
+    </p>
+    <p class="lead" data-reveal style="margin-inline:auto;margin-block-start:var(--sp-5)">
+      في عالجمر لا نُخفي ذلك في المطبخ. المجمرُ في الصالة، مكشوفٌ على
+      عينه: تَسمعُ الجمرَ، وتَشُمّه، وترى الفحمَ يَخفُت ويَتوهّج —
+      ثلاثُ حواسَّ تعمل قبل أن يُوضع الطلب.
+    </p>
+
+    <hr class="hairline" style="margin-block:var(--sp-8)" data-reveal>
+
+    <blockquote class="pull" data-reveal>
+      لا نَطبخ على النار. نَطبخ على ما تبقّى منها.
+      <span class="pull__by">مبدأ المطبخ</span>
+    </blockquote>
+  </div>
+</section>
+
+<!-- =========================== الجمر =========================== -->
+<section class="section surface--coal dado" id="fire">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow" data-reveal>الجمر</span>
+      <h2 class="title" data-reveal>مجمرٌ مكشوفٌ في الصالة</h2>
+      <p class="lead" data-reveal>
+        فحمٌ واحدٌ مُنتقى، وسريرُ جمرٍ يُجدَّد طوال الخدمة، وشوّاءٌ واقفٌ
+        عليه لا يُغادره. المسافةُ بين السيخ والجمر مقيسةٌ لكلِّ قطعة،
+        فالريشُ ليس كالتكّة، والروبيانُ ليس كالحمور.
+      </p>
+
+      <ul style="display:grid;gap:var(--sp-4);margin-block-start:var(--sp-6)" data-reveal-stagger>
+        <li style="display:flex;gap:var(--sp-4);align-items:flex-start" data-reveal>
+          <svg class="ico" style="inline-size:1.5rem;block-size:1.5rem;flex:none;color:var(--glow);margin-block-start:.3rem" aria-hidden="true"><use href="#i-fire"/></svg>
+          <span><strong class="brass">حرارةٌ لا لهب.</strong>
+            <span class="muted">يُنتظَر الفحمُ حتى يَسكُن ويَبيَضّ طرفُه. اللهبُ يَحرِق السطحَ ويُبقي الداخلَ نيّئاً.</span></span>
+        </li>
+        <li style="display:flex;gap:var(--sp-4);align-items:flex-start" data-reveal>
+          <svg class="ico" style="inline-size:1.5rem;block-size:1.5rem;flex:none;color:var(--glow);margin-block-start:.3rem" aria-hidden="true"><use href="#i-stone"/></svg>
+          <span><strong class="brass">الحجرُ للمظبي.</strong>
+            <span class="muted">حجرٌ يُسخَّن على الجمر، واللحمُ عليه، وغطاءٌ فوقه — فيَنضج ببخارِ نفسِه.</span></span>
+        </li>
+        <li style="display:flex;gap:var(--sp-4);align-items:flex-start" data-reveal>
+          <svg class="ico" style="inline-size:1.5rem;block-size:1.5rem;flex:none;color:var(--glow);margin-block-start:.3rem" aria-hidden="true"><use href="#i-bread"/></svg>
+          <span><strong class="brass">تنّورٌ إلى جانبه.</strong>
+            <span class="muted">الخبزُ يُلصَق على جدارِ التنّور ويَخرُج إلى المائدةِ مباشرة — لا يَنتظِر في سلّة.</span></span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ========== رسمٌ متجهيّ: المجمر. مرسومٌ هنا حرفاً بحرف،
+         فلا حقوقَ لأحدٍ فيه ولا صورةَ مُلتقطة. ========== -->
+    <figure class="split__art brass-edge" data-reveal style="margin:0">
+      <svg viewBox="0 0 640 480" role="img" aria-labelledby="art-brazier-t">
+        <title id="art-brazier-t">رسمٌ لمَنقلِ فحمٍ من حديدٍ وعليه ثلاثةُ أسياخٍ، وفي قاعِه رمادٌ وجمرٌ متوهّج</title>
+        <defs>
+          <linearGradient id="bzBg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#171413"/><stop offset="1" stop-color="#090706"/>
+          </linearGradient>
+          <radialGradient id="bzGlow" cx="50%" cy="76%" r="52%">
+            <stop offset="0" stop-color="#e26b2c" stop-opacity=".4"/>
+            <stop offset="48%" stop-color="#c2410c" stop-opacity=".15"/>
+            <stop offset="100%" stop-color="#8c2f10" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="bzIron" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2e2826"/><stop offset="58%" stop-color="#1d1917"/>
+            <stop offset="100%" stop-color="#100d0c"/>
+          </linearGradient>
+          <linearGradient id="bzMeat" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#9c4a24"/><stop offset="46%" stop-color="#74331a"/>
+            <stop offset="100%" stop-color="#3b180b"/>
+          </linearGradient>
+          <radialGradient id="bzCoal" cx="44%" cy="38%" r="62%">
+            <stop offset="0" stop-color="#ffe0b4"/><stop offset="10%" stop-color="#f0a95c"/>
+            <stop offset="22%" stop-color="#e26b2c"/><stop offset="38%" stop-color="#c2410c"/>
+            <stop offset="60%" stop-color="#6e250b"/><stop offset="100%" stop-color="#241411"/>
+          </radialGradient>
+          <radialGradient id="bzAsh" cx="42%" cy="34%" r="64%">
+            <stop offset="0" stop-color="#5d5149"/><stop offset="42%" stop-color="#3b332e"/>
+            <stop offset="100%" stop-color="#14100e"/>
+          </radialGradient>
+          <linearGradient id="bzCrack" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#6e250b" stop-opacity="0"/>
+            <stop offset="30%" stop-color="#c2410c"/><stop offset="52%" stop-color="#f0a95c"/>
+            <stop offset="72%" stop-color="#c2410c"/>
+            <stop offset="1" stop-color="#6e250b" stop-opacity="0"/>
+          </linearGradient>
+
+          <!-- فحمةٌ غيرُ منتظمة: الدائرةُ المثاليّةُ تُقرأ كُرةً لا فحمة -->
+          <path id="bzBlob" d="M0-11c6-2 11 2 12 7s-3 11-9 12-13-2-14-8 5-9 11-11Z"/>
+          <clipPath id="bzTrough">
+            <path d="M106 362h428l-36 62H142Z"/>
+          </clipPath>
+        </defs>
+
+        <rect width="640" height="480" fill="url(#bzBg)"/>
+        <ellipse cx="320" cy="368" rx="300" ry="150" fill="url(#bzGlow)"/>
+
+        <!-- خيوطُ الحرارة: رفيعةٌ وشاحبة، تُقرأ هواءً لا دخاناً -->
+        <g stroke="#f0a95c" stroke-opacity=".17" stroke-width="1.3" fill="none" stroke-linecap="round">
+          <path d="M150 232c12-22-10-34 2-56s-8-32 3-52"/>
+          <path d="M214 226c12-22-10-34 2-56s-8-32 3-52"/>
+          <path d="M278 230c12-22-10-34 2-56s-8-32 3-52"/>
+          <path d="M342 224c12-22-10-34 2-56s-8-32 3-52"/>
+          <path d="M406 230c12-22-10-34 2-56s-8-32 3-52"/>
+          <path d="M470 226c12-22-10-34 2-56s-8-32 3-52"/>
+        </g>
+
+        <!-- ================= الأسياخ =================
+             السيخُ يُرسَم بلونٍ **صلب** لا بتدرّج: التدرّجُ بوحداتِ
+             objectBoundingBox على خطٍّ أفقيٍّ ارتفاعُه صفرٌ لا يُرسَم إطلاقاً —
+             فكانت الأسياخُ غيرَ مرئيّةٍ واللحمُ يطفو في الهواء. مُقاسٌ بلقطة.
+             وأُزيحت الصفوفُ 24 بكسلاً إلى أعلى لأنّ حرفَ المَنقلِ عند y=348
+             كان يَقطَع الصفَّ الأسفل. -->
+        <!-- السيخُ الأعلى: شقفُ لحم -->
+        <g>
+          <path d="M60 256h520" stroke="#8a6c3c" stroke-width="4" stroke-linecap="round"/>
+          <path d="M60 255h520" stroke="#dcc08a" stroke-opacity=".75" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="50" cy="256" r="9" fill="none" stroke="#a9884f" stroke-width="3.2"/>
+          <g fill="url(#bzMeat)" stroke="#2a1008" stroke-width="1.1">
+            <rect x="150" y="241" width="44" height="30" rx="9"/>
+            <rect x="208" y="241" width="44" height="30" rx="9"/>
+            <rect x="266" y="241" width="44" height="30" rx="9"/>
+            <rect x="324" y="241" width="44" height="30" rx="9"/>
+            <rect x="382" y="241" width="44" height="30" rx="9"/>
+            <rect x="440" y="241" width="44" height="30" rx="9"/>
+          </g>
+          <g stroke="#190803" stroke-opacity=".5" stroke-width="2.2" stroke-linecap="round">
+            <path d="M158 249h28M158 263h28M216 249h28M216 263h28M274 249h28M274 263h28M332 249h28M332 263h28M390 249h28M390 263h28M448 249h28M448 263h28"/>
+          </g>
+          <g stroke="#e0a071" stroke-opacity=".3" stroke-width="2" stroke-linecap="round">
+            <path d="M156 245h32M214 245h32M272 245h32M330 245h32M388 245h32M446 245h32"/>
+          </g>
+        </g>
+
+        <!-- السيخُ الأوسط: كبابٌ مفروم -->
+        <g>
+          <path d="M60 288h520" stroke="#8a6c3c" stroke-width="4" stroke-linecap="round"/>
+          <path d="M60 287h520" stroke="#dcc08a" stroke-opacity=".75" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="50" cy="288" r="9" fill="none" stroke="#a9884f" stroke-width="3.2"/>
+          <g fill="#7a3a1c" stroke="#2a1008" stroke-width="1.1">
+            <rect x="146" y="275" width="118" height="26" rx="13"/>
+            <rect x="276" y="275" width="118" height="26" rx="13"/>
+            <rect x="406" y="275" width="90" height="26" rx="13"/>
+          </g>
+          <g stroke="#190803" stroke-opacity=".38" stroke-width="2" stroke-linecap="round">
+            <path d="M160 282h92M160 294h92M290 282h92M290 294h92M418 282h64M418 294h64"/>
+          </g>
+          <g stroke="#e0a071" stroke-opacity=".26" stroke-width="2.4" stroke-linecap="round">
+            <path d="M158 279h94M288 279h94M416 279h68"/>
+          </g>
+        </g>
+
+        <!-- السيخُ الأسفل: مكعّباتٌ وبصل -->
+        <g>
+          <path d="M60 320h520" stroke="#8a6c3c" stroke-width="4" stroke-linecap="round"/>
+          <path d="M60 319h520" stroke="#dcc08a" stroke-opacity=".75" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="50" cy="320" r="9" fill="none" stroke="#a9884f" stroke-width="3.2"/>
+          <g fill="#cbbfa8" fill-opacity=".16" stroke="#cbbfa8" stroke-opacity=".5" stroke-width="2">
+            <circle cx="210" cy="320" r="9.5"/><circle cx="280" cy="320" r="9.5"/>
+            <circle cx="350" cy="320" r="9.5"/><circle cx="420" cy="320" r="9.5"/>
+          </g>
+          <g fill="url(#bzMeat)" stroke="#2a1008" stroke-width="1.1">
+            <rect x="158" y="308" width="34" height="25" rx="7"/>
+            <rect x="228" y="308" width="34" height="25" rx="7"/>
+            <rect x="298" y="308" width="34" height="25" rx="7"/>
+            <rect x="368" y="308" width="34" height="25" rx="7"/>
+            <rect x="438" y="308" width="34" height="25" rx="7"/>
+          </g>
+          <g stroke="#190803" stroke-opacity=".45" stroke-width="2" stroke-linecap="round">
+            <path d="M165 315h20M165 326h20M235 315h20M235 326h20M305 315h20M305 326h20M375 315h20M375 326h20M445 315h20M445 326h20"/>
+          </g>
+        </g>
+
+        <!-- ================= المَنقل ================= -->
+        <!-- الحافّةُ النحاسيّة -->
+        <rect x="96" y="348" width="448" height="15" rx="4"
+              fill="url(#bzIron)" stroke="#b08d57" stroke-opacity=".55" stroke-width="1.4"/>
+        <!-- بدنُ المَنقل: حديدٌ غامقٌ لا معدنٌ لامع -->
+        <path d="M106 363h428l-34 60a10 10 0 0 1-9 5H149a10 10 0 0 1-9-5Z"
+              fill="url(#bzIron)" stroke="#3a322e" stroke-width="1.6"/>
+        <!-- قاعُ السرير داخل المَنقل -->
+        <g clip-path="url(#bzTrough)">
+          <rect x="100" y="360" width="440" height="70" fill="#17100d"/>
+          <ellipse cx="320" cy="376" rx="206" ry="20" fill="#c2410c" fill-opacity=".2"/>
+          <ellipse cx="320" cy="378" rx="150" ry="13" fill="#e26b2c" fill-opacity=".17"/>
+          <!-- رمادٌ: الأغلبيّة -->
+          <g fill="url(#bzAsh)">
+            <use href="#bzBlob" transform="translate(132 374) scale(.82)"/>
+            <use href="#bzBlob" transform="translate(166 379) scale(1.02) rotate(24)"/>
+            <use href="#bzBlob" transform="translate(200 373) scale(.74) rotate(-40)"/>
+            <use href="#bzBlob" transform="translate(232 380) scale(1.1) rotate(62)"/>
+            <use href="#bzBlob" transform="translate(266 374) scale(.88) rotate(-18)"/>
+            <use href="#bzBlob" transform="translate(300 380) scale(.96) rotate(38)"/>
+            <use href="#bzBlob" transform="translate(336 373) scale(1.06) rotate(-54)"/>
+            <use href="#bzBlob" transform="translate(370 380) scale(.8) rotate(12)"/>
+            <use href="#bzBlob" transform="translate(404 374) scale(1) rotate(-30)"/>
+            <use href="#bzBlob" transform="translate(438 380) scale(.9) rotate(48)"/>
+            <use href="#bzBlob" transform="translate(470 373) scale(1.04) rotate(-12)"/>
+            <use href="#bzBlob" transform="translate(502 379) scale(.78) rotate(30)"/>
+            <use href="#bzBlob" transform="translate(150 388) scale(.86) rotate(16)"/>
+            <use href="#bzBlob" transform="translate(216 390) scale(.92) rotate(-26)"/>
+            <use href="#bzBlob" transform="translate(284 391) scale(.8) rotate(44)"/>
+            <use href="#bzBlob" transform="translate(352 390) scale(.94) rotate(-8)"/>
+            <use href="#bzBlob" transform="translate(420 391) scale(.84) rotate(52)"/>
+            <use href="#bzBlob" transform="translate(486 389) scale(.9) rotate(-36)"/>
+          </g>
+          <!-- جمرٌ متوهّج: قليلٌ وصغير -->
+          <g fill="url(#bzCoal)">
+            <use href="#bzBlob" transform="translate(184 377) scale(.6) rotate(18)"/>
+            <use href="#bzBlob" transform="translate(252 375) scale(.52) rotate(-30)"/>
+            <use href="#bzBlob" transform="translate(318 378) scale(.64) rotate(44)"/>
+            <use href="#bzBlob" transform="translate(388 376) scale(.56) rotate(-14)"/>
+            <use href="#bzBlob" transform="translate(456 378) scale(.6) rotate(26)"/>
+            <use href="#bzBlob" transform="translate(180 390) scale(.46) rotate(-48)"/>
+            <use href="#bzBlob" transform="translate(320 392) scale(.5) rotate(20)"/>
+            <use href="#bzBlob" transform="translate(452 391) scale(.44) rotate(-22)"/>
+          </g>
+          <!-- شقوقٌ حارّةٌ بين الرماد -->
+          <g fill="url(#bzCrack)">
+            <rect x="140" y="383" width="54" height="3" rx="1.5"/>
+            <rect x="238" y="386" width="46" height="3" rx="1.5"/>
+            <rect x="344" y="383" width="58" height="3" rx="1.5"/>
+            <rect x="440" y="386" width="50" height="3" rx="1.5"/>
+            <rect x="196" y="371" width="40" height="2.4" rx="1.2"/>
+            <rect x="398" y="371" width="44" height="2.4" rx="1.2"/>
+          </g>
+        </g>
+
+        <!-- أرجلٌ وسنادة -->
+        <g stroke="#232019" stroke-width="7" stroke-linecap="round" fill="none">
+          <path d="M160 428 146 466M480 428l14 38M214 428l-6 38M426 428l6 38"/>
+        </g>
+        <path d="M150 452h340" stroke="#232019" stroke-width="4" stroke-linecap="round"/>
+
+        <!-- شرارات -->
+        <g fill="#f6c893">
+          <circle cx="196" cy="196" r="1.8" opacity=".7"/>
+          <circle cx="288" cy="164" r="1.4" opacity=".5"/>
+          <circle cx="372" cy="188" r="2" opacity=".62"/>
+          <circle cx="458" cy="156" r="1.3" opacity=".42"/>
+          <circle cx="242" cy="132" r="1.2" opacity=".36"/>
+          <circle cx="410" cy="122" r="1.1" opacity=".3"/>
+        </g>
+
+        <!-- شريطُ سدو: علامةٌ لا سطح -->
+        <g stroke="#b08d57" stroke-opacity=".32" stroke-width="1.3" fill="none">
+          <path d="M0 474h640"/>
+          <path d="M14 474l11-15 11 15M58 474l11-15 11 15M102 474l11-15 11 15M146 474l11-15 11 15M190 474l11-15 11 15M234 474l11-15 11 15M278 474l11-15 11 15M322 474l11-15 11 15M366 474l11-15 11 15M410 474l11-15 11 15M454 474l11-15 11 15M498 474l11-15 11 15M542 474l11-15 11 15M586 474l11-15 11 15"/>
+        </g>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<!-- =========================== العيش ===========================
+     سطحٌ فاتح. ضروريٌّ لكسر توالي الأسطح الغامقة: ثلاثة أسطح
+     غامقة متتالية كانت عطلاً حقيقياً شكا منه عميلٌ سابق. -->
+<section class="section surface--bone dado dado--bone" id="rice">
+  <div class="wrap">
+    <div style="max-width:52ch">
+      <span class="eyebrow" data-reveal>العيش</span>
+      <h2 class="title" data-reveal>كلُّ أنواع الأرزّ الخليجي</h2>
+      <p class="lead" data-reveal>
+        العيشُ عندنا ليس صحناً جانبياً. لكلِّ نوعٍ أرزُّه وبهارُه وطريقةُ
+        طبخِه وزمنُه — والخلطُ بينها هو ما يجعل أرزَّ المطاعم كلَّه
+        بطعمٍ واحد.
+      </p>
+    </div>
+
+    <div class="rice-grid" data-reveal-stagger>
+      <article class="rice" data-reveal>
+        <svg class="ico rice__mark" aria-hidden="true"><use href="#i-pot"/></svg>
+        <h3 class="rice__name">مجبوس</h3>
+        <p class="rice__origin">الكويت · البحرين · قطر</p>
+        <p class="rice__desc">لحمٌ أو دجاجٌ يُسلَق ببهارِ المجبوس، ويُطبخ العيشُ في مرقِه حتى يَشرَبه. يُقدَّم ومعه الدقّوس.</p>
+      </article>
+
+      <article class="rice" data-reveal>
+        <svg class="ico rice__mark" aria-hidden="true"><use href="#i-rice-dome"/></svg>
+        <h3 class="rice__name">كبسة</h3>
+        <p class="rice__origin">نجد · الرياض</p>
+        <p class="rice__desc">بهارُ الكبسة والطماطم والليمون الأسود، ويُزيَّن بلوزٍ محمَّرٍ وزبيب. أشهرُ ما يُطلَب للجَمْع.</p>
+      </article>
+
+      <article class="rice" data-reveal>
+        <svg class="ico rice__mark" aria-hidden="true"><use href="#i-grain"/></svg>
+        <h3 class="rice__name">مضغوط</h3>
+        <p class="rice__origin">الكويت</p>
+        <p class="rice__desc">اللحمُ والعيشُ في قِدرِ الضغط معاً، فيَخرُج العيشُ مُشرَباً والمرقُ غليظاً. بيتيٌّ بامتياز.</p>
+      </article>
+
+      <article class="rice" data-reveal>
+        <svg class="ico rice__mark" aria-hidden="true"><use href="#i-stone"/></svg>
+        <h3 class="rice__name">مظبي</h3>
+        <p class="rice__origin">الجنوب · عسير</p>
+        <p class="rice__desc">اللحمُ على حجرٍ مُحمَّى فوق الجمر، مُغطّى حتى يَنضج ببخارِه. دخانُه هو توقيعُه.</p>
+      </article>
+
+      <article class="rice" data-reveal>
+        <svg class="ico rice__mark" aria-hidden="true"><use href="#i-pit"/></svg>
+        <h3 class="rice__name">مندي</h3>
+        <p class="rice__origin">حضرموت · الحجاز</p>
+        <p class="rice__desc">يُطبخ في حفرةٍ مُغلقةٍ تحت الأرض ببخارٍ محبوس، فلا يَلمَس اللحمُ ناراً ولا ماءً.</p>
+      </article>
+
+      <article class="rice" data-reveal>
+        <svg class="ico rice__mark" aria-hidden="true"><use href="#i-saffron"/></svg>
+        <h3 class="rice__name">رز بخاري</h3>
+        <p class="rice__origin">الحجاز · مكّة</p>
+        <p class="rice__desc">جزرٌ وزبيبٌ وبهارٌ خفيف، ولونٌ ذهبيٌّ من الزعفران. أهدأُ الأنواعِ طعماً وأحلاها لوناً.</p>
+      </article>
+
+      <article class="rice" data-reveal>
+        <svg class="ico rice__mark" aria-hidden="true"><use href="#i-sweet"/></svg>
+        <h3 class="rice__name">معمّر</h3>
+        <p class="rice__origin">الحجاز</p>
+        <p class="rice__desc">عيشٌ بالتمرِ والسكرِ والسمن، يُقدَّم مع اللحم. حلوٌ ومالحٌ في صحنٍ واحدٍ بلا تنافر.</p>
+      </article>
+
+      <article class="rice" data-reveal>
+        <svg class="ico rice__mark" aria-hidden="true"><use href="#i-fish"/></svg>
+        <h3 class="rice__name">صيادية</h3>
+        <p class="rice__origin">السواحل · الخليج</p>
+        <p class="rice__desc">عيشُ السمك: بصلٌ مُحمَّرٌ حتى يَسوَدّ لونُه، ومرقُ الحمور، وسمكٌ فوقه.</p>
+      </article>
+
+      <article class="rice" data-reveal>
+        <svg class="ico rice__mark" aria-hidden="true"><use href="#i-grill"/></svg>
+        <h3 class="rice__name">عيش وكباب</h3>
+        <p class="rice__origin">الطلبُ الأوّل</p>
+        <p class="rice__desc">عيشٌ أبيضٌ مُفلفَلٌ وكبابٌ من الجمر، ودقّوسٌ ولبنٌ بالنعنع. الصحنُ الذي سُمّي به المطعم.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== الكباب =========================== -->
+<section class="section surface--coal" id="grill">
+  <div class="wrap">
+    <div style="max-width:52ch">
+      <span class="eyebrow" data-reveal>الكباب</span>
+      <h2 class="title" data-reveal>ما يَستحقُّ الجمر</h2>
+      <p class="lead" data-reveal>
+        لحمٌ طازجٌ يُقطَّع في يومِه، وتوابلٌ قليلةٌ بقصد: ما كان طيّباً
+        لا يحتاج أن يُغطّى.
+      </p>
+    </div>
+
+    <div class="grill-row" data-reveal-stagger>
+      <article class="grill" data-reveal>
+        <svg class="ico grill__mark" aria-hidden="true"><use href="#i-skewer"/></svg>
+        <h3 class="grill__name">كباب الجمر</h3>
+        <p class="grill__desc">لحمٌ مفرومٌ بالدهنِ والبصلِ والبقدونس، يُعجَن باليد ويُلَفّ على السيخ العريض.</p>
+      </article>
+      <article class="grill" data-reveal>
+        <svg class="ico grill__mark" aria-hidden="true"><use href="#i-ribs"/></svg>
+        <h3 class="grill__name">ريشُ الغنم</h3>
+        <p class="grill__desc">ضلوعٌ صغيرةٌ بالملحِ والفلفلِ وحدهما، على جمرٍ عالٍ وزمنٍ قصير.</p>
+      </article>
+      <article class="grill" data-reveal>
+        <svg class="ico grill__mark" aria-hidden="true"><use href="#i-chicken"/></svg>
+        <h3 class="grill__name">شيش طاووق</h3>
+        <p class="grill__desc">صدرُ دجاجٍ مُنقَّعٌ بالزبادي والليمون، فيَخرُج طريّاً لا يَجفّ.</p>
+      </article>
+      <article class="grill" data-reveal>
+        <svg class="ico grill__mark" aria-hidden="true"><use href="#i-fish"/></svg>
+        <h3 class="grill__name">حمورُ الخليج</h3>
+        <p class="grill__desc">سمكةٌ كاملةٌ مشقوقةٌ بالبهارِ الأخضر، مشويّةٌ في شبكٍ على الجمر.</p>
+      </article>
+      <article class="grill" data-reveal>
+        <svg class="ico grill__mark" aria-hidden="true"><use href="#i-shrimp"/></svg>
+        <h3 class="grill__name">روبيانٌ مشوي</h3>
+        <p class="grill__desc">روبيانٌ كبيرٌ بقشرِه حتى يَحفظ ماءَه، مع زبدةِ الثومِ والليمون.</p>
+      </article>
+      <article class="grill" data-reveal>
+        <svg class="ico grill__mark" aria-hidden="true"><use href="#i-grill"/></svg>
+        <h3 class="grill__name">المجمرُ المشكَّل</h3>
+        <p class="grill__desc">صينيّةٌ للجَمْع: من كلِّ سيخٍ نصيب، وخبزُ تنّورٍ تحتها يَشرَب العصارة.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== المائدة =========================== -->
+<section class="section surface--ash" id="table">
+  <div class="wrap">
+    <div style="max-width:52ch">
+      <span class="eyebrow" data-reveal>المائدة</span>
+      <h2 class="title" data-reveal>من القائمة</h2>
+      <p class="lead" data-reveal>
+        مُختارٌ من القائمةِ الأولى. تُستكمَل وتُسعَّر قبل الافتتاح.
+      </p>
+    </div>
+
+    <div class="menu-cols" data-reveal-stagger>
+      <section class="menu-card" data-reveal>
+        <h3 class="menu-card__head">
+          <svg class="ico" aria-hidden="true"><use href="#i-mezze"/></svg>المقبّلات
+        </h3>
+        <ul class="menu-list">
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">دقّوس</span><span class="menu-item__fill"></span></div><p class="menu-item__desc">طماطمُ مشويّةٌ وثومٌ وفلفلٌ حارّ — يُقدَّم مع كلِّ عيش</p></li>
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">متبّلُ باذنجان</span><span class="menu-item__fill"></span></div><p class="menu-item__desc">باذنجانٌ على الجمرِ مباشرةً حتى يُدخَّن لبُّه</p></li>
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">حمّصٌ بالصنوبر</span><span class="menu-item__fill"></span></div><p class="menu-item__desc">بزيتِ زيتونٍ وسمنٍ بلديٍّ وصنوبرٍ محمَّر</p></li>
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">سلطةٌ عربيّة</span><span class="menu-item__fill"></span></div><p class="menu-item__desc">تقطيعٌ ناعمٌ وليمونٌ وسُمّاق</p></li>
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">لبنٌ بالنعنع</span><span class="menu-item__fill"></span></div><p class="menu-item__desc">لبنٌ باردٌ وخيارٌ ونعنعٌ طازج</p></li>
+        </ul>
+      </section>
+
+      <section class="menu-card" data-reveal>
+        <h3 class="menu-card__head">
+          <svg class="ico" aria-hidden="true"><use href="#i-fire"/></svg>من الجمر
+        </h3>
+        <ul class="menu-list">
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">كبابُ الجمر</span><span class="menu-item__fill"></span></div><p class="menu-item__desc">سيخانِ مع خبزِ التنّور</p></li>
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">تكّةُ لحم</span><span class="menu-item__fill"></span></div><p class="menu-item__desc">شقفٌ من الفخذِ بالدهنِ بين القطع</p></li>
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">ريشُ الغنم</span><span class="menu-item__fill"></span></div><p class="menu-item__desc">ستُّ ضلوعٍ — ملحٌ وفلفلٌ فقط</p></li>
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">عرايس</span><span class="menu-item__fill"></span></div><p class="menu-item__desc">خبزٌ محشوٌّ كبابٌ ومشويٌّ على الشبك</p></li>
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">المجمرُ المشكَّل</span><span class="menu-item__note">للجَمْع</span></div><p class="menu-item__desc">صينيّةٌ كبيرةٌ تَكفي أربعةً إلى ستّة</p></li>
+        </ul>
+      </section>
+
+      <section class="menu-card" data-reveal>
+        <h3 class="menu-card__head">
+          <svg class="ico" aria-hidden="true"><use href="#i-rice-dome"/></svg>العيش
+        </h3>
+        <ul class="menu-list">
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">عيشٌ وكباب</span><span class="menu-item__fill"></span></div><p class="menu-item__desc">الصحنُ الذي سُمّي به المطعم</p></li>
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">مجبوسُ لحم</span><span class="menu-item__fill"></span></div><p class="menu-item__desc">ومجبوسُ دجاجٍ أو روبيان</p></li>
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">كبسة</span><span class="menu-item__fill"></span></div><p class="menu-item__desc">بلوزٍ وزبيبٍ محمَّر</p></li>
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">مظبي</span><span class="menu-item__note">يُطلَب مُقدَّماً</span></div><p class="menu-item__desc">على الحجرِ — يحتاج وقته</p></li>
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">صيادية</span><span class="menu-item__fill"></span></div><p class="menu-item__desc">مع حمورٍ مشويٍّ أو مَقلي</p></li>
+        </ul>
+      </section>
+
+      <section class="menu-card" data-reveal>
+        <h3 class="menu-card__head">
+          <svg class="ico" aria-hidden="true"><use href="#i-dallah"/></svg>الحلو والقهوة
+        </h3>
+        <ul class="menu-list">
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">لقيماتٌ بالدبس</span><span class="menu-item__fill"></span></div><p class="menu-item__desc">تُقلى عند الطلبِ لا قبله</p></li>
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">خبيصة</span><span class="menu-item__fill"></span></div><p class="menu-item__desc">دقيقٌ وسمنٌ وسكرٌ وزعفران</p></li>
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">محلبيّةُ الزعفران</span><span class="menu-item__fill"></span></div><p class="menu-item__desc">باردةٌ وفوقها فستق</p></li>
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">قهوةٌ عربيّة</span><span class="menu-item__note">ضيافة</span></div><p class="menu-item__desc">بالزعفرانِ والهيل — تُقدَّم قبل الطلبِ ومعها تمر</p></li>
+          <li class="menu-item"><div class="menu-item__row"><span class="menu-item__name">شايُ كرك</span><span class="menu-item__fill"></span></div><p class="menu-item__desc">مُركَّزٌ بالحليبِ والهيل</p></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="note" style="margin-block-start:var(--sp-7)" data-reveal>
+      <strong class="note__head">عن هذه القائمة</strong>
+      هذا مُختارٌ أوّليٌّ للعرضِ البصريّ، وُضع قبل أن تُحسَم القائمةُ
+      النهائيّةُ والأسعار. الأصنافُ والأوصافُ قابلةٌ للتغيير، ولم تُكتَب
+      أسعارٌ هنا لأنّها لم تُقرَّر — ورقمٌ مكتوبٌ قبل أن يُقرَّر
+      يُلزِمُ المطعمَ بما لم يَختَره.
+    </div>
+  </div>
+</section>
+
+<!-- =========================== المجلس =========================== -->
+<section class="section surface--coal-lit" id="majlis">
+  <div class="wrap split split--flip">
+    <figure class="split__art brass-edge" data-reveal style="margin:0">
+      <svg viewBox="0 0 640 480" role="img" aria-labelledby="art-dallah-t">
+        <title id="art-dallah-t">رسمٌ لدلّةِ قهوةٍ عربيّةٍ نحاسيّةٍ بمنقشٍ نجديٍّ، وفنجانَين، وصحنِ تمرٍ على شريطِ سدو</title>
+        <defs>
+          <linearGradient id="dlBg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1a1615"/><stop offset="1" stop-color="#0b0908"/>
+          </linearGradient>
+          <radialGradient id="dlWarm" cx="44%" cy="46%" r="56%">
+            <stop offset="0" stop-color="#c2410c" stop-opacity=".16"/>
+            <stop offset="100%" stop-color="#c2410c" stop-opacity="0"/>
+          </radialGradient>
+          <!-- نحاسٌ مطروق: الضوءُ من اليسارِ الأعلى -->
+          <linearGradient id="dlBrass" x1="0" y1="0" x2="1" y2="0.3">
+            <stop offset="0" stop-color="#8a6c3c"/><stop offset="18%" stop-color="#c9a76c"/>
+            <stop offset="36%" stop-color="#f0e0bc"/><stop offset="52%" stop-color="#c9a76c"/>
+            <stop offset="74%" stop-color="#8a6c3c"/><stop offset="100%" stop-color="#5a4526"/>
+          </linearGradient>
+          <linearGradient id="dlBrassDim" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#6b5431"/><stop offset="40%" stop-color="#a98a55"/>
+            <stop offset="70%" stop-color="#7d6238"/><stop offset="100%" stop-color="#4a3a20"/>
+          </linearGradient>
+          <linearGradient id="dlPorcelain" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#fdfaf4"/><stop offset="55%" stop-color="#f0e8db"/>
+            <stop offset="100%" stop-color="#d4c8b6"/>
+          </linearGradient>
+          <linearGradient id="dlDate" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#7a4522"/><stop offset="60%" stop-color="#4e2812"/>
+            <stop offset="100%" stop-color="#2d150a"/>
+          </linearGradient>
+        </defs>
+
+        <rect width="640" height="480" fill="url(#dlBg)"/>
+        <ellipse cx="290" cy="240" rx="300" ry="220" fill="url(#dlWarm)"/>
+
+        <!-- ظلٌّ أرضيٌّ يُجلس العناصرَ على سطح -->
+        <ellipse cx="282" cy="424" rx="118" ry="14" fill="#000" fill-opacity=".45"/>
+        <ellipse cx="472" cy="400" rx="56" ry="9" fill="#000" fill-opacity=".35"/>
+
+        <!-- ================= صحنُ التمر ================= -->
+        <g>
+          <ellipse cx="124" cy="404" rx="64" ry="17" fill="#1d1917"
+                   stroke="#b08d57" stroke-opacity=".5" stroke-width="1.6"/>
+          <ellipse cx="124" cy="401" rx="52" ry="12" fill="#14100e"/>
+          <g fill="url(#dlDate)" stroke="#1d0c05" stroke-width="1">
+            <ellipse cx="100" cy="396" rx="15" ry="10" transform="rotate(-16 100 396)"/>
+            <ellipse cx="128" cy="393" rx="15" ry="10" transform="rotate(9 128 393)"/>
+            <ellipse cx="154" cy="397" rx="14" ry="9" transform="rotate(-7 154 397)"/>
+            <ellipse cx="114" cy="385" rx="14" ry="9" transform="rotate(20 114 385)"/>
+            <ellipse cx="142" cy="384" rx="13" ry="9" transform="rotate(-12 142 384)"/>
+          </g>
+        </g>
+
+        <!-- ================= الدلّة ================= -->
+        <!-- المقبض: قوسُ C خلف البدن -->
+        <path d="M240 276C202 288 182 310 182 338s20 50 58 62"
+              fill="none" stroke="url(#dlBrassDim)" stroke-width="14" stroke-linecap="round"/>
+        <path d="M240 276C202 288 182 310 182 338s20 50 58 62"
+              fill="none" stroke="#f0e0bc" stroke-opacity=".3" stroke-width="3"
+              stroke-linecap="round"/>
+
+        <!-- الفُنطاس: المِنقارُ الطويلُ المنحني -->
+        <path d="M318 266c26-8 58-32 86-66 10-12 18-24 24-36-11 6-23 14-33 22-28 24-55 42-83 54Z"
+              fill="url(#dlBrass)" stroke="#5a4526" stroke-width="1.8"/>
+        <path d="M330 252c22-10 48-30 70-56" fill="none"
+              stroke="#f0e0bc" stroke-opacity=".4" stroke-width="2.4" stroke-linecap="round"/>
+
+        <!-- البدن: كمثريٌّ متناظر -->
+        <path d="M258 232c0 18-10 30-20 42-16 18-26 44-24 70 2 28 16 48 32 56h68c16-8 30-28 32-56 2-26-8-52-24-70-10-12-20-24-20-42Z"
+              fill="url(#dlBrass)" stroke="#5a4526" stroke-width="2"/>
+        <!-- وميضٌ عمودي -->
+        <path d="M250 268c-12 22-18 48-16 70 2 22 10 38 20 46"
+              fill="none" stroke="#f6ecd4" stroke-opacity=".3" stroke-width="7"
+              stroke-linecap="round"/>
+        <path d="M316 272c10 20 16 44 14 64" fill="none"
+              stroke="#3d2d16" stroke-opacity=".4" stroke-width="6" stroke-linecap="round"/>
+
+        <!-- القدم -->
+        <path d="M246 400h68l8 18h-84Z" fill="url(#dlBrassDim)"
+              stroke="#5a4526" stroke-width="1.8"/>
+
+        <!-- العُنق -->
+        <path d="M256 206h48l-2 26h-44Z" fill="url(#dlBrass)" stroke="#5a4526" stroke-width="1.8"/>
+        <!-- الشفة -->
+        <rect x="246" y="192" width="68" height="14" rx="5"
+              fill="url(#dlBrass)" stroke="#5a4526" stroke-width="1.8"/>
+
+        <!-- الغطاءُ المقبّب -->
+        <path d="M254 192c0-30 10-50 26-50s26 20 26 50Z"
+              fill="url(#dlBrass)" stroke="#5a4526" stroke-width="1.8"/>
+        <path d="M268 188c0-22 4-36 10-40" fill="none"
+              stroke="#f6ecd4" stroke-opacity=".35" stroke-width="3.4" stroke-linecap="round"/>
+        <!-- الرمّانة -->
+        <path d="M280 142v-18" stroke="#5a4526" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="280" cy="118" r="8" fill="url(#dlBrass)" stroke="#5a4526" stroke-width="1.8"/>
+
+        <!-- ================= النقشُ النجديّ على البدن =================
+             مثلّثاتٌ هندسيّةٌ بين خطّين — لا زخرفةَ هنديّة. -->
+        <g stroke="#f6ecd4" stroke-opacity=".5" stroke-width="2" fill="none" stroke-linecap="round">
+          <path d="M224 318h114"/>
+          <path d="M230 318l11-17 11 17M256 318l11-17 11 17M282 318l11-17 11 17M308 318l11-17 11 17"/>
+          <path d="M222 342h118"/>
+          <path d="M232 356l10-10 10 10-10 10-10-10ZM272 356l10-10 10 10-10 10-10-10ZM312 356l10-10 10 10-10 10-10-10Z"/>
+        </g>
+
+        <!-- ================= الفنجانان ================= -->
+        <g>
+          <!-- الخلفيُّ الأصغر -->
+          <ellipse cx="552" cy="392" rx="34" ry="7" fill="#17120f"
+                   stroke="#b08d57" stroke-opacity=".4" stroke-width="1.2"/>
+          <path d="M526 348h52c-2 26-10 42-26 42s-24-16-26-42Z"
+                fill="url(#dlPorcelain)" stroke="#a2927c" stroke-width="1.6"/>
+          <path d="M528 352h48" stroke="#b08d57" stroke-opacity=".8" stroke-width="2"/>
+          <ellipse cx="552" cy="350" rx="23" ry="4.4" fill="#2e1a10"/>
+
+          <!-- الأماميُّ -->
+          <ellipse cx="470" cy="396" rx="46" ry="10" fill="#1d1917"
+                   stroke="#b08d57" stroke-opacity=".5" stroke-width="1.4"/>
+          <path d="M438 336h64c-3 32-13 52-32 52s-29-20-32-52Z"
+                fill="url(#dlPorcelain)" stroke="#a2927c" stroke-width="1.8"/>
+          <path d="M440 341h60" stroke="#b08d57" stroke-opacity=".85" stroke-width="2.4"/>
+          <ellipse cx="470" cy="339" rx="29" ry="5.4" fill="#33200f"/>
+          <ellipse cx="462" cy="338" rx="9" ry="2.4" fill="#6b4524" fill-opacity=".8"/>
+        </g>
+
+        <!-- بخار -->
+        <g stroke="#f0a95c" stroke-opacity=".3" stroke-width="1.6" fill="none" stroke-linecap="round">
+          <path d="M452 316c10-16-8-24 2-40"/>
+          <path d="M480 310c10-16-8-24 2-40"/>
+          <path d="M546 326c8-13-6-20 2-33"/>
+          <path d="M432 146c12-18-10-28 2-44"/>
+        </g>
+
+        <!-- ================= شريطُ السدو ================= -->
+        <g>
+          <path d="M0 440h640" stroke="#b08d57" stroke-opacity=".45" stroke-width="1.8"/>
+          <g stroke="#b08d57" stroke-opacity=".3" stroke-width="1.4" fill="none">
+            <path d="M12 462l12-17 12 17M60 462l12-17 12 17M108 462l12-17 12 17M156 462l12-17 12 17M204 462l12-17 12 17M252 462l12-17 12 17M300 462l12-17 12 17M348 462l12-17 12 17M396 462l12-17 12 17M444 462l12-17 12 17M492 462l12-17 12 17M540 462l12-17 12 17M588 462l12-17 12 17"/>
+            <path d="M0 462h640"/>
+          </g>
+        </g>
+      </svg>
+    </figure>
+
+    <div>
+      <span class="eyebrow" data-reveal>التجربة</span>
+      <h2 class="title" data-reveal>خمسُ نجومٍ تُقاس في التفاصيل</h2>
+      <p class="lead" data-reveal>
+        النجمةُ الخامسةُ ليست في ثمنِ الصحن. هي في أن تُستقبَل قبل أن
+        تَطلُب، وأن يَصِل الخبزُ ساخناً، وأن يُعرَف صحنُك إن عُدت.
+      </p>
+
+      <div class="pillars" data-reveal-stagger>
+        <div class="pillar" data-reveal>
+          <span class="pillar__n">أوّلاً</span>
+          <h3 class="pillar__name">القهوةُ قبل القائمة</h3>
+          <p class="pillar__desc">دلّةٌ وتمرٌ على الطاولةِ أوّلَ ما تَجلِس — ضيافةٌ لا تُحتسَب على الحساب.</p>
+        </div>
+        <div class="pillar" data-reveal>
+          <span class="pillar__n">ثانياً</span>
+          <h3 class="pillar__name">المجلس</h3>
+          <p class="pillar__desc">جلساتٌ أرضيّةٌ بسدوٍ ومساندَ لمن أرادها، وطاولاتٌ لمن أرادها.</p>
+        </div>
+        <div class="pillar" data-reveal>
+          <span class="pillar__n">ثالثاً</span>
+          <h3 class="pillar__name">المجمرُ على عينك</h3>
+          <p class="pillar__desc">لا مطبخٌ مُغلق. ترى الجمرَ والسيخَ ويدَ الشوّاء — والشفافيّةُ أصدقُ من أيِّ وعد.</p>
+        </div>
+        <div class="pillar" data-reveal>
+          <span class="pillar__n">رابعاً</span>
+          <h3 class="pillar__name">صينيّةُ الجَمْع</h3>
+          <p class="pillar__desc">الخليجيُّ يأكل جَمْعاً. فصينيّةٌ واحدةٌ في الوسطِ ويدٌ تُقسِّم، لا أطباقٌ منفصلة.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== التواصل =========================== -->
+<section class="section surface--coal dado" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <span class="eyebrow" data-reveal>قريباً</span>
+        <h2 class="title" data-reveal>نَفتح قريباً</h2>
+        <p class="lead" data-reveal>
+          الجمرُ يُجهَّز، والعيشُ يُجرَّب، والقائمةُ تُحسَم. وما لم يُقرَّر
+          بعد تَجِدُه هنا مكتوباً أنّه لم يُقرَّر — لا مُلفَّقاً.
+        </p>
+        <div class="hero__actions" style="justify-content:flex-start" data-reveal>
+          <a class="btn btn--ember" href="#rice">أنواع العيش</a>
+          <a class="btn" href="#table">القائمة</a>
+        </div>
+      </div>
+
+      <div class="facts" data-reveal-stagger>
+        <div class="fact" data-reveal>
+          <span class="fact__k">المدينة والموقع</span>
+          <span class="fact__v fact__v--pending">لم يُعلَن بعد</span>
+        </div>
+        <div class="fact" data-reveal>
+          <span class="fact__k">تاريخ الافتتاح</span>
+          <span class="fact__v fact__v--pending">لم يُحدَّد بعد</span>
+        </div>
+        <div class="fact" data-reveal>
+          <span class="fact__k">الهاتف والحجز</span>
+          <span class="fact__v fact__v--pending">لم يُفتَح بعد</span>
+        </div>
+        <div class="fact" data-reveal>
+          <span class="fact__k">حسابات التواصل</span>
+          <span class="fact__v fact__v--pending">لم تُنشَأ بعد</span>
+        </div>
+
+        <div class="note" data-reveal>
+          <strong class="note__head">لماذا هذه الحقولُ فارغة</strong>
+          هذه نسخةُ عرضٍ أوّليّة. المدينةُ والعنوانُ والهاتفُ وتاريخُ
+          الافتتاحِ لم تُعطَ لنا بعد، فتُركت مُعلَنةَ النقصِ بدلاً من
+          أن تُملأ برقمٍ أو عنوانٍ غيرِ صحيح — وحقلٌ يوهِم باليقينِ وهو
+          فارغٌ أسوأُ من حقلٍ يقول إنّه فارغ.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- =========================== التذييل =========================== -->
+<footer class="foot">
+  <div class="sadu sadu--fine" aria-hidden="true" style="position:absolute;inset-block-start:0;inset-inline:0"></div>
+  <div class="wrap foot__inner">
+    <a class="foot__brand" href="#top">
+      <svg class="ico" style="color:var(--ember-lit)" aria-hidden="true"><use href="#i-ember"/></svg>
+      <span>عالجمر</span>
+    </a>
+    <p class="foot__meta">
+      مطعمٌ خليجي · مشاوي وعيش · يُفتتح قريباً<br>
+      جميعُ رسومِ هذا الموقعِ مرسومةٌ خصّيصاً له — لا صورَ ولا أعمالَ فنّيّةَ غيرِنا.<br>
+      <span data-year>2026</span> — نسخةُ عرضٍ أوّليّة
+    </p>
+  </div>
+</footer>
+
+<script defer src="assets/app.js?v=4"></script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>art brazier</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../../assets/sadu.css">
+<link rel="stylesheet" href="../../assets/ember.css">
+<link rel="stylesheet" href="../../assets/sections.css">
+<style>
+  /* [data-reveal] يبدأ opacity:0 — يُعطَّل في المعاينة وإلّا خرجت اللقطة فارغة */
+  html.js [data-reveal], [data-reveal] { opacity:1 !important; transform:none !important; }
+  .ico { fill:none; stroke:currentColor; stroke-width:1.5;
+         stroke-linecap:round; stroke-linejoin:round; }
+  body { padding: 0; }
+  .lbl { font-family: var(--font-body); font-size: 11px; letter-spacing:.18em;
+         color: var(--brass); padding: 10px 14px; border-block-end:1px solid var(--rule); }
+</style>
+</head>
+<body>
+<div class="lbl">ART 1 / BRAZIER — no text, screenshot is valid</div><div style="padding:24px;background:var(--coal-950)"><figure class="split__art brass-edge" data-reveal style="margin:0">
+      <svg viewBox="0 0 640 480" role="img" aria-labelledby="art-brazier-t">
+        <title id="art-brazier-t">رسمٌ لمَنقلِ فحمٍ من حديدٍ وعليه ثلاثةُ أسياخٍ، وفي قاعِه رمادٌ وجمرٌ متوهّج</title>
+        <defs>
+          <linearGradient id="bzBg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#171413"/><stop offset="1" stop-color="#090706"/>
+          </linearGradient>
+          <radialGradient id="bzGlow" cx="50%" cy="76%" r="52%">
+            <stop offset="0" stop-color="#e26b2c" stop-opacity=".4"/>
+            <stop offset="48%" stop-color="#c2410c" stop-opacity=".15"/>
+            <stop offset="100%" stop-color="#8c2f10" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="bzIron" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2e2826"/><stop offset="58%" stop-color="#1d1917"/>
+            <stop offset="100%" stop-color="#100d0c"/>
+          </linearGradient>
+          <linearGradient id="bzMeat" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#9c4a24"/><stop offset="46%" stop-color="#74331a"/>
+            <stop offset="100%" stop-color="#3b180b"/>
+          </linearGradient>
+          <radialGradient id="bzCoal" cx="44%" cy="38%" r="62%">
+            <stop offset="0" stop-color="#ffe0b4"/><stop offset="10%" stop-color="#f0a95c"/>
+            <stop offset="22%" stop-color="#e26b2c"/><stop offset="38%" stop-color="#c2410c"/>
+            <stop offset="60%" stop-color="#6e250b"/><stop offset="100%" stop-color="#241411"/>
+          </radialGradient>
+          <radialGradient id="bzAsh" cx="42%" cy="34%" r="64%">
+            <stop offset="0" stop-color="#5d5149"/><stop offset="42%" stop-color="#3b332e"/>
+            <stop offset="100%" stop-color="#14100e"/>
+          </radialGradient>
+          <linearGradient id="bzCrack" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#6e250b" stop-opacity="0"/>
+            <stop offset="30%" stop-color="#c2410c"/><stop offset="52%" stop-color="#f0a95c"/>
+            <stop offset="72%" stop-color="#c2410c"/>
+            <stop offset="1" stop-color="#6e250b" stop-opacity="0"/>
+          </linearGradient>
+
+          <!-- فحمةٌ غيرُ منتظمة: الدائرةُ المثاليّةُ تُقرأ كُرةً لا فحمة -->
+          <path id="bzBlob" d="M0-11c6-2 11 2 12 7s-3 11-9 12-13-2-14-8 5-9 11-11Z"/>
+          <clipPath id="bzTrough">
+            <path d="M106 362h428l-36 62H142Z"/>
+          </clipPath>
+        </defs>
+
+        <rect width="640" height="480" fill="url(#bzBg)"/>
+        <ellipse cx="320" cy="368" rx="300" ry="150" fill="url(#bzGlow)"/>
+
+        <!-- خيوطُ الحرارة: رفيعةٌ وشاحبة، تُقرأ هواءً لا دخاناً -->
+        <g stroke="#f0a95c" stroke-opacity=".17" stroke-width="1.3" fill="none" stroke-linecap="round">
+          <path d="M150 232c12-22-10-34 2-56s-8-32 3-52"/>
+          <path d="M214 226c12-22-10-34 2-56s-8-32 3-52"/>
+          <path d="M278 230c12-22-10-34 2-56s-8-32 3-52"/>
+          <path d="M342 224c12-22-10-34 2-56s-8-32 3-52"/>
+          <path d="M406 230c12-22-10-34 2-56s-8-32 3-52"/>
+          <path d="M470 226c12-22-10-34 2-56s-8-32 3-52"/>
+        </g>
+
+        <!-- ================= الأسياخ =================
+             السيخُ يُرسَم بلونٍ **صلب** لا بتدرّج: التدرّجُ بوحداتِ
+             objectBoundingBox على خطٍّ أفقيٍّ ارتفاعُه صفرٌ لا يُرسَم إطلاقاً —
+             فكانت الأسياخُ غيرَ مرئيّةٍ واللحمُ يطفو في الهواء. مُقاسٌ بلقطة.
+             وأُزيحت الصفوفُ 24 بكسلاً إلى أعلى لأنّ حرفَ المَنقلِ عند y=348
+             كان يَقطَع الصفَّ الأسفل. -->
+        <!-- السيخُ الأعلى: شقفُ لحم -->
+        <g>
+          <path d="M60 256h520" stroke="#8a6c3c" stroke-width="4" stroke-linecap="round"/>
+          <path d="M60 255h520" stroke="#dcc08a" stroke-opacity=".75" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="50" cy="256" r="9" fill="none" stroke="#a9884f" stroke-width="3.2"/>
+          <g fill="url(#bzMeat)" stroke="#2a1008" stroke-width="1.1">
+            <rect x="150" y="241" width="44" height="30" rx="9"/>
+            <rect x="208" y="241" width="44" height="30" rx="9"/>
+            <rect x="266" y="241" width="44" height="30" rx="9"/>
+            <rect x="324" y="241" width="44" height="30" rx="9"/>
+            <rect x="382" y="241" width="44" height="30" rx="9"/>
+            <rect x="440" y="241" width="44" height="30" rx="9"/>
+          </g>
+          <g stroke="#190803" stroke-opacity=".5" stroke-width="2.2" stroke-linecap="round">
+            <path d="M158 249h28M158 263h28M216 249h28M216 263h28M274 249h28M274 263h28M332 249h28M332 263h28M390 249h28M390 263h28M448 249h28M448 263h28"/>
+          </g>
+          <g stroke="#e0a071" stroke-opacity=".3" stroke-width="2" stroke-linecap="round">
+            <path d="M156 245h32M214 245h32M272 245h32M330 245h32M388 245h32M446 245h32"/>
+          </g>
+        </g>
+
+        <!-- السيخُ الأوسط: كبابٌ مفروم -->
+        <g>
+          <path d="M60 288h520" stroke="#8a6c3c" stroke-width="4" stroke-linecap="round"/>
+          <path d="M60 287h520" stroke="#dcc08a" stroke-opacity=".75" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="50" cy="288" r="9" fill="none" stroke="#a9884f" stroke-width="3.2"/>
+          <g fill="#7a3a1c" stroke="#2a1008" stroke-width="1.1">
+            <rect x="146" y="275" width="118" height="26" rx="13"/>
+            <rect x="276" y="275" width="118" height="26" rx="13"/>
+            <rect x="406" y="275" width="90" height="26" rx="13"/>
+          </g>
+          <g stroke="#190803" stroke-opacity=".38" stroke-width="2" stroke-linecap="round">
+            <path d="M160 282h92M160 294h92M290 282h92M290 294h92M418 282h64M418 294h64"/>
+          </g>
+          <g stroke="#e0a071" stroke-opacity=".26" stroke-width="2.4" stroke-linecap="round">
+            <path d="M158 279h94M288 279h94M416 279h68"/>
+          </g>
+        </g>
+
+        <!-- السيخُ الأسفل: مكعّباتٌ وبصل -->
+        <g>
+          <path d="M60 320h520" stroke="#8a6c3c" stroke-width="4" stroke-linecap="round"/>
+          <path d="M60 319h520" stroke="#dcc08a" stroke-opacity=".75" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="50" cy="320" r="9" fill="none" stroke="#a9884f" stroke-width="3.2"/>
+          <g fill="#cbbfa8" fill-opacity=".16" stroke="#cbbfa8" stroke-opacity=".5" stroke-width="2">
+            <circle cx="210" cy="320" r="9.5"/><circle cx="280" cy="320" r="9.5"/>
+            <circle cx="350" cy="320" r="9.5"/><circle cx="420" cy="320" r="9.5"/>
+          </g>
+          <g fill="url(#bzMeat)" stroke="#2a1008" stroke-width="1.1">
+            <rect x="158" y="308" width="34" height="25" rx="7"/>
+            <rect x="228" y="308" width="34" height="25" rx="7"/>
+            <rect x="298" y="308" width="34" height="25" rx="7"/>
+            <rect x="368" y="308" width="34" height="25" rx="7"/>
+            <rect x="438" y="308" width="34" height="25" rx="7"/>
+          </g>
+          <g stroke="#190803" stroke-opacity=".45" stroke-width="2" stroke-linecap="round">
+            <path d="M165 315h20M165 326h20M235 315h20M235 326h20M305 315h20M305 326h20M375 315h20M375 326h20M445 315h20M445 326h20"/>
+          </g>
+        </g>
+
+        <!-- ================= المَنقل ================= -->
+        <!-- الحافّةُ النحاسيّة -->
+        <rect x="96" y="348" width="448" height="15" rx="4"
+              fill="url(#bzIron)" stroke="#b08d57" stroke-opacity=".55" stroke-width="1.4"/>
+        <!-- بدنُ المَنقل: حديدٌ غامقٌ لا معدنٌ لامع -->
+        <path d="M106 363h428l-34 60a10 10 0 0 1-9 5H149a10 10 0 0 1-9-5Z"
+              fill="url(#bzIron)" stroke="#3a322e" stroke-width="1.6"/>
+        <!-- قاعُ السرير داخل المَنقل -->
+        <g clip-path="url(#bzTrough)">
+          <rect x="100" y="360" width="440" height="70" fill="#17100d"/>
+          <ellipse cx="320" cy="376" rx="206" ry="20" fill="#c2410c" fill-opacity=".2"/>
+          <ellipse cx="320" cy="378" rx="150" ry="13" fill="#e26b2c" fill-opacity=".17"/>
+          <!-- رمادٌ: الأغلبيّة -->
+          <g fill="url(#bzAsh)">
+            <use href="#bzBlob" transform="translate(132 374) scale(.82)"/>
+            <use href="#bzBlob" transform="translate(166 379) scale(1.02) rotate(24)"/>
+            <use href="#bzBlob" transform="translate(200 373) scale(.74) rotate(-40)"/>
+            <use href="#bzBlob" transform="translate(232 380) scale(1.1) rotate(62)"/>
+            <use href="#bzBlob" transform="translate(266 374) scale(.88) rotate(-18)"/>
+            <use href="#bzBlob" transform="translate(300 380) scale(.96) rotate(38)"/>
+            <use href="#bzBlob" transform="translate(336 373) scale(1.06) rotate(-54)"/>
+            <use href="#bzBlob" transform="translate(370 380) scale(.8) rotate(12)"/>
+            <use href="#bzBlob" transform="translate(404 374) scale(1) rotate(-30)"/>
+            <use href="#bzBlob" transform="translate(438 380) scale(.9) rotate(48)"/>
+            <use href="#bzBlob" transform="translate(470 373) scale(1.04) rotate(-12)"/>
+            <use href="#bzBlob" transform="translate(502 379) scale(.78) rotate(30)"/>
+            <use href="#bzBlob" transform="translate(150 388) scale(.86) rotate(16)"/>
+            <use href="#bzBlob" transform="translate(216 390) scale(.92) rotate(-26)"/>
+            <use href="#bzBlob" transform="translate(284 391) scale(.8) rotate(44)"/>
+            <use href="#bzBlob" transform="translate(352 390) scale(.94) rotate(-8)"/>
+            <use href="#bzBlob" transform="translate(420 391) scale(.84) rotate(52)"/>
+            <use href="#bzBlob" transform="translate(486 389) scale(.9) rotate(-36)"/>
+          </g>
+          <!-- جمرٌ متوهّج: قليلٌ وصغير -->
+          <g fill="url(#bzCoal)">
+            <use href="#bzBlob" transform="translate(184 377) scale(.6) rotate(18)"/>
+            <use href="#bzBlob" transform="translate(252 375) scale(.52) rotate(-30)"/>
+            <use href="#bzBlob" transform="translate(318 378) scale(.64) rotate(44)"/>
+            <use href="#bzBlob" transform="translate(388 376) scale(.56) rotate(-14)"/>
+            <use href="#bzBlob" transform="translate(456 378) scale(.6) rotate(26)"/>
+            <use href="#bzBlob" transform="translate(180 390) scale(.46) rotate(-48)"/>
+            <use href="#bzBlob" transform="translate(320 392) scale(.5) rotate(20)"/>
+            <use href="#bzBlob" transform="translate(452 391) scale(.44) rotate(-22)"/>
+          </g>
+          <!-- شقوقٌ حارّةٌ بين الرماد -->
+          <g fill="url(#bzCrack)">
+            <rect x="140" y="383" width="54" height="3" rx="1.5"/>
+            <rect x="238" y="386" width="46" height="3" rx="1.5"/>
+            <rect x="344" y="383" width="58" height="3" rx="1.5"/>
+            <rect x="440" y="386" width="50" height="3" rx="1.5"/>
+            <rect x="196" y="371" width="40" height="2.4" rx="1.2"/>
+            <rect x="398" y="371" width="44" height="2.4" rx="1.2"/>
+          </g>
+        </g>
+
+        <!-- أرجلٌ وسنادة -->
+        <g stroke="#232019" stroke-width="7" stroke-linecap="round" fill="none">
+          <path d="M160 428 146 466M480 428l14 38M214 428l-6 38M426 428l6 38"/>
+        </g>
+        <path d="M150 452h340" stroke="#232019" stroke-width="4" stroke-linecap="round"/>
+
+        <!-- شرارات -->
+        <g fill="#f6c893">
+          <circle cx="196" cy="196" r="1.8" opacity=".7"/>
+          <circle cx="288" cy="164" r="1.4" opacity=".5"/>
+          <circle cx="372" cy="188" r="2" opacity=".62"/>
+          <circle cx="458" cy="156" r="1.3" opacity=".42"/>
+          <circle cx="242" cy="132" r="1.2" opacity=".36"/>
+          <circle cx="410" cy="122" r="1.1" opacity=".3"/>
+        </g>
+
+        <!-- شريطُ سدو: علامةٌ لا سطح -->
+        <g stroke="#b08d57" stroke-opacity=".32" stroke-width="1.3" fill="none">
+          <path d="M0 474h640"/>
+          <path d="M14 474l11-15 11 15M58 474l11-15 11 15M102 474l11-15 11 15M146 474l11-15 11 15M190 474l11-15 11 15M234 474l11-15 11 15M278 474l11-15 11 15M322 474l11-15 11 15M366 474l11-15 11 15M410 474l11-15 11 15M454 474l11-15 11 15M498 474l11-15 11 15M542 474l11-15 11 15M586 474l11-15 11 15"/>
+        </g>
+      </svg>
+    </figure></div>
+</body>
+</html>
