@@ -316,16 +316,37 @@ def main(argv):
         print("── نسخُ المراجعة (≤ "
               f"{MAX_REVIEW} بكسلاً، في docs/review/) ──")
         made = 0
+        # اسمُ المراجعةِ يُشتقُّ من الجِذرِ بلا امتداد، فـ`grill.jpg`
+        # و`grill.jpeg` يُنتجان `grill.png` نفسَه: الثانيةُ تطمسُ الأولى
+        # **بصمت** وتُعلِن «24 من 24» وهي 22. وحُكمٌ على صورةٍ طُمِست
+        # حُكمٌ على صورةِ غيرِها. فيُحفَظ ما استُعمل، ويُفرَّق بالامتداد.
+        used = {}
         for p in imgs:
-            out = os.path.join(REVIEW, latinize(os.path.basename(p))
-                               .rsplit(".", 1)[0] + ".png")
+            stem = latinize(os.path.basename(p)).rsplit(".", 1)[0]
+            src_ext = os.path.splitext(p)[1].lstrip(".").lower()
+            cand = stem + ".png"
+            if cand in used:
+                cand = f"{stem}-{src_ext}.png"
+                n = 2
+                while cand in used:
+                    cand = f"{stem}-{src_ext}-{n}.png"
+                    n += 1
+            out = os.path.join(REVIEW, cand)
             d, err = make_review(p, out, MAX_REVIEW)
             if err:
                 print(f"  ✗ {os.path.basename(p)} — {err}")
-            else:
-                print(f"  ✓ {os.path.relpath(out, ROOT)}  {d[0]}x{d[1]}")
-                made += 1
-        print(f"  {made} من {len(imgs)}\n")
+                continue
+            used[cand] = p
+            tag = "" if cand == stem + ".png" else "  ← فُرِّق بالامتداد"
+            print(f"  ✓ {os.path.relpath(out, ROOT)}  {d[0]}x{d[1]}{tag}")
+            made += 1
+        print(f"  {made} من {len(imgs)}")
+        # محاسبةٌ كاملة: نسخةٌ لكلِّ صورةٍ بملفٍّ خاصٍّ بها، لا أقلّ
+        if made != len(used) or (made == len(imgs) and len(used) != len(imgs)):
+            print(f"  ✗ خلل في الأداة: {made} نسخةً في "
+                  f"{len(used)} ملفّاً — طمسٌ بالاسم")
+            sys.exit(1)
+        print()
 
     if vids:
         print("── الفيديو: ما أقدر عليه وما لا أقدر ──")
