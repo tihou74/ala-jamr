@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>اتجاه ج — الجوهرة والعمق</title>
+<!--
+  اتجاهٌ (ج): **اللونُ والعمقُ يقودان.**
+  لا فراغ: أسطحٌ كالمخملِ بطبقاتٍ وظلالٍ وتوهّجٍ، وصورٌ في **مداليونات**
+  بأطواقٍ ذهبيّةٍ سميكة — وهي الطريقةُ التي تجعل صورةً 736 بكسلاً تبدو
+  جوهرةً: تُحصَر في دائرةٍ صغيرةٍ فتزيد حِدّةً ويحمِلها الطوق.
+  الفخامةُ من لوحتِه: برغنديٌّ وزمرديٌّ وذهبٌ عتيقٌ بعمقٍ وإضاءةٍ جانبيّة.
+-->
+<style>
+@font-face{font-family:"Aref Ruqaa";src:url("../../assets/fonts/ArefRuqaa-Regular.ttf") format("truetype");font-weight:400;font-display:block}
+@font-face{font-family:"Aref Ruqaa";src:url("../../assets/fonts/ArefRuqaa-Bold.ttf") format("truetype");font-weight:700;font-display:block}
+@font-face{font-family:"Amiri";src:url("../../assets/fonts/Amiri-Regular.ttf") format("truetype");font-weight:400;font-display:block}
+
+:root{
+  --emerald:#154230; --burgundy:#5d1e21; --charcoal:#101111;
+  --gold:#a6824a; --cream:#e6e2da;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  width:1280px;height:1700px;overflow:hidden;
+  font-family:"Amiri",serif;background:var(--charcoal);color:var(--cream);
+}
+h1,h2,h3{font-family:"Aref Ruqaa",serif;font-weight:400;line-height:1.6;letter-spacing:0}
+
+/* ===== الواجهة: مخملٌ برغنديٌّ بإضاءةٍ من أعلى ومداليونُ جمر ===== */
+.hero{
+  position:relative;height:900px;overflow:hidden;
+  background:
+    radial-gradient(80% 60% at 50% 0%, rgba(166,130,74,0.3) 0%, rgba(93,30,33,0) 58%),
+    radial-gradient(120% 100% at 50% 118%, rgba(16,17,17,0.95) 0%, rgba(93,30,33,0) 60%),
+    linear-gradient(165deg, #7a282d 0%, var(--burgundy) 46%, #3a1215 100%);
+}
+/* توهّجٌ خلفَ المداليون — ضوءُ جمرٍ لا تدرّجٌ مسطّح */
+.hero__glow{
+  position:absolute;inset-inline:0;top:120px;display:flex;justify-content:center;
+}
+.hero__glow span{
+  width:560px;height:560px;border-radius:50%;
+  background:radial-gradient(circle, rgba(166,130,74,0.5) 0%, rgba(166,130,74,0) 66%);
+  filter:blur(6px);
+}
+.medal{
+  position:absolute;inset-inline:0;top:168px;display:flex;justify-content:center;
+}
+.medal span{
+  width:400px;height:400px;border-radius:50%;
+  background-image:url("../../assets/img/embers.jpg");
+  background-size:cover;background-position:center;
+  /* الطوقُ الذهبيُّ السميكُ هو الذي يحمل الصورةَ الصغيرة */
+  border:7px solid var(--gold);
+  box-shadow:
+    0 0 0 1px rgba(230,226,218,0.3),
+    0 0 0 22px rgba(166,130,74,0.16),
+    0 40px 90px -36px rgba(0,0,0,0.95);
+  filter:saturate(1.16) brightness(0.96);
+}
+.hero__text{position:absolute;inset-inline:0;top:620px;text-align:center}
+.hero__name{font-size:154px;color:var(--cream);line-height:1.28}
+.hero__tag{
+  display:inline-block;font-size:19px;letter-spacing:0.4em;color:var(--gold);
+  border-block:1px solid rgba(166,130,74,0.55);padding:10px 30px;margin-top:14px;
+}
+
+/* ===== مداليوناتُ الأطباق ===== */
+.meds{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:30px;
+  padding:56px 40px 0;
+  background:
+    radial-gradient(90% 70% at 50% 0%, rgba(166,130,74,0.12) 0%, rgba(16,17,17,0) 60%),
+    var(--charcoal);
+}
+.med{text-align:center}
+.med__ring{
+  width:250px;height:250px;border-radius:50%;margin:0 auto;
+  background-size:cover;background-position:center;
+  border:5px solid rgba(166,130,74,0.9);
+  box-shadow:0 0 0 14px rgba(166,130,74,0.12), 0 28px 54px -28px rgba(0,0,0,0.9);
+}
+.m1{background-image:url("../../assets/img/kebab.jpg");background-position:50% 60%}
+.m2{background-image:url("../../assets/img/grill-flame.jpg");background-position:48% 34%}
+.m3{background-image:url("../../assets/img/tea.jpg");background-position:50% 36%}
+.med h3{font-size:36px;color:var(--cream);margin-top:20px}
+.med p{font-size:17px;color:rgba(230,226,218,0.66);margin-top:4px}
+
+/* ===== لوحٌ زمرديٌّ للعيش ===== */
+.rice{
+  margin-top:52px;padding:46px 40px;
+  background:
+    radial-gradient(100% 80% at 20% 0%, rgba(166,130,74,0.18) 0%, rgba(21,66,48,0) 60%),
+    linear-gradient(170deg, #1b5139 0%, var(--emerald) 52%, #0d2a1e 100%);
+}
+.rice__head{text-align:center;margin-bottom:34px}
+.rice__head h2{font-size:58px;color:var(--cream)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{
+  padding:26px;border:1px solid rgba(166,130,74,0.4);
+  background:linear-gradient(168deg, rgba(166,130,74,0.14), rgba(16,17,17,0.26));
+  box-shadow:inset 0 1px 0 rgba(230,226,218,0.1);
+}
+.card h3{font-size:32px;color:var(--cream)}
+.card .org{font-size:15px;letter-spacing:0.16em;color:var(--gold);margin:6px 0 10px}
+.card p{font-size:17px;line-height:1.85;color:rgba(230,226,218,0.76)}
+.tagd{
+  position:absolute;inset-block-start:0;inset-inline-start:0;
+  background:var(--charcoal);color:var(--gold);
+  font-size:15px;letter-spacing:0.3em;padding:8px 18px;
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero__glow"><span></span></div>
+  <div class="medal"><span></span></div>
+  <div class="hero__text">
+    <h1 class="hero__name">عالجمر</h1>
+    <p class="hero__tag">مشاوي وعيش · الدوحة</p>
+  </div>
+  <span class="tagd">اتجاه ج — الجوهرة والعمق</span>
+</section>
+
+<section class="meds">
+  <div class="med">
+    <div class="med__ring m1"></div>
+    <h3>كباب الجمر</h3>
+    <p>يُعجَن باليدِ ويُلَفّ على السيخ</p>
+  </div>
+  <div class="med">
+    <div class="med__ring m2"></div>
+    <h3>على اللهب</h3>
+    <p>جمرٌ عالٍ وزمنٌ قصير</p>
+  </div>
+  <div class="med">
+    <div class="med__ring m3"></div>
+    <h3>قهوةٌ وشاي</h3>
+    <p>ضيافةٌ قبل القائمة</p>
+  </div>
+</section>
+
+<section class="rice">
+  <div class="rice__head">
+    <h2>كلُّ أنواع الأرزّ الخليجي</h2>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <h3>مجبوس</h3>
+      <p class="org">الكويت · البحرين · قطر</p>
+      <p>لحمٌ يُسلَق ببهارِ المجبوس، ويُطبخ العيشُ في مرقِه حتى يَشرَبه.</p>
+    </div>
+    <div class="card">
+      <h3>كبسة</h3>
+      <p class="org">نجد · الرياض</p>
+      <p>بهارُ الكبسةِ والطماطمِ والليمونِ الأسود، ويُزيَّن بلوزٍ وزبيب.</p>
+    </div>
+    <div class="card">
+      <h3>مظبي</h3>
+      <p class="org">الجنوب · عسير</p>
+      <p>اللحمُ على حجرٍ مُحمّى فوق الجمر، مُغطّى حتى يَنضج ببخارِه.</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

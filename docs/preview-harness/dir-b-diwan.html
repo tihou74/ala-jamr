@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>اتجاه ب — الخطّ يقود</title>
+<!--
+  اتجاهٌ (ب): **الخطُّ يقود — ديوانٌ لا صفحةُ ويب.**
+  الزخرفةُ هنا **كتابةٌ لا رسم**: حروفُ رقعةِ عارف نفسُها بحجمٍ هائلٍ
+  خلفَ المحتوى. وهي «شيءٌ حقيقيٌّ» بنصِّ شرطِ المالكِ، وليست رسماً
+  هندسيّاً، وهي خطُّ شعارِه بعينِه. والأسطحُ زمرديّةٌ وبرغنديّةٌ بتذهيبٍ
+  رقيق — لوحتُه هي التي تصنع الفخامةَ لا الفراغ.
+-->
+<style>
+@font-face{font-family:"Aref Ruqaa";src:url("../../assets/fonts/ArefRuqaa-Regular.ttf") format("truetype");font-weight:400;font-display:block}
+@font-face{font-family:"Aref Ruqaa";src:url("../../assets/fonts/ArefRuqaa-Bold.ttf") format("truetype");font-weight:700;font-display:block}
+@font-face{font-family:"Amiri";src:url("../../assets/fonts/Amiri-Regular.ttf") format("truetype");font-weight:400;font-display:block}
+
+:root{
+  --emerald:#154230; --burgundy:#5d1e21; --charcoal:#101111;
+  --gold:#a6824a; --cream:#e6e2da;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  width:1280px;height:1700px;overflow:hidden;
+  font-family:"Amiri",serif;background:var(--charcoal);color:var(--cream);
+}
+h1,h2,h3{font-family:"Aref Ruqaa",serif;font-weight:400;line-height:1.6;letter-spacing:0}
+
+/* ===== الواجهة: زمرديٌّ عميقٌ وحرفٌ هائلٌ خلفَ الاسم ===== */
+.hero{
+  position:relative;height:880px;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 50% 8%, rgba(166,130,74,0.22) 0%, rgba(21,66,48,0) 62%),
+    linear-gradient(168deg, #1b5139 0%, var(--emerald) 44%, #0d2a1e 100%);
+}
+/* الحرفُ الزخرفيُّ: «ج» من الجمر، كتابةٌ لا رسم */
+.hero__glyph{
+  position:absolute;inset-inline:0;top:-150px;text-align:center;
+  font-family:"Aref Ruqaa",serif;font-size:900px;line-height:1;
+  color:rgba(166,130,74,0.14);user-select:none;
+}
+.hero__inner{position:absolute;inset-inline:0;top:250px;text-align:center}
+.hero__kicker{
+  display:inline-block;font-size:17px;letter-spacing:0.46em;color:var(--gold);
+  border-block:1px solid rgba(166,130,74,0.5);padding:10px 26px;margin-bottom:34px;
+}
+.hero__name{font-size:168px;color:var(--cream);line-height:1.28}
+.hero__tag{font-size:27px;color:rgba(230,226,218,0.84);margin-top:12px}
+/* صورةٌ صغيرةٌ مؤطَّرةٌ: حادّةٌ لأنّها صغيرة */
+.hero__medal{
+  position:absolute;inset-inline:0;bottom:92px;display:flex;justify-content:center;
+}
+.hero__medal span{
+  width:420px;height:210px;border:1px solid rgba(166,130,74,0.7);
+  background-image:url("../../assets/img/embers.jpg");
+  background-size:cover;background-position:center;
+  filter:brightness(0.9) saturate(1.1);
+  box-shadow:0 30px 60px -30px rgba(0,0,0,0.95);
+}
+
+/* ===== شريطُ التذهيب ===== */
+.band{
+  height:64px;background:linear-gradient(90deg,
+    rgba(166,130,74,0) 0%, rgba(166,130,74,0.9) 50%, rgba(166,130,74,0) 100%);
+  opacity:0.5;
+}
+
+/* ===== لوحُ القائمة: برغنديٌّ بحواشٍ مُذهَّبة ===== */
+.diwan{
+  position:relative;padding:54px 44px;
+  background:
+    radial-gradient(100% 80% at 80% 0%, rgba(166,130,74,0.16) 0%, rgba(93,30,33,0) 60%),
+    linear-gradient(172deg, #6d2428 0%, var(--burgundy) 58%, #411517 100%);
+}
+.diwan__head{text-align:center;margin-bottom:40px}
+.diwan__head h2{font-size:62px;color:var(--cream)}
+.diwan__head p{font-size:19px;color:rgba(230,226,218,0.76);margin-top:8px}
+.rows{display:grid;gap:0;border:1px solid rgba(166,130,74,0.44)}
+.row{
+  display:grid;grid-template-columns:150px 1fr;gap:26px;align-items:center;
+  padding:22px 26px;border-bottom:1px solid rgba(166,130,74,0.26);
+}
+.row:last-child{border-bottom:0}
+.row__img{
+  height:104px;border:1px solid rgba(166,130,74,0.6);
+  background-size:cover;background-position:center;filter:brightness(0.95);
+}
+.i1{background-image:url("../../assets/img/kebab.jpg");background-position:50% 60%}
+.i2{background-image:url("../../assets/img/grill-flame.jpg");background-position:48% 34%}
+.i3{background-image:url("../../assets/img/tea.jpg");background-position:50% 36%}
+.row h3{font-size:36px;color:var(--cream)}
+.row p{font-size:18px;line-height:1.8;color:rgba(230,226,218,0.78);margin-top:4px}
+.tagd{
+  position:absolute;inset-block-start:0;inset-inline-start:0;
+  background:var(--charcoal);color:var(--gold);
+  font-size:15px;letter-spacing:0.3em;padding:8px 18px;
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero__glyph">ج</div>
+  <div class="hero__inner">
+    <span class="hero__kicker">يُفتتح قريباً · الدوحة</span>
+    <h1 class="hero__name">عالجمر</h1>
+    <p class="hero__tag">مطعم خليجي · مشاوي وعيش</p>
+  </div>
+  <div class="hero__medal"><span></span></div>
+  <span class="tagd">اتجاه ب — الخطّ يقود</span>
+</section>
+
+<div class="band"></div>
+
+<section class="diwan">
+  <div class="diwan__head">
+    <h2>من القائمة</h2>
+    <p>عيشٌ على أصوله، ولحمٌ لا يعرف غير الجمر</p>
+  </div>
+  <div class="rows">
+    <div class="row">
+      <div class="row__img i1"></div>
+      <div>
+        <h3>كباب الجمر</h3>
+        <p>لحمٌ مفرومٌ بالدهنِ والبصلِ والبقدونس، يُعجَن باليدِ ويُلَفّ على السيخِ العريض.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row__img i2"></div>
+      <div>
+        <h3>ريشُ الغنم</h3>
+        <p>ضلوعٌ صغيرةٌ بالملحِ والفلفلِ وحدهما، على جمرٍ عالٍ وزمنٍ قصير.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row__img i3"></div>
+      <div>
+        <h3>قهوةٌ عربيّة</h3>
+        <p>بالزعفرانِ والهيل — تُقدَّم قبل الطلبِ ومعها تمر. ضيافةٌ لا تُحتسَب على الحساب.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
