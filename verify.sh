@@ -38,6 +38,17 @@ run "فحوصُ حارسِ الوصلةِ الذاتيّة" \
 run "فحوصُ حارسِ اللوحةِ الذاتيّة" \
     python3 .kiro/tools/check_palette.py --selftest
 
+# وأدواتُ المعاينةِ والقياسِ لها فحوصُها أيضاً: أداةُ لقطةٍ معطوبةٌ
+# تُخرج صورةً تبدو معقولةً لقسمٍ آخرَ (وقع هذا: ثمانُ لقطاتٍ كلُّها
+# الواجهةُ قرأتُها سبعةَ أقسام)، وأداةُ قياسٍ معطوبةٌ تُبارك نصّاً
+# غيرَ مقروء. وكلُّ هذه الفحوصِ لا تحتاج متصفّحاً.
+run "فحوصُ أداةِ لقطةِ القسمِ الذاتيّة" \
+    python3 .kiro/tools/section_shot.py --selftest
+run "فحوصُ أداةِ القصِّ الذاتيّة" \
+    python3 .kiro/tools/crop.py --selftest
+run "فحوصُ أداةِ قياسِ السطوعِ الذاتيّة" \
+    python3 .kiro/tools/measure_luma.py --selftest
+
 # ثمّ الحوارسُ على المشروع
 run "لا أرقامَ بالرسمِ الهنديِّ أو الفارسيّ" \
     python3 .kiro/tools/check_numerals.py
@@ -45,13 +56,34 @@ run "كلُّ مرجعٍ يُصيب هدفاً موجوداً" \
     python3 .kiro/tools/check_wiring.py index.html
 run "لا لونَ إلّا من لوحةِ المالك" \
     python3 .kiro/tools/check_palette.py
-run "لا صورةَ تتجاوز 2000 بكسل" \
-    bash -c 'python3 .kiro/tools/imgguard.py check docs/preview/*.png'
 
-# محاسبةُ الحوارسِ نفسِها: كلُّ check_*.py يجب أن يُنادى أعلاه
-printf '\n\033[1m── كلُّ حارسٍ مربوطٌ بهذا الملفّ\033[0m\n'
+# **تُفحَص الصورُ تنقيباً لا بنمطٍ مسطّح.** كان السطرُ
+# `imgguard check docs/preview/*.png` فلم يرَ إلّا المجلّدَ الأوّل:
+# أضفتُ 18 لقطةً في `docs/preview/v8/` ومرَّ الفحصُ أخضرَ **ولم يفحص
+# واحدةً منها**. ومجلّدٌ جديدٌ يُنشأ في كلِّ دفعةٍ، فنمطٌ مسطّحٌ يعني
+# أنّ أحدثَ الصورِ هي أقلُّها حراسةً — وهي التي تُقرأ فتُسقِط الجلسة.
+# و`inbox/` مُستثنى بقصد: أصولُ المصوّرِ يجب أن تكون 6000×4000، وطلبتُها
+# كذلك، فحارسٌ يُسقِط النشرَ لوصولِها يُعطَّل بعد حين. وقراءتُها يمنعها
+# الخطّافُ عند القراءةِ لا هذا الفحص.
+run "لا صورةَ تتجاوز 2000 بكسل (تنقيباً في docs وassets)" \
+    bash -c 'find docs assets -type f \( -iname "*.png" -o -iname "*.jpg" \
+      -o -iname "*.jpeg" -o -iname "*.webp" -o -iname "*.gif" \) -print0 \
+      | xargs -0 --no-run-if-empty python3 .kiro/tools/imgguard.py check'
+
+# محاسبةُ الحوارسِ نفسِها.
+# **وتُحاسَب بسلوكِها لا باسمِها**: كان الفحصُ على `check_*.py` وحدَها،
+# فأيُّ أداةٍ فيها `--selftest` باسمٍ آخرَ (section_shot · crop ·
+# measure_luma) تبقى غيرَ مربوطةٍ = صفرُ تأكيدات، **وتسميةٌ مختلفةٌ
+# تكفي للهربِ من المحاسبة**. فيُجمَع الاثنان: كلُّ `check_*.py`، وكلُّ
+# ملفٍّ يُعلن `--selftest` أنّه يملك فحوصاً ذاتيّة.
+printf '\n\033[1m── كلُّ حارسٍ وكلُّ أداةٍ ذاتِ فحوصٍ مربوطةٌ بهذا الملفّ\033[0m\n'
 missing=0
-for f in .kiro/tools/check_*.py; do
+targets="$(
+  { ls .kiro/tools/check_*.py 2>/dev/null
+    grep -l -- '--selftest' .kiro/tools/*.py 2>/dev/null
+  } | sort -u
+)"
+for f in $targets; do
   [ -e "$f" ] || continue
   name="$(basename "$f")"
   # تُحذف أسطرُ التعليقِ أوّلاً: حارسٌ يقرأ شرحَه هو كأنّه كودٌ يُبارك العطل
