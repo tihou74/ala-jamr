@@ -18,16 +18,16 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Markazi+Text:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap">
 
 <!-- ترتيب التحميل مقصود: tokens ← base ← sadu ← ember ← sections
      وأرقام الإصدار ?v=N تُزاد في كل دفعة — العميل رأى نسخاً قديمة
      ثلاث مرّات في مشروع سابق. -->
-<link rel="stylesheet" href="assets/tokens.css?v=4">
-<link rel="stylesheet" href="assets/base.css?v=4">
-<link rel="stylesheet" href="assets/sadu.css?v=4">
-<link rel="stylesheet" href="assets/ember.css?v=4">
-<link rel="stylesheet" href="assets/sections.css?v=4">
+<link rel="stylesheet" href="assets/tokens.css?v=5">
+<link rel="stylesheet" href="assets/base.css?v=5">
+<link rel="stylesheet" href="assets/sadu.css?v=5">
+<link rel="stylesheet" href="assets/ember.css?v=5">
+<link rel="stylesheet" href="assets/sections.css?v=5">
 </head>
 <body>
 
@@ -146,7 +146,7 @@
       <span>عالجمر</span>
     </a>
     <nav class="nav__links" aria-label="أقسام الصفحة">
-      <a href="#idea">الفكرة</a>
+      <a href="#story">المدخل</a>
       <a href="#fire">الجمر</a>
       <a href="#rice">العيش</a>
       <a href="#grill">الكباب</a>
@@ -217,29 +217,65 @@
   </div>
 </div>
 
-<!-- =========================== الفكرة =========================== -->
-<section class="section surface--coal-lit" id="idea">
+<!-- =========================== المدخل: القصّة ===========================
+     طلبُ المالك: «لازم المدخل يكون قصة تربط الخليج العربي بالمشاوي»،
+     و«اكتب قصة المدخل من غير عائلتي ومن أين جاءت».
+
+     فكُتبت **عن الجمرِ والخليجِ لا عنه**: لا نسبةَ شيءٍ إلى عائلتِه،
+     ولا حكايةَ أصلٍ شخصيّة.
+
+     وكلُّ ما فيها يقف على أرضٍ صلبة: قلّةُ الشجرِ في الجزيرة · فرقُ
+     اللهبِ عن الجمرِ طبخاً · الدلّةُ على المجمر · العودُ على الجمرة ·
+     صينيّةُ الجَمْع. **ولم تُكتَب أيُّ واقعةٍ تاريخيّةٍ لم أتحقّق منها** —
+     كان عندي مدخلٌ أقوى عن مَنقلِ الرملِ على ظهرِ السفينةِ الخشبيّة،
+     فبحثتُ فوجدتُ الشاهدَ على سفنٍ أوروبيّةٍ لا على سفنِ الخليج،
+     فتُرك. وقصّةٌ مُلفَّقةٌ على موقعِ مطعمٍ تُكتشَف، ومن يكتشفها
+     لا يُصدِّق ما بعدها. -->
+<section class="section story" id="story" aria-labelledby="story-t">
   <span class="saffron-threads" aria-hidden="true"></span>
-  <div class="wrap wrap--narrow" style="text-align:center">
-    <span class="eyebrow" data-reveal>الفكرة</span>
-    <h2 class="title" data-reveal>الجمرُ هو الطاهي</h2>
-    <p class="lead" data-reveal style="margin-inline:auto">
-      النارُ تُعطي لهباً وسخاماً. والجمرُ يُعطي حرارةً صافيةً ثابتة،
-      تُنضج اللحمَ من داخله وتتركه طريّاً، وتُعطي العيشَ قاعاً ذهبياً
-      لا يُصنَع على موقد.
-    </p>
-    <p class="lead" data-reveal style="margin-inline:auto;margin-block-start:var(--sp-5)">
-      في عالجمر لا نُخفي ذلك في المطبخ. المجمرُ في الصالة، مكشوفٌ على
-      عينه: تَسمعُ الجمرَ، وتَشُمّه، وترى الفحمَ يَخفُت ويَتوهّج —
-      ثلاثُ حواسَّ تعمل قبل أن يُوضع الطلب.
-    </p>
+  <div class="wrap wrap--narrow">
+    <span class="eyebrow" data-reveal>المدخل</span>
+    <h2 class="title story__t" id="story-t" data-reveal>
+      لماذا يَطبخ هذا الساحلُ على الجمر
+    </h2>
 
-    <hr class="hairline" style="margin-block:var(--sp-8)" data-reveal>
+    <div class="story__flow" data-reveal-stagger>
+      <p class="story__beat story__beat--lead" data-reveal>
+        في أرضٍ قليلةِ الشجر، لم تكن النارُ شيئاً يُسرَف فيه. فما يُحرَق
+        مرّةً كان لا بدَّ أن يُطعِم مرّتين — ومن هنا تعلّم هذا الساحلُ
+        أن يَنتظِر النارَ حتى تَسكُن.
+      </p>
 
-    <blockquote class="pull" data-reveal>
-      لا نَطبخ على النار. نَطبخ على ما تبقّى منها.
-      <span class="pull__by">مبدأ المطبخ</span>
-    </blockquote>
+      <p class="story__beat" data-reveal>
+        واللهبُ عجول: يَحرِق السطحَ، ويترك القلبَ نيّئاً، ويُعطي سخاماً
+        لا طعماً. أمّا الجمرُ فهو النارُ بعد أن هَدَأت — حرارةٌ صافيةٌ
+        ثابتةٌ تُنضِج من الداخل، وتُعطي العيشَ قاعاً ذهبياً لا يُصنَع
+        على موقد.
+      </p>
+
+      <p class="story__beat story__beat--pivot" data-reveal>
+        وبين اللهبِ والرمادِ ساعةٌ واحدة.<br>
+        <span class="story__em">تلك الساعةُ هي كلُّ المطبخ.</span>
+      </p>
+
+      <p class="story__beat" data-reveal>
+        والجمرُ في الخليجِ ليس تحت اللحمِ وحده: الدلّةُ تَقعُد على جمرِها
+        حتى تَستويَ القهوة، والعودُ يُوضَع على جمرةٍ ليُستقبَلَ الضيف.
+        فالجمرةُ الواحدةُ تَطبخ وتُضيف وتُعطِّر — ولهذا هي هنا أقربُ
+        إلى الكرمِ من الطهي.
+      </p>
+
+      <p class="story__beat" data-reveal>
+        ثمّ تأتي السفرة: صينيّةٌ واحدةٌ في وسطِ المجلس، وعيشٌ مُفلفَلٌ
+        تحت اللحم، ويدٌ تُقسِّم. لا أطباقٌ منفصلةٌ لكلِّ واحد — فالخليجيُّ
+        يأكل جَمْعاً، والصينيّةُ الواحدةُ هي الدعوةُ نفسُها.
+      </p>
+
+      <p class="story__close" data-reveal>
+        ومن هذه الساعةِ أخذنا الاسم.
+        <span class="story__name">عالجمر</span>
+      </p>
+    </div>
   </div>
 </section>
 
@@ -927,6 +963,6 @@
   </div>
 </footer>
 
-<script defer src="assets/app.js?v=4"></script>
+<script defer src="assets/app.js?v=5"></script>
 </body>
 </html>

@@ -45,10 +45,15 @@
   --rule-strong: rgba(176, 141, 87, 0.45);
 
   /* ---------- الخطوط ---------- */
-  --font-display: "Reem Kufi", "Noto Kufi Arabic", "Segoe UI", system-ui,
-    -apple-system, sans-serif;
-  --font-body: "IBM Plex Sans Arabic", "Noto Sans Arabic", "Segoe UI",
-    system-ui, -apple-system, sans-serif;
+  /* قرار المالك: **لا خطوط هندسية**. فحُذف `Reem Kufi` — وهو كوفيٌّ
+     هندسيٌّ بالتعريف — وحُذف `IBM Plex Sans Arabic` لأنّه هندسيُّ البنية.
+     والبديلُ نسخيٌّ خطّيٌّ: `Amiri` نسخٌ كلاسيكيٌّ للعرض، و`Markazi Text`
+     نسخيٌّ أوضحُ في المقاسات الصغيرة للنصّ.
+     ⚠️ **اختيارٌ مؤقّتٌ ينتظر حسمَ المالك** — وهو مكتوبٌ هنا وفي
+     ذاكرةِ المشروع، فلا يُحسَب قراراً مأخوذاً. */
+  --font-display: "Amiri", "Noto Naskh Arabic", "Scheherazade New", Georgia,
+    serif;
+  --font-body: "Markazi Text", "Noto Naskh Arabic", "Amiri", Georgia, serif;
 
   /* سلّم المقاسات — متدرّج مع العرض بلا نقاط توقّف */
   --t-hero: clamp(3rem, 11vw, 8.5rem);

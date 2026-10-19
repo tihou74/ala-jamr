@@ -702,3 +702,67 @@
   color: var(--fg-faint);
   line-height: 1.9;
 }
+
+/* ================= المدخل: القصّة =================
+   طلبُ المالك أن يكون المدخلُ قصّةً تربط الخليجَ بالمشاوي.
+   فالقسمُ نصٌّ أوّلاً: سطرٌ طويلٌ مريحٌ للقراءة، ومقاسٌ أكبرُ من
+   النصِّ العاديّ، وفراغٌ يُفصل بين النَّفَسات — لا بطاقاتٌ ولا أيقونات. */
+
+.story {
+  position: relative;
+  padding-block: clamp(var(--sp-8), 13vh, var(--sp-10));
+}
+
+.story__t {
+  max-width: 24ch;
+  margin-bottom: var(--sp-7);
+}
+
+.story__flow {
+  display: grid;
+  gap: clamp(var(--sp-5), 3.4vh, var(--sp-6));
+}
+
+.story__beat {
+  font-size: var(--t-lead);
+  line-height: 2.05;
+  color: var(--fg-muted);
+  max-width: 56ch;
+  text-wrap: pretty;
+}
+
+.story__beat--lead {
+  font-size: clamp(1.15rem, 1.9vw, 1.45rem);
+  color: var(--fg);
+}
+
+/* النَّفَسةُ المحوريّة: تُفصل بخطَّين رفيعَين وتُعطى مساحةً خاصّةً بها */
+.story__beat--pivot {
+  margin-block: var(--sp-3);
+  padding-block: var(--sp-6);
+  border-block: 1px solid var(--rule);
+  font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+  line-height: 1.75;
+  color: var(--sand);
+  max-width: 44ch;
+}
+
+.story__em {
+  color: var(--glow);
+}
+
+.story__close {
+  margin-block-start: var(--sp-5);
+  font-size: var(--t-lead);
+  color: var(--fg-muted);
+}
+
+.story__name {
+  display: block;
+  margin-block-start: var(--sp-3);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--bone);
+}

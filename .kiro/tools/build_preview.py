@@ -147,6 +147,32 @@ def main():
 <div class="lbl">LATIN TYPE TEST — the only valid basis to judge contrast,
 sizing and layout in this sandbox (zero Arabic fonts installed)</div>
 
+<div class="lbl">STORY ENTRANCE — layout check (Arabic renders as tofu here;
+judge spacing and measure only)</div>
+
+<section class="section story" style="padding-block:54px">
+  <div class="wrap wrap--narrow">
+    <span class="eyebrow">THE ENTRANCE</span>
+    <h2 class="title story__t">Why this coast cooks on embers</h2>
+    <div class="story__flow">
+      <p class="story__beat story__beat--lead">In a land of few trees, fire was
+      never something to waste. What burned once had to feed twice — and so this
+      coast learned to wait for the fire to settle.</p>
+      <p class="story__beat">Flame is in a hurry: it scorches the surface, leaves
+      the middle raw, and gives soot instead of taste. The ember is the fire after
+      it has calmed — clean steady heat that cooks from within, and gives rice a
+      golden floor no stove can make.</p>
+      <p class="story__beat story__beat--pivot">Between flame and ash there is one
+      hour.<br><span class="story__em">That hour is the whole kitchen.</span></p>
+      <p class="story__beat">And here the ember is not only under the meat: the
+      dallah sits on its coals until the coffee is ready, and oud is laid on an
+      ember to welcome a guest. One ember cooks, serves and perfumes.</p>
+      <p class="story__close">And from that hour we took the name.
+      <span class="story__name">Ala Jamr</span></p>
+    </div>
+  </div>
+</section>
+
 <section class="section surface--coal-lit" style="padding-block:46px">
   <div class="wrap">
     <span class="eyebrow">THE IDEA</span>
