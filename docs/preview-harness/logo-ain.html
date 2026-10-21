@@ -55,7 +55,13 @@
   --blaze:#ffffff;
 }
 *{box-sizing:border-box; margin:0; padding:0}
-body{width:1240px; background:#000; padding:20px;
+/* ⚠️ كان المقاسُ مكتوباً على كلِّ لوحةٍ بمعرِّفها (`#ب .lockup`)،
+   **فلم يَقدر أيُّ وضعِ عرضٍ على تكبيرِه**: المعرِّفُ يَغلب الصنفَ
+   في التخصيص، فخرجت لقطةُ العرضِ على المالكِ صغيرةً في إطارها
+   مرّتين. فصار المقاسُ **متغيّراً واحداً على `body`** يُبدّله كلُّ
+   وضعٍ بسطر — ولا يُعاد كتابتُه على اللوحات. */
+body{--ain-main:175px;
+     width:1240px; background:#000; padding:20px;
      display:grid; grid-template-columns:1fr 1fr; gap:20px;
      font-family:"Amiri",serif}
 .tile{position:relative; width:590px; height:700px; background:var(--charcoal);
@@ -89,7 +95,11 @@ body{width:1240px; background:#000; padding:20px;
 .jamr{position:absolute; z-index:3;
   font-family:"Aref Ruqaa",serif; font-weight:700;
   color:var(--blaze); line-height:1; white-space:nowrap;
-  inset-inline-end:var(--x, 50.8%); top:var(--y, 73.6%);
+  /* `right` فيزيائيّةً لا `inset-inline-end`: في `dir="rtl"` يكون
+     inline-end هو **الحدَّ الأيسر**، والرقمُ المقيسُ مسافةٌ من
+     اليمين — فكانت الكلمةُ تُوضع على الجهةِ المقابلةِ وتَخرج من
+     القوسِ كلِّه، **ويباركها حارسُ التلاصقِ لأنّها بعيدةٌ عن الحبر**. */
+  right:var(--x, 50.8%); top:var(--y, 73.6%);
   transform:translate(50%, -50%) rotate(var(--rot, 0deg));
   font-size:var(--w)}
 
@@ -103,26 +113,23 @@ body{width:1240px; background:#000; padding:20px;
       color:rgba(230,226,218,.5); text-align:center; max-width:500px;
       margin-bottom:10px}
 .stack{display:grid; gap:10px; justify-items:center}
+.stack .lockup{--ain:var(--ain-main)}
 
 /* ⚠️ والمقاسُ يُحصَر في `.stack`: كان `#أ .lockup` فأصاب **لوحاتَ
    برهانِ الصِّغَرِ أيضاً** (المعرِّفُ يَغلب الصنفَ في التخصيص)، فخرجت
    الثلاثُ الصغيرةُ بمقاسِ الكبيرةِ مقطوعةً عند حدِّ الإطار.
    أ · مقاسُ الأمانِ المحسوب: 0.195em — داخلَ الجوفِ المقيس */
-#a .stack .lockup{--ain:175px}
 #a .jamr{--w:.195em}
 
 /* ب · 0.26em — يَخرج من الجوفِ المقيسِ إلى فمِ القارب. أعرضُه
       لأنّه أقوى حضوراً، **ولا أدّعي أنّه مُبرهَن** */
-#b .stack .lockup{--ain:175px}
 #b .jamr{--w:.26em}
 
 /* ج · الميلُ من الخطِّ لا زينةً: سطرُ الرقعةِ يصعد يساراً وأرضُ
       القوسِ منحنيةٌ مثلَه، فالمائلةُ تَجلس فيه مستوية */
-#c .stack .lockup{--ain:175px}
 #c .jamr{--w:.225em; --rot:-11deg}
 
 /* د · الكلمةُ أدنى: محمولةٌ على أرضِ القوسِ لا معلّقةٌ في هوائه */
-#d .stack .lockup{--ain:175px}
 #d .jamr{--w:.225em; --y:77%; --rot:-11deg}
 
 /* ══ أوضاعُ القياسِ الآليّ ══════════════════════════════════════
@@ -140,13 +147,32 @@ body.one .tile.show{display:grid; width:700px; height:700px; padding:0}
 body.one .tag, body.one .verdict, body.one .note{display:none}
 body.hide-ain .ain{visibility:hidden}
 body.hide-jamr .jamr{visibility:hidden}
+
+/* ══ وضعُ العرضِ على المالك: ?clean=1 ══════════════════════════
+   العلامةُ وحدَها كبيرةً بلا بطاقةٍ ولا شرحٍ ولا لوحاتِ قياس —
+   فمن يَحكم على شعارٍ يَحكم عليه وحدَه. والثلاثةُ المقيسةُ في
+   صفٍّ واحدٍ ليُقارَن بينها بنظرةٍ لا بتنقّلٍ بين صور. */
+body.clean{grid-template-columns:repeat(3, 1fr)}
+body.clean #d{display:none}
+body.clean .tag, body.clean .verdict, body.clean .note{display:none}
+body.clean .tile{width:393px; height:470px; grid-template-rows:1fr;
+  place-items:center}
+body.clean{--ain-main:168px}
+body.clean .mark-label{display:block}
+.mark-label{display:none; position:absolute; inset-inline:0; bottom:14px;
+  text-align:center; font-size:15px; color:var(--gold)}
+
+/* ولقطةُ العلامةِ الواحدةِ تُكبَّر حتى تَملأ إطارَها */
+body.one .tile.show{grid-template-rows:1fr; place-items:center}
+body.one{--ain-main:300px}
 </style>
 </head>
 <body>
 
 <section class="tile" id="a">
+  <span class="mark-label">أ · الأصغرُ أماناً</span>
   <span class="tag">أ · 0.195em — مقاسُ الأمانِ المحسوب</span>
-  <span class="verdict ok">✓ محسوبٌ ومقيس: خلوصٌ تامّ</span>
+  <span class="verdict ok">✓ خلوصٌ تامّ · داخلَ العلامة</span>
   <div class="stack">
     <div class="lockup"><span class="ain">ع</span><span class="jamr">الجمر</span></div>
   </div>
@@ -163,8 +189,9 @@ body.hide-jamr .jamr{visibility:hidden}
 </section>
 
 <section class="tile" id="b">
+  <span class="mark-label">ب · الأقوى حضوراً</span>
   <span class="tag">ب · 0.26em — تركب فمَ القارب</span>
-  <span class="verdict ok">✓ مقيس: خلوصٌ تامّ</span>
+  <span class="verdict ok">✓ خلوصٌ تامّ · داخلَ العلامة</span>
   <div class="stack">
     <div class="lockup"><span class="ain">ع</span><span class="jamr">الجمر</span></div>
   </div>
@@ -181,8 +208,9 @@ body.hide-jamr .jamr{visibility:hidden}
 </section>
 
 <section class="tile" id="c">
+  <span class="mark-label">ج · المائلة</span>
   <span class="tag">ج · مائلةٌ تتبع ميلَ الجرف</span>
-  <span class="verdict ok">✓ مقيس: خلوصٌ تامّ</span>
+  <span class="verdict ok">✓ خلوصٌ تامّ · داخلَ العلامة</span>
   <div class="stack">
     <div class="lockup"><span class="ain">ع</span><span class="jamr">الجمر</span></div>
   </div>
@@ -200,12 +228,12 @@ body.hide-jamr .jamr{visibility:hidden}
 
 <section class="tile" id="d">
   <span class="tag">د · مائلةٌ مستقرّةٌ على أرضِ القوس</span>
-  <span class="verdict bad">✗ مقيس: تلاصقٌ في 106 بكسل</span>
+  <span class="verdict bad">✗ مقيس: تلاصقٌ في 159 بكسل</span>
   <div class="stack">
     <div class="lockup"><span class="ain">ع</span><span class="jamr">الجمر</span></div>
   </div>
   <div class="note"><b>مرفوضة.</b> أدنى بـ3.4% فقط، وعينِي قالت إنّها سليمةٌ —
-    وقاسَ <code>mark_clear.py</code> تلاصقاً في 106 بكسل. تُعرَض لتُرى
+    وقاسَ <code>mark_clear.py</code> تلاصقاً في 159 بكسل. تُعرَض لتُرى
     لماذا لا يُحكَم بالعينِ في هذا.
     <div class="row"><span class="cap">28 · 46 · 80 بكسلاً</span>
       <span class="xs"><span class="lockup"><span class="ain">ع</span
@@ -229,6 +257,7 @@ body.hide-jamr .jamr{visibility:hidden}
     var t = document.getElementById(v);
     if (t) t.classList.add("show");
   }
+  if (q.get("clean")) document.body.classList.add("clean");
   if (only === "ain") document.body.classList.add("hide-jamr");
   if (only === "jamr") document.body.classList.add("hide-ain");
 })();

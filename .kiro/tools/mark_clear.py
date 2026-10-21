@@ -54,6 +54,32 @@ def overlap(m1, m2):
     return sum(1 for a, b in zip(m1, m2) if a and b)
 
 
+def bbox(m, w, h):
+    x0, y0, x1, y1 = w, h, -1, -1
+    for y in range(h):
+        row = y * w
+        for x in range(w):
+            if m[row + x]:
+                x0 = min(x0, x); x1 = max(x1, x)
+                y0 = min(y0, y); y1 = max(y1, y)
+    return None if x1 < 0 else (x0, y0, x1, y1)
+
+
+def contained(inner, outer):
+    """هل حدُّ حبرِ الكلمةِ داخلَ حدِّ حبرِ الحرفِ الحاضن؟
+
+    **ولماذا هذا الفحصُ لازمٌ مع فحصِ التلاصق:** الخلوصُ وحدَه يَصدُق
+    صدقاً كاملاً على كلمةٍ **خارجَ القوسِ تماماً** — بل هو أصدقُ ما
+    يكون عليها. ووقع هذا حرفيّاً: خاصّيّةٌ منطقيّةٌ (`inset-inline-end`)
+    وضعت الكلمةَ على الجهةِ المقابلةِ في صفحةٍ عربيّةٍ، فخرجت من
+    العلامةِ كلِّها **ومرّ الحارسُ أخضرَ**. فالمطلوبُ شرطان: لا
+    تَلمس، **وتكون في الداخل**."""
+    if inner is None or outer is None:
+        return False
+    return (outer[0] <= inner[0] and inner[2] <= outer[2]
+            and outer[1] <= inner[1] and inner[3] <= outer[3])
+
+
 def dilate(m, w, h, r):
     """يُسمَّن القناعُ بـr بكسلاً: التلاصقُ عيبٌ كالتقاطعِ تماماً.
 
@@ -108,9 +134,14 @@ def check(html, variants, gap):
             worst = max(worst, 1)
         else:
             hit = overlap(dilate(ma, w, h, gap), mj)
-            mark = "✓ خلوصٌ تامّ" if hit == 0 else f"✗ تلاصقٌ في {hit} بكسل"
-            print(f"  {v}: {mark}")
-            worst = max(worst, 1 if hit else 0)
+            inside = contained(bbox(mj, w, h), bbox(ma, w, h))
+            bits = []
+            bits.append("✓ خلوصٌ تامّ" if hit == 0
+                        else f"✗ تلاصقٌ في {hit} بكسل")
+            bits.append("✓ داخلَ العلامة" if inside
+                        else "✗ **خارجَ حدِّ الحرفِ** — ليست في القوس")
+            print(f"  {v}: {' · '.join(bits)}")
+            worst = max(worst, 1 if (hit or not inside) else 0)
         os.remove(pa)
         os.remove(pj)
     return worst
@@ -138,6 +169,25 @@ def selftest():
     same = bytearray(a)
     c("المتطابقُ يُكشَف فوراً", overlap(a, same), 1)
     c("التسمينُ بصفرٍ لا يُغيّر", overlap(dilate(a, w, h, 0), b), 0)
+
+    # ══ الاحتواءُ ══════════════════════════════════════════════
+    # **والحالةُ الحاسمةُ أوّلاً**: منفصلان تماماً ⇒ خلوصُهما تامٌّ
+    # والاحتواءُ **مكذوب**. وهي بعينُها الحالةُ التي مرّت أخضرَ.
+    out = bytearray(w * h)
+    for y in range(2, 8):
+        for x in range(2, 8):
+            out[y * w + x] = 1
+    inn = bytearray(w * h)
+    for y in range(3, 6):
+        for x in range(3, 6):
+            inn[y * w + x] = 1
+    far = bytearray(w * h)
+    far[1 * w + 8] = 1
+    c("الداخلُ يُقرأ محتوى", contained(bbox(inn, w, h), bbox(out, w, h)), True)
+    c("البعيدُ لا يُقرأ محتوى", contained(bbox(far, w, h), bbox(out, w, h)), False)
+    c("البعيدُ خالصٌ مع ذلك (فالخلوصُ لا يكفي)",
+      overlap(dilate(out, w, h, 1), far), 0)
+    c("الفارغُ لا يُقرأ محتوى", contained(None, bbox(out, w, h)), False)
     return 0 if ok else 2
 
 
