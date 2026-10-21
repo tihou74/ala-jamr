@@ -74,7 +74,7 @@ run "لا لونَ إلّا من لوحةِ المالك" \
 # يُعرَض ولا يُفحَص هو صفرُ تأكيدات.
 run "كلمةُ الشعارِ لا تَلمس حبرَ العينِ وهي داخلَ القوس (كلُّ الأوضاع)" \
     python3 .kiro/tools/mark_clear.py docs/preview-harness/logo-ain.html \
-      a b c e f g h i j k
+      a b c e f g h i j k n p o
 
 # **تُفحَص الصورُ تنقيباً لا بنمطٍ مسطّح.** كان السطرُ
 # `imgguard check docs/preview/*.png` فلم يرَ إلّا المجلّدَ الأوّل:
