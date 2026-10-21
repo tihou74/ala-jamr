@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>عالجمر — مختبر الشعار: الاسمُ مكتوباً، بلا صورةٍ ولا رسم</title>
+
+<!-- ══ لماذا هذا المختبرُ الثاني ══════════════════════════════════
+     المختبرُ الأوّل (logo-lab.html) كان أربعَ معالجاتٍ لفكرةِ «السجّادةُ
+     تحترق»، وكلُّها **ساقطةٌ بحكمِ الحقوق**: السجّادةُ فيها هي
+     inbox/b2-logo.jpeg وهي صورةُ منتجٍ من متجرِ سجّادٍ إلكترونيٍّ لا
+     صورةُ مصوّرِ المالك. فلم يُنشَر منها شيء.
+
+     وهذا المختبرُ يقوم على قرارِ المالك (21 أكتوبر 2026):
+     **تُغيَّر الهويّةُ كلُّها، ولا تُستعمل الصورُ ولا الفيديو.**
+     فلا طبقةَ صورةٍ واحدةً هنا: كلُّ ما تراه **حرفٌ ولونٌ وضوء**.
+
+     والخطُّ رقعةُ عارف — اختيارُ المالك — مستضافٌ محلياً، ولوحتُه
+     الخمسُ وحدَها لا لونَ من عندي.
+     ══════════════════════════════════════════════════════════ -->
+
+<style>
+@font-face{font-family:"Aref Ruqaa"; font-weight:400; font-display:block;
+  src:url(../../assets/fonts/ArefRuqaa-Regular.ttf) format("truetype")}
+@font-face{font-family:"Aref Ruqaa"; font-weight:700; font-display:block;
+  src:url(../../assets/fonts/ArefRuqaa-Bold.ttf) format("truetype")}
+@font-face{font-family:"Aref Ruqaa Ink"; font-weight:400; font-display:block;
+  src:url(../../assets/fonts/ArefRuqaaInk-Regular.ttf) format("truetype")}
+@font-face{font-family:"Amiri"; font-weight:400; font-display:block;
+  src:url(../../assets/fonts/Amiri-Regular.ttf) format("truetype")}
+
+/* ══ رقعةُ الحبر خطٌّ مُلوَّنٌ بنفسِه — وهذا قِيس لا يُفترَض ════════
+   جداولُ ArefRuqaaInk-Regular.ttf فيها COLR وCPAL، ولوحتُه المدمَجةُ
+   خمسةُ مدخلاتٍ: #D22E1F أحمرَ و#0074B6 أزرقَ (حِبرُ المخطوطِ الأحمرُ
+   والأزرق). ومعناه أنّ `color` في CSS **لا يعمل عليه إطلاقاً**: كتبتُ
+   كريميّاً فخرجَ الاسمُ أحمرَ في أوّلِ رسمٍ، ولونان خارج لوحةِ المالك.
+
+   والمخرجُ ليس حذفَ الخطّ: `@font-palette-values` يستبدل مدخلاتَ
+   لوحتِه. فصار حِبرَين **من لوحتِه الخمس**: كريميُّ المتنِ وذهبيُّ
+   الشكلِ والنقط — وهو تقليدُ المخطوطِ نفسُه (المتنُ بحِبرٍ والضبطُ
+   بآخر)، بلا زخرفةٍ ولا رسم. */
+@font-palette-values --jamr-ink{
+  font-family:"Aref Ruqaa Ink";
+  override-colors:0 #E6E2DA, 1 #E6E2DA, 2 #A6824A, 3 #A6824A, 4 #A6824A;
+}
+
+:root{
+  /* لوحةُ المالكِ الخمس — ولا سادس */
+  --charcoal:#101111; --gold:#A6824A; --cream:#E6E2DA;
+  --burgundy:#5D1E21; --emerald:#154230;
+}
+*{box-sizing:border-box; margin:0; padding:0}
+body{
+  width:1240px; background:#000; padding:20px;
+  display:grid; grid-template-columns:1fr 1fr; gap:20px;
+  font-family:"Amiri",serif;
+}
+.tile{position:relative; width:590px; height:430px; overflow:hidden;
+      background:var(--charcoal); display:grid; place-items:center}
+.tag{position:absolute; inset-inline-start:0; top:0; z-index:40;
+     font-family:"Amiri",serif; font-size:15px; line-height:1;
+     background:var(--charcoal); color:var(--gold);
+     padding:7px 11px; border-inline-end:1px solid rgba(166,130,74,.45);
+     border-block-end:1px solid rgba(166,130,74,.45)}
+/* برهانُ الصِّغَر: شعارٌ لا يصحّ عند 34 بكسلاً لا يصحّ أيقونةً ولا
+   خاتماً على صحنٍ ولا علامةً على كيسِ تغليف. فتُعرَض النسخةُ الصغيرةُ
+   في كلِّ لوحةٍ بجنبِ الكبيرة، لا تُؤجَّل إلى ما بعدَ الاختيار. */
+.mini{position:absolute; inset-inline-end:12px; bottom:10px; z-index:40;
+      display:flex; align-items:center; gap:9px;
+      font-size:12px; color:rgba(230,226,218,.42)}
+.mini b{font-family:"Aref Ruqaa",serif; font-weight:700;
+        font-size:30px; line-height:1; color:var(--cream)}
+.mark{font-family:"Aref Ruqaa",serif; font-weight:700; line-height:1.02;
+      color:var(--cream); text-align:center}
+.sub{font-family:"Amiri",serif; color:var(--gold); text-align:center}
+.rule{height:1px; background:linear-gradient(to left,
+      transparent, rgba(166,130,74,.85), transparent)}
+
+/* ══ أ · رقعةٌ خالصة — الاسمُ وحدَه ولا شيءَ معه ════════════════
+   أنظفُ الستّةِ وأصعبُها: لا شيءَ يُخفي ضعفاً إن كان. ويصحّ على
+   الحجرِ والنحاسِ والورقِ والشاشةِ بلا تعديل. */
+#a .wrap{display:grid; gap:20px; justify-items:center}
+#a .mark{font-size:140px}
+#a .rule{width:230px}
+#a .sub{font-size:21px; letter-spacing:.34em}
+
+/* ══ ب · الحرفُ يُحمّى — الجمرُ في الحرفِ لا خلفَه ═══════════════
+   تدرّجٌ داخلَ الحرفِ نفسِه: كريميٌّ من أعلى وذهبيٌّ مُحمّى من أسفل،
+   كحديدةٍ تُركت في الجمر. ولا صورةَ نارٍ: الحرفُ هو الذي يَسخَن. */
+#b .mark{font-size:148px;
+  background:linear-gradient(to bottom,
+     var(--cream) 18%, #d9c79a 46%, var(--gold) 74%, #6f5531 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  filter:drop-shadow(0 10px 26px rgba(166,130,74,.3))}
+/* الوهجُ كان لطخةً بنيّةً مربّعةَ الأثرِ تحت الاسم: نصفُ قطرٍ عريضٌ
+   وضبابٌ ثقيلٌ على مستطيلٍ ⇒ يُقرأ وسخاً لا ضوءاً. فصار شريطاً
+   واطئاً جدّاً عند خطِّ الكتابةِ وحدَه. */
+#b .glow{position:absolute; inset-inline:28%; bottom:40%; height:34px;
+  z-index:0; border-radius:50%;
+  background:radial-gradient(closest-side,
+     rgba(166,130,74,.5), transparent 78%); filter:blur(20px)}
+#b .wrap{position:relative; z-index:2; display:grid; gap:18px;
+  justify-items:center}
+#b .sub{font-size:19px; letter-spacing:.3em; color:rgba(230,226,218,.6)}
+
+/* ══ ج · قفلٌ عربيٌّ ولاتينيّ — للنطاقِ واللوحةِ والتغليف ══════════
+   اللاتينيّةُ ليست ترجمةً بل **ضرورةُ تشغيل**: النطاقُ والفاتورةُ
+   وخرائطُ غوغلَ ولوحةُ الواجهةِ تحتاجها. وحرفُها هنا متباعدٌ صغيرٌ
+   تابعٌ — فلا يُنافس الرقعةَ ولا يَسرق النظرَ. */
+#c .wrap{display:grid; gap:16px; justify-items:center}
+#c .mark{font-size:128px}
+#c .lat{display:flex; align-items:center; gap:16px}
+#c .lat span{font-family:"Amiri",serif; font-size:20px;
+  letter-spacing:.52em; color:var(--gold); padding-inline-start:.52em}
+#c .lat i{display:block; width:52px; height:1px;
+  background:rgba(166,130,74,.6)}
+#c .sub{font-size:17px; letter-spacing:.26em;
+  color:rgba(230,226,218,.5)}
+
+/* ══ د · رقعةُ الحبر — ملمسُ القلمِ لا ملمسُ الطباعة ═════════════
+   نسخةُ Ink من رقعةِ عارف: حدودُ الحرفِ فيها رِيُّ القلمِ وجفافُه،
+   فتُقرأ **مكتوبةً بيدٍ** لا مطبوعة. وهي الأقربُ إلى «أرقى من
+   الزمنِ الجميل» الذي طلبَه المالك. */
+#d{background:linear-gradient(160deg, #15100f, var(--charcoal) 62%)}
+#d .wrap{display:grid; gap:22px; justify-items:center}
+#d .mark{font-family:"Aref Ruqaa Ink",serif; font-weight:400;
+  font-size:146px; font-palette:--jamr-ink}
+#d .sub{font-size:19px; letter-spacing:.3em}
+#d .mini b{font-family:"Aref Ruqaa Ink",serif; font-weight:400;
+  font-palette:--jamr-ink}
+
+/* ══ هـ · محفورٌ في الفحم — الاسمُ غائرٌ وضوءٌ على حدِّه ══════════
+   الحرفُ بلونِ السطحِ نفسِه، وما يُظهره **ظلٌّ من أعلى وبريقٌ من
+   أسفل** — فيُقرأ محفوراً أو مكويّاً. وهذا هو «الجمر» بلا صورةِ نار:
+   أثرُ حرارةٍ على مادّةٍ لا لهبٌ معروض. */
+/* وأوّلُ رسمٍ سقط: كان السطحُ فحماً شبهَ أسودَ والحرفُ أسودَ عليه،
+   فلم يُرَ الاسمُ أصلاً — ومن 30 بكسلاً اختفى تماماً. والحفرُ لا
+   يُقرأ إلّا على **سطحٍ متوسّطِ القيمة**: الظلُّ يحتاج ما هو أفتحُ
+   منه ليَغور فيه. فصار السطحُ خلطةَ الفحمِ بالكريميّ. */
+#e{background:linear-gradient(170deg, #4a3f39, #352d29 58%, #2a2320)}
+#e .wrap{display:grid; gap:24px; justify-items:center}
+#e .mark{font-size:140px; color:#2b2420;
+  text-shadow:0 -1px 0 rgba(0,0,0,.55),
+              0 2px 1px rgba(230,226,218,.42),
+              0 4px 16px rgba(0,0,0,.5)}
+#e .sub{font-size:18px; letter-spacing:.3em; color:#c6a86e}
+#e .mini{color:rgba(230,226,218,.6)}
+#e .mini b{color:#2b2420;
+  text-shadow:0 -1px 0 rgba(0,0,0,.6), 0 1px 0 rgba(230,226,218,.5)}
+
+/* ══ و · ختمٌ بُرغنديٌّ — علامةُ ضيافةٍ تُوضع على شيء ═════════════
+   الاسمُ داخلَ طوقٍ ذهبيٍّ رقيقٍ على بُرغنديِّ لوحتِه. ليس زخرفةً
+   ولا رسماً هندسيّاً: **حدٌّ واحدٌ** يجعل العلامةَ قابلةً للوضعِ على
+   كيسٍ أو صحنٍ أو قائمةٍ أو شمعِ ختم. */
+#f{background:var(--burgundy)}
+#f .seal{position:relative; width:326px; height:326px; border-radius:50%;
+  border:1px solid rgba(230,226,218,.55);
+  box-shadow:0 0 0 7px rgba(16,17,17,.18),
+             0 0 0 8px rgba(230,226,218,.22);
+  display:grid; place-items:center; align-content:center; gap:14px}
+#f .mark{font-size:104px; color:var(--cream)}
+#f .sub{font-size:16px; letter-spacing:.3em; color:rgba(230,226,218,.78)}
+#f .rule{width:120px; background:linear-gradient(to left,
+   transparent, rgba(230,226,218,.6), transparent)}
+#f .mini{color:rgba(230,226,218,.5)}
+</style>
+</head>
+<body>
+
+<section class="tile" id="a">
+  <span class="tag">أ · رقعةٌ خالصة — الاسمُ وحدَه</span>
+  <div class="wrap">
+    <div class="mark">عالجمر</div>
+    <div class="rule"></div>
+    <div class="sub">مشاوي وعيش</div>
+  </div>
+  <span class="mini"><b>عالجمر</b> عند 30 بكسلاً</span>
+</section>
+
+<section class="tile" id="b">
+  <span class="tag">ب · الحرفُ يُحمّى — الجمرُ في الحرف</span>
+  <div class="glow"></div>
+  <div class="wrap">
+    <div class="mark">عالجمر</div>
+    <div class="sub">مشاوي وعيش</div>
+  </div>
+  <span class="mini"><b>عالجمر</b> عند 30 بكسلاً</span>
+</section>
+
+<section class="tile" id="c">
+  <span class="tag">ج · قفلٌ عربيٌّ ولاتينيّ</span>
+  <div class="wrap">
+    <div class="mark">عالجمر</div>
+    <div class="lat"><i></i><span>ALA JAMR</span><i></i></div>
+    <div class="sub">مشاوي وعيش · قطر</div>
+  </div>
+  <span class="mini"><b>عالجمر</b> عند 30 بكسلاً</span>
+</section>
+
+<section class="tile" id="d">
+  <span class="tag">د · رقعةُ الحبر — ملمسُ القلم</span>
+  <div class="wrap">
+    <div class="mark">عالجمر</div>
+    <div class="sub">مشاوي وعيش</div>
+  </div>
+  <span class="mini"><b>عالجمر</b> عند 30 بكسلاً</span>
+</section>
+
+<section class="tile" id="e">
+  <span class="tag">هـ · محفورٌ في الفحم</span>
+  <div class="wrap">
+    <div class="mark">عالجمر</div>
+    <div class="sub">مشاوي وعيش</div>
+  </div>
+  <span class="mini"><b>عالجمر</b> عند 30 بكسلاً</span>
+</section>
+
+<section class="tile" id="f">
+  <span class="tag">و · ختمٌ بُرغنديّ</span>
+  <div class="seal">
+    <div class="mark">عالجمر</div>
+    <div class="rule"></div>
+    <div class="sub">مشاوي وعيش</div>
+  </div>
+  <span class="mini"><b>عالجمر</b> عند 30 بكسلاً</span>
+</section>
+
+</body>
+</html>

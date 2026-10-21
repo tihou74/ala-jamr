@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>عالجمر — الشعار: عينٌ كبيرةٌ تَحمل «الجمر» في قوسها</title>
+
+<!-- ══ طلبُ المالك — 21 أكتوبر 2026 ═══════════════════════════════
+     «اللوقو اريده هيك: العين تكون كبيرة وكلمة الجمر داخله في قوس
+      العين ولونه يكون ابيض ساطع» — ومعه صورةُ مرجع.
+
+     ══ والموضعُ مقيسٌ لا مُخمَّن — وسقطت مرّتان قبل أن يُقاس ═══════
+     خمّنتُ موضعَ الكلمةِ بالعينِ مرّتين فخرجت **فوقَ رأسِ العينِ لا
+     في قوسِها**. وموضعُ الجوفِ خاصّيّةُ رسمِ المحرفِ لا تقديري،
+     فبُنيت أداةٌ تقيسه: `.kiro/tools/glyph_hollow.py`.
+
+     ودخلت كلُّ أرقامِ هذا الملفِّ من مَخرجِها:
+
+       python3 .kiro/tools/glyph_hollow.py ع --weight 700
+         · حدُّ حبرِ العين: 0.653em × 0.963em
+         · **جوفُ القوس**: 0.257em × 0.317em، مركزُه على مربّعِ
+           2.133em عند inset-inline-end:50.8% · top:73.6%
+
+       python3 .kiro/tools/glyph_hollow.py "الجمر" --weight 700
+         · حدُّ حبرِ الكلمة: **1.320em** × 1.420em
+
+     ومنهما يُحسَب حدُّ الأمانِ **حساباً لا تجربةً**:
+         0.257em ÷ 1.320 = **0.195em**
+     أيُّ مقاسٍ للكلمةِ فوقَه يَخرج من المستطيلِ الفارغِ المقيس،
+     فيَقرب من حبرِ العينِ أو يَلمسه.
+
+     ══ وكشفَ القياسُ أمرين كانا سيُفسدان العلامة ══════════════════
+       1. **رأسُ العينِ لا جوفَ فيه** — كتلةٌ شبهُ مغلقةٍ بشَرْطة.
+          فلو وُضعت الكلمةُ «في العين» لَغرقت في الحبر.
+       2. **القوسُ هو الذيلُ**: يهبط ثمّ يَجرف يساراً وينعطف لأعلى
+          فيصنع **قارباً مفتوحَ الفم** — وهو الحوضُ المقصود.
+
+     وكلُّ رقمٍ بوحدةِ `em` منسوبةً إلى مقاسِ العين: يُغيَّر `--ain`
+     وحدَه فتُكبَّر العلامةُ كلُّها بلا أن تتفكّك. وشعارٌ مكتوبٌ
+     بالبكسلِ يصحّ في لقطةٍ ثمّ ينكسر على لوحةِ الواجهة.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+@font-face{font-family:"Aref Ruqaa"; font-weight:400; font-display:block;
+  src:url(../../assets/fonts/ArefRuqaa-Regular.ttf) format("truetype")}
+@font-face{font-family:"Aref Ruqaa"; font-weight:700; font-display:block;
+  src:url(../../assets/fonts/ArefRuqaa-Bold.ttf) format("truetype")}
+@font-face{font-family:"Amiri"; font-weight:400; font-display:block;
+  src:url(../../assets/fonts/Amiri-Regular.ttf) format("truetype")}
+
+:root{
+  --charcoal:#101111; --gold:#A6824A; --cream:#E6E2DA;
+  --burgundy:#5D1E21; --emerald:#154230;
+  /* «ابيض ساطع» — نصُّ طلبِ المالك. والأبيضُ الخالصُ مُرافِقٌ مسموحٌ
+     في حارسِ اللوحةِ (مثلُ الأسود) فلا يُسقِط الفحص. */
+  --blaze:#ffffff;
+}
+*{box-sizing:border-box; margin:0; padding:0}
+body{width:1240px; background:#000; padding:20px;
+     display:grid; grid-template-columns:1fr 1fr; gap:20px;
+     font-family:"Amiri",serif}
+.tile{position:relative; width:590px; height:700px; background:var(--charcoal);
+      display:grid; grid-template-rows:1fr auto; justify-items:center;
+      align-items:center; padding:42px 14px 14px; overflow:hidden}
+.tag{position:absolute; inset-inline-start:0; top:0; z-index:40;
+     font-size:15px; line-height:1; background:var(--charcoal);
+     color:var(--gold); padding:7px 11px;
+     border-inline-end:1px solid rgba(166,130,74,.45);
+     border-block-end:1px solid rgba(166,130,74,.45)}
+.verdict{position:absolute; inset-inline-end:0; top:0; z-index:40;
+     font-size:13px; line-height:1; padding:7px 10px;
+     border-inline-start:1px solid rgba(166,130,74,.3);
+     border-block-end:1px solid rgba(166,130,74,.3)}
+.ok{color:#8fbfa3} .maybe{color:var(--gold)} .bad{color:#d98b7a}
+
+/* ══ العلامة ═══════════════════════════════════════════════════
+   المربّعُ 2.133em هو **نفسُه** مربّعُ أداةِ القياس، وتخطيطُ العينِ
+   نفسُه (1em/1.5 · grid · center). ولو اختلف أحدُهما لَما انطبقت
+   النِّسَبُ المقيسة — وهذا بعينُه سببُ سقوطِ أوّلِ محاولة. */
+/* `display:inline-block` ليس تزييناً: الحاوياتُ الصغيرةُ `span`،
+   والعنصرُ السطريُّ **لا يَقبل عرضاً ولا ارتفاعاً**. فسقطت لوحاتُ
+   برهانِ الصِّغَرِ كلُّها إلى صفرِ مقاسٍ ولم تُرسَم في أوّلِ لقطة. */
+.lockup{position:relative; display:inline-block; font-size:var(--ain);
+        width:2.133em; height:2.133em; vertical-align:bottom}
+.ain{position:absolute; inset:0; z-index:2;
+  font-family:"Aref Ruqaa",serif; font-weight:700;
+  font-size:1em; line-height:1.5; color:var(--blaze);
+  display:grid; place-items:center}
+/* مركزُ الجوفِ المقيس — ولا رقمَ منه بالتجربة */
+.jamr{position:absolute; z-index:3;
+  font-family:"Aref Ruqaa",serif; font-weight:700;
+  color:var(--blaze); line-height:1; white-space:nowrap;
+  inset-inline-end:var(--x, 50.8%); top:var(--y, 73.6%);
+  transform:translate(50%, -50%) rotate(var(--rot, 0deg));
+  font-size:var(--w)}
+
+.row{display:flex; align-items:flex-end; gap:20px;
+     justify-content:center; margin-top:10px}
+.row .lockup{--ain:80px}
+.row .sm .lockup{--ain:46px}
+.row .xs .lockup{--ain:28px}
+.cap{font-size:12px; color:rgba(230,226,218,.38); padding-bottom:4px}
+.note{grid-row:2; font-size:13.5px; line-height:1.7;
+      color:rgba(230,226,218,.5); text-align:center; max-width:500px;
+      margin-bottom:10px}
+.stack{display:grid; gap:10px; justify-items:center}
+
+/* ⚠️ والمقاسُ يُحصَر في `.stack`: كان `#أ .lockup` فأصاب **لوحاتَ
+   برهانِ الصِّغَرِ أيضاً** (المعرِّفُ يَغلب الصنفَ في التخصيص)، فخرجت
+   الثلاثُ الصغيرةُ بمقاسِ الكبيرةِ مقطوعةً عند حدِّ الإطار.
+   أ · مقاسُ الأمانِ المحسوب: 0.195em — داخلَ الجوفِ المقيس */
+#a .stack .lockup{--ain:175px}
+#a .jamr{--w:.195em}
+
+/* ب · 0.26em — يَخرج من الجوفِ المقيسِ إلى فمِ القارب. أعرضُه
+      لأنّه أقوى حضوراً، **ولا أدّعي أنّه مُبرهَن** */
+#b .stack .lockup{--ain:175px}
+#b .jamr{--w:.26em}
+
+/* ج · الميلُ من الخطِّ لا زينةً: سطرُ الرقعةِ يصعد يساراً وأرضُ
+      القوسِ منحنيةٌ مثلَه، فالمائلةُ تَجلس فيه مستوية */
+#c .stack .lockup{--ain:175px}
+#c .jamr{--w:.225em; --rot:-11deg}
+
+/* د · الكلمةُ أدنى: محمولةٌ على أرضِ القوسِ لا معلّقةٌ في هوائه */
+#d .stack .lockup{--ain:175px}
+#d .jamr{--w:.225em; --y:77%; --rot:-11deg}
+
+/* ══ أوضاعُ القياسِ الآليّ ══════════════════════════════════════
+   `?v=ب&only=ain` تَعرض علامةً واحدةً وتُخفي أحدَ طرفيها، فتُصوَّر
+   مرّتين ويُقاس تقاطعُ الحبرِ بينهما. وهكذا يصير «لا تَلمس الكلمةُ
+   العينَ» **رقماً** لا رأياً — وقد أخطأتُ بالعينِ مرّتين في هذا
+   الشعارِ وحدَه. تُشغّلها `.kiro/tools/mark_clear.py`. */
+/* ⚠️ وأوّلُ قياسٍ خرج فارغاً: الصفحةُ عرضُها 1240 والإطارُ 700،
+   وفي RTL يَجلس العمودُ الأوّلُ **يميناً** — أي خارجَ ما تُصوّره
+   اللقطة. فقِيس فراغٌ وحُسب «خلوصاً»، وهو أخطرُ من سقوطٍ معلَن:
+   أداةٌ تُبارك ما لم ترَه. فيُضبَط العرضُ في وضعِ العزلِ نفسِه. */
+body.one{width:700px; grid-template-columns:1fr; padding:0; background:#101111}
+body.one .tile{display:none}
+body.one .tile.show{display:grid; width:700px; height:700px; padding:0}
+body.one .tag, body.one .verdict, body.one .note{display:none}
+body.hide-ain .ain{visibility:hidden}
+body.hide-jamr .jamr{visibility:hidden}
+</style>
+</head>
+<body>
+
+<section class="tile" id="a">
+  <span class="tag">أ · 0.195em — مقاسُ الأمانِ المحسوب</span>
+  <span class="verdict ok">✓ محسوبٌ ومقيس: خلوصٌ تامّ</span>
+  <div class="stack">
+    <div class="lockup"><span class="ain">ع</span><span class="jamr">الجمر</span></div>
+  </div>
+  <div class="note">لا تَلمس الكلمةُ حبرَ العينِ في أيِّ مقاس — وهذا محسوبٌ لا
+    مُجرَّب. الأكثرُ أماناً عند الحفرِ والطباعةِ والتطريز.
+    <div class="row"><span class="cap">28 · 46 · 80 بكسلاً</span>
+      <span class="xs"><span class="lockup"><span class="ain">ع</span
+        ><span class="jamr">الجمر</span></span></span>
+      <span class="sm"><span class="lockup"><span class="ain">ع</span
+        ><span class="jamr">الجمر</span></span></span>
+      <span class="lockup"><span class="ain">ع</span
+        ><span class="jamr">الجمر</span></span></div>
+  </div>
+</section>
+
+<section class="tile" id="b">
+  <span class="tag">ب · 0.26em — تركب فمَ القارب</span>
+  <span class="verdict ok">✓ مقيس: خلوصٌ تامّ</span>
+  <div class="stack">
+    <div class="lockup"><span class="ain">ع</span><span class="jamr">الجمر</span></div>
+  </div>
+  <div class="note">تَخرج من المستطيلِ الفارغِ المقيسِ إلى حيث يَنفتح القوس.
+    أقوى حضوراً وأقربُ إلى حبرِ العين.
+    <div class="row"><span class="cap">28 · 46 · 80 بكسلاً</span>
+      <span class="xs"><span class="lockup"><span class="ain">ع</span
+        ><span class="jamr">الجمر</span></span></span>
+      <span class="sm"><span class="lockup"><span class="ain">ع</span
+        ><span class="jamr">الجمر</span></span></span>
+      <span class="lockup"><span class="ain">ع</span
+        ><span class="jamr">الجمر</span></span></div>
+  </div>
+</section>
+
+<section class="tile" id="c">
+  <span class="tag">ج · مائلةٌ تتبع ميلَ الجرف</span>
+  <span class="verdict ok">✓ مقيس: خلوصٌ تامّ</span>
+  <div class="stack">
+    <div class="lockup"><span class="ain">ع</span><span class="jamr">الجمر</span></div>
+  </div>
+  <div class="note">الميلُ مأخوذٌ من سطرِ الرقعةِ نفسِه — يصعد يساراً كما
+    تصعد أرضُ القوس.
+    <div class="row"><span class="cap">28 · 46 · 80 بكسلاً</span>
+      <span class="xs"><span class="lockup"><span class="ain">ع</span
+        ><span class="jamr">الجمر</span></span></span>
+      <span class="sm"><span class="lockup"><span class="ain">ع</span
+        ><span class="jamr">الجمر</span></span></span>
+      <span class="lockup"><span class="ain">ع</span
+        ><span class="jamr">الجمر</span></span></div>
+  </div>
+</section>
+
+<section class="tile" id="d">
+  <span class="tag">د · مائلةٌ مستقرّةٌ على أرضِ القوس</span>
+  <span class="verdict bad">✗ مقيس: تلاصقٌ في 106 بكسل</span>
+  <div class="stack">
+    <div class="lockup"><span class="ain">ع</span><span class="jamr">الجمر</span></div>
+  </div>
+  <div class="note"><b>مرفوضة.</b> أدنى بـ3.4% فقط، وعينِي قالت إنّها سليمةٌ —
+    وقاسَ <code>mark_clear.py</code> تلاصقاً في 106 بكسل. تُعرَض لتُرى
+    لماذا لا يُحكَم بالعينِ في هذا.
+    <div class="row"><span class="cap">28 · 46 · 80 بكسلاً</span>
+      <span class="xs"><span class="lockup"><span class="ain">ع</span
+        ><span class="jamr">الجمر</span></span></span>
+      <span class="sm"><span class="lockup"><span class="ain">ع</span
+        ><span class="jamr">الجمر</span></span></span>
+      <span class="lockup"><span class="ain">ع</span
+        ><span class="jamr">الجمر</span></span></div>
+  </div>
+</section>
+
+<script>
+/* وضعُ القياس: ?v=a|b|c|d يَعزل علامةً، و?only=ain|jamr يُخفي الطرفَ
+   الآخر. ولا نسخةَ ثانيةً من هندسةِ الشعارِ في أداةِ القياس — تُقاس
+   **نفسُ الصفحةِ** التي ستُرسَل للمالك، فلا يَختلف المقيسُ عن المعروض. */
+(function () {
+  var q = new URLSearchParams(location.search);
+  var v = q.get("v"), only = q.get("only");
+  if (v) {
+    document.body.classList.add("one");
+    var t = document.getElementById(v);
+    if (t) t.classList.add("show");
+  }
+  if (only === "ain") document.body.classList.add("hide-jamr");
+  if (only === "jamr") document.body.classList.add("hide-ain");
+})();
+</script>
+</body>
+</html>

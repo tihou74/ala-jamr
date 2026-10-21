@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>عالجمر — معايرةُ جوفِ العين</title>
+
+<!-- ══ لماذا صفحةُ معايرةٍ قبل الشعار ═══════════════════════════════
+     المطلوبُ «الجمر داخلَ قوسِ العين»، وموضعُ الجوفِ **لا يُخمَّن**:
+     هو خاصّيّةُ رسمِ الحرفِ في رقعةِ عارفَ نفسِها. فتُرسَم العينُ
+     منفردةً فوق شبكةٍ معلومةِ النِّسَب، ويُقرأ الجوفُ بالعينِ مرّةً
+     واحدةً — ثمّ تُركَّب الكلمةُ على رقمٍ مقروءٍ لا على تجربةٍ عمياء.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+@font-face{font-family:"Aref Ruqaa"; font-weight:400; font-display:block;
+  src:url(../../assets/fonts/ArefRuqaa-Regular.ttf) format("truetype")}
+@font-face{font-family:"Aref Ruqaa"; font-weight:700; font-display:block;
+  src:url(../../assets/fonts/ArefRuqaa-Bold.ttf) format("truetype")}
+
+*{box-sizing:border-box; margin:0; padding:0}
+body{width:1000px; height:1000px; background:#101111; position:relative;
+     font-family:system-ui,sans-serif}
+
+/* الشبكة: كلُّ خطٍّ 10% وكلُّ خطٍّ فرعيٍّ 5% */
+.grid{position:absolute; inset:0; z-index:5;
+  background-image:
+    repeating-linear-gradient(to right,
+      rgba(166,130,74,.5) 0 1px, transparent 1px 10%),
+    repeating-linear-gradient(to bottom,
+      rgba(166,130,74,.5) 0 1px, transparent 1px 10%),
+    repeating-linear-gradient(to right,
+      rgba(166,130,74,.2) 0 1px, transparent 1px 5%),
+    repeating-linear-gradient(to bottom,
+      rgba(166,130,74,.2) 0 1px, transparent 1px 5%)}
+.lbl{position:absolute; z-index:6; font-size:13px; color:#A6824A}
+
+/* العينُ المنفردةُ: تُرسَم من خطِّ الأساسِ وتُملأ الإطارَ قدرَ ما تستطيع */
+/* ⚠️ أوّلُ معايرةٍ عند 900 بكسلاً قطعت الذيل: الحرفُ خرج من الإطار
+   أسفلَ ويساراً. والذيلُ **هو القوسُ المطلوب**، فقطعُه يُفقِد القياسَ
+   معناه. فيُصغَّر المقاسُ ويُزاح الحرفُ حتى يُرى تماماً. */
+.ain{position:absolute; inset:0; z-index:3;
+  font-family:"Aref Ruqaa",serif; font-weight:700;
+  font-size:520px; line-height:1.5; color:#fff;
+  display:grid; place-items:center; justify-content:start;
+  padding-inline-start:4%; padding-block-end:4%}
+</style>
+</head>
+<body>
+<div class="ain">ع</div>
+<div class="grid"></div>
+<div class="lbl" style="right:4px;  top:2px">0</div>
+<div class="lbl" style="right:20%;  top:2px">20%</div>
+<div class="lbl" style="right:40%;  top:2px">40%</div>
+<div class="lbl" style="right:60%;  top:2px">60%</div>
+<div class="lbl" style="right:80%;  top:2px">80%</div>
+<div class="lbl" style="right:4px;  top:20%">20%</div>
+<div class="lbl" style="right:4px;  top:40%">40%</div>
+<div class="lbl" style="right:4px;  top:60%">60%</div>
+<div class="lbl" style="right:4px;  top:80%">80%</div>
+</body>
+</html>

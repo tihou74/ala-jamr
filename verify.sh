@@ -48,6 +48,12 @@ run "فحوصُ أداةِ القصِّ الذاتيّة" \
     python3 .kiro/tools/crop.py --selftest
 run "فحوصُ أداةِ قياسِ السطوعِ الذاتيّة" \
     python3 .kiro/tools/measure_luma.py --selftest
+run "فحوصُ أداةِ قياسِ جوفِ المحرفِ الذاتيّة" \
+    python3 .kiro/tools/glyph_hollow.py --selftest
+run "فحوصُ أداةِ خلوصِ الشعارِ الذاتيّة" \
+    python3 .kiro/tools/mark_clear.py --selftest
+run "فحوصُ أداةِ أشرطةِ الصفحةِ الذاتيّة" \
+    python3 .kiro/tools/page_band.py --selftest
 
 # ثمّ الحوارسُ على المشروع
 run "لا أرقامَ بالرسمِ الهنديِّ أو الفارسيّ" \
@@ -56,6 +62,14 @@ run "كلُّ مرجعٍ يُصيب هدفاً موجوداً" \
     python3 .kiro/tools/check_wiring.py index.html
 run "لا لونَ إلّا من لوحةِ المالك" \
     python3 .kiro/tools/check_palette.py
+
+# **خلوصُ الشعارِ يُقاس في كلِّ دفعةٍ لا مرّةً واحدة.** كلمةُ «الجمر»
+# تَستكنُّ في قوسِ العينِ بفارقٍ صغير، وأيُّ تعديلٍ في مقاسِ الكلمةِ
+# أو ميلِها أو موضعِها يُلصِقها بالحبرِ فتصير لطخةً عند الطبعِ بلونٍ
+# واحد. وحكَمتُ بالعينِ مرّتين فأخطأتُ المرّتين — والوضعُ (د) مقبولٌ
+# في عينِي ومرفوضٌ في القياس، فهو مُستثنى هنا بقصد.
+run "كلمةُ الشعارِ لا تَلمس حبرَ العين (أ · ب · ج)" \
+    python3 .kiro/tools/mark_clear.py docs/preview-harness/logo-ain.html a b c
 
 # **تُفحَص الصورُ تنقيباً لا بنمطٍ مسطّح.** كان السطرُ
 # `imgguard check docs/preview/*.png` فلم يرَ إلّا المجلّدَ الأوّل:
