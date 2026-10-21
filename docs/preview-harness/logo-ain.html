@@ -64,7 +64,8 @@ body{--ain-main:175px;
      width:1240px; background:#000; padding:20px;
      display:grid; grid-template-columns:1fr 1fr; gap:20px;
      font-family:"Amiri",serif}
-.tile{position:relative; width:590px; height:700px; background:var(--charcoal);
+.tile{position:relative; width:590px; height:700px;
+      background:var(--bg, var(--charcoal));
       display:grid; grid-template-rows:1fr auto; justify-items:center;
       align-items:center; padding:42px 14px 14px; overflow:hidden}
 .tag{position:absolute; inset-inline-start:0; top:0; z-index:40;
@@ -87,14 +88,30 @@ body{--ain-main:175px;
    برهانِ الصِّغَرِ كلُّها إلى صفرِ مقاسٍ ولم تُرسَم في أوّلِ لقطة. */
 .lockup{position:relative; display:inline-block; font-size:var(--ain);
         width:2.133em; height:2.133em; vertical-align:bottom}
+/* ══ سُمكُ العين — مقبضٌ واحدٌ بثلاثِ درجات ════════════════════
+   طلب المالك: «ترقيق العرض تبع حرف ع» ثمّ «اقصد الثيكنس».
+
+   ورقعةُ عارفَ **ليست خطّاً متغيّراً**: وزنان فقط (400 و700)، فلا
+   يوجد «أرقّ من 400» في الخطِّ نفسِه. والترقيقُ بتحويلٍ هندسيٍّ
+   (scale) يُفسِد نِسَبَ الحرفِ ويُخرجه عن الرقعة.
+
+   فالدرجةُ الثالثةُ **خطٌّ خارجيٌّ** (`-webkit-text-stroke`) بحشوٍ
+   شفّاف: يُرسَم حدُّ الحرفِ شعرةً ويُفرَّغ جوفُه. وهو أرقُّ ما يُمكن
+   بلا تشويهِ الرسم.
+
+   وسُمكُ الحدِّ بوحدةِ `em` لا بالبكسل: شعرةٌ مكتوبةٌ بالبكسلِ تبقى
+   بسُمكِها على لوحةِ واجهةٍ بعرضِ مترين فتصير خيطاً لا يُرى. */
 .ain{position:absolute; inset:0; z-index:2;
-  font-family:"Aref Ruqaa",serif; font-weight:700;
-  font-size:1em; line-height:1.5; color:var(--blaze);
+  font-family:"Aref Ruqaa",serif;
+  font-weight:var(--ain-weight, 700);
+  font-size:1em; line-height:1.5;
+  color:var(--ain-fill, var(--blaze));
+  -webkit-text-stroke:var(--ain-stroke, 0);
   display:grid; place-items:center}
 /* مركزُ الجوفِ المقيس — ولا رقمَ منه بالتجربة */
 .jamr{position:absolute; z-index:3;
   font-family:"Aref Ruqaa",serif; font-weight:700;
-  color:var(--blaze); line-height:1; white-space:nowrap;
+  color:var(--jamr-fill, var(--blaze)); line-height:1; white-space:nowrap;
   /* `right` فيزيائيّةً لا `inset-inline-end`: في `dir="rtl"` يكون
      inline-end هو **الحدَّ الأيسر**، والرقمُ المقيسُ مسافةٌ من
      اليمين — فكانت الكلمةُ تُوضع على الجهةِ المقابلةِ وتَخرج من
@@ -132,6 +149,105 @@ body{--ain-main:175px;
 /* د · الكلمةُ أدنى: محمولةٌ على أرضِ القوسِ لا معلّقةٌ في هوائه */
 #d .jamr{--w:.225em; --y:77%; --rot:-11deg}
 
+/* ══ موديلا اللون — أبيضُ وعنابيّ ═══════════════════════════════
+   طلب المالك: «موديل باللون العنابي وموديل باللون الابيض».
+   والعنابيُّ لونُه من لوحتِه: Deep Burgundy #5D1E21.
+
+   ⚠️ **والعنابيُّ على الفحميِّ لا يصحّ، وهذا مقيسٌ لا مذاق:**
+
+       أبيضُ على فحميّ    18.91:1   ممتاز
+       عنابيٌّ على كريميّ   9.72:1   ممتاز
+       أبيضُ على عنابيّ    12.55:1   ممتاز
+       عنابيٌّ على فحميّ    1.51:1   ⛔ ساقط
+
+   وحدُّ الشكلِ الكبيرِ 3:1، فالعنابيُّ على الفحميِّ **نصفُ الحدِّ
+   تقريباً** — يُرى لطخةً داكنةً لا شعاراً. فموضعُ الموديلِ العنابيِّ
+   سطحٌ فاتح: قائمةٌ · كيسٌ · بطاقةٌ · ورقٌ. أو يُعكَس: أبيضُ على
+   حقلٍ عنابيّ.
+   **وقرارُ المالك (21 أكتوبر 2026): «لن اضعه على الفحم ساغير»** —
+   قَبِل الرقمَ وسيُغيّر السطحَ. فحُذفت لوحةُ العنابيِّ على الفحميِّ من
+   العرضِ كلِّه، ولا تُعرَض حتى «لتُرى». */
+.tile.light .tag{background:var(--cream); color:var(--burgundy)}
+.tile.light .verdict{color:var(--burgundy)}
+.tile.light .note{color:#4a3a36}
+.tile.light .mark-label{color:var(--burgundy)}
+.tile.light .cap{color:#6b5a55}
+
+/* ══ درجاتُ السُّمك ═════════════════════════════════════════════
+   التركيبُ واحدٌ في الأربعةِ (الكلمةُ 0.26em كما في الوضعِ ب)،
+   **والمتغيّرُ وحدَه سُمكُ العين** — فلا يُقارَن سُمكٌ بسُمكٍ وقد
+   تغيّر معه شيءٌ آخر.
+
+   ⚠️ والإحداثيّاتُ تتغيّر مع الوزن: جوفُ وزنِ 400 أوسعُ
+   (0.260×0.343em مقابل 0.257×0.317em) ومركزُه أدنى قليلاً
+   (74.2% مقابل 73.6%). فقِيس كلُّ وزنٍ وحدَه — وإحداثيّةُ وزنٍ
+   مستعملةٌ على وزنٍ آخرَ تُزيح الكلمةَ عن مركزِ الحوض. */
+#e .jamr{--w:.26em}                                  /* 700 — للمقارنة */
+#f{--ain-weight:400}
+#f .jamr{--w:.26em; --x:51.0%; --y:74.2%}
+#g{--ain-weight:400; --ain-fill:transparent;
+   --ain-stroke:0.019em #fff}
+#g .jamr{--w:.26em; --x:51.0%; --y:74.2%}
+#h{--ain-weight:400; --ain-fill:transparent;
+   --ain-stroke:0.010em #fff}
+#h .jamr{--w:.24em; --x:51.0%; --y:74.2%}
+/* وكلمةُ «الجمر» تُخفَّف مع العينِ في الدرجاتِ الرقيقة: عينٌ شعريّةٌ
+   تَحمل كلمةً غليظةً تُقرأ خطأً مطبعيّاً لا تضادّاً مقصوداً */
+#f .jamr, #g .jamr, #h .jamr{font-weight:400}
+
+#i{--ain-weight:400; --ain-fill:#5D1E21; --jamr-fill:#5D1E21}
+#i .jamr{--w:.26em; --x:51.0%; --y:74.2%; font-weight:400}
+#j{--ain-weight:400; --ain-fill:#fff; --jamr-fill:#fff}
+#j .jamr{--w:.26em; --x:51.0%; --y:74.2%; font-weight:400}
+#k{--ain-weight:400; --ain-fill:transparent; --ain-stroke:0.019em #5D1E21;
+   --jamr-fill:#5D1E21}
+#k .jamr{--w:.26em; --x:51.0%; --y:74.2%; font-weight:400}
+
+/* ══ العينُ عنابيّةٌ والكلمةُ أوف-وايت — وتضارُبٌ يُحَلُّ لا يُهمَل ══
+   طلب المالك: «قصدي فقط حرف ع الذي عنابي، كلمة الجمر اوفوايت».
+   والأوف-وايت هنا Soft Cream من لوحتِه: #E6E2DA.
+
+   ⚠️ **ولا يوجد سطحٌ واحدٌ يُقرأ عليه الاثنان** — والكلمةُ تَجلس في
+   جوفِ القوسِ أي **على السطحِ لا على حبرِ العين**، فتبايُنُها مع
+   السطحِ هو الحاكم. والمقيس:
+
+       السطح            العينُ عنابيّة   الكلمةُ أوف-وايت
+       فحميّ               1.51:1          14.64:1   ⇒ العينُ تَغيب
+       كريميّ              9.72:1           1.00:1   ⇒ الكلمةُ تَغيب
+       ذهبيّ               3.53:1           2.75:1   ⇒ الكلمةُ تَغيب
+
+   وحُسِبت نافذةُ السطوعِ التي يَنجح فيها الاثنان: **0.2010..0.2209**
+   — عرضُها 0.02، **ولا لونَ في لوحةِ المالكِ داخلَها**. وأفضلُ ما
+   فيها ذهبيُّه مُغمَّقاً 7% ⇒ #9a7945 بتبايُنِ 3.10 و3.13 — أي
+   **الحدُّ الأدنى بالضبط للاثنين معاً**.
+
+   وجُرِّبت طريقةٌ رابعةٌ وسقطت: **ملءُ بطنِ القوسِ بقرصٍ عنابيٍّ**
+   تَجلس عليه الكلمة. تبايُنُها 9.72:1 — أقوى الأرقامِ كلِّها — **ومع
+   ذلك تُرفَض**: القرصُ **شكلٌ هندسيٌّ** مُقحَمٌ على حرفٍ مكتوب،
+   وقرارُ المالكِ القائمُ «لا رسوم هندسية». وهو يَبتلع القوسَ فعلاً
+   ويُخرج العلامةَ لطخةً بذيل. فالرقمُ الأعلى لا يَغلب قراراً قائماً.
+
+   فطريقتان تَصمدان ومعهما ثالثةٌ على الحدّ: */
+
+#n{--bg:#E6E2DA; --ain-weight:400; --ain-fill:#5D1E21;
+   --jamr-fill:#E6E2DA}
+/* الكلمةُ أوف-وايت **بحدٍّ عنابيٍّ رقيق**: تُقرأ بحدِّها على سطحٍ
+   فاتحٍ بلا حوضٍ ولا تغييرِ لونِها. وحدُّها عنابيٌّ على كريميّ = 9.72:1 */
+#n .jamr{--w:.27em; --x:51.0%; --y:74.2%; font-weight:400;
+  -webkit-text-stroke:0.013em #5D1E21}
+
+#p{--bg:#E6E2DA; --ain-weight:400; --ain-fill:#5D1E21;
+   --jamr-fill:#E6E2DA}
+/* هالةٌ عنابيّةٌ ضيّقةٌ حولَ الحرفِ بدلَ الحدِّ المرسوم: أنعمُ من
+   الحدِّ وأقربُ إلى حرفٍ مكتوبٍ على ورقٍ تَشرَّب حِبرَه. */
+#p .jamr{--w:.27em; --x:51.0%; --y:74.2%; font-weight:400;
+  text-shadow:0 0 .018em #5D1E21, 0 0 .035em #5D1E21,
+              0 .008em .02em rgba(93,30,33,.75)}
+
+#o{--bg:#9a7945; --ain-weight:400; --ain-fill:#5D1E21;
+   --jamr-fill:#E6E2DA}
+#o .jamr{--w:.26em; --x:51.0%; --y:74.2%; font-weight:400}
+
 /* ══ أوضاعُ القياسِ الآليّ ══════════════════════════════════════
    `?v=ب&only=ain` تَعرض علامةً واحدةً وتُخفي أحدَ طرفيها، فتُصوَّر
    مرّتين ويُقاس تقاطعُ الحبرِ بينهما. وهكذا يصير «لا تَلمس الكلمةُ
@@ -152,10 +268,17 @@ body.hide-jamr .jamr{visibility:hidden}
    العلامةُ وحدَها كبيرةً بلا بطاقةٍ ولا شرحٍ ولا لوحاتِ قياس —
    فمن يَحكم على شعارٍ يَحكم عليه وحدَه. والثلاثةُ المقيسةُ في
    صفٍّ واحدٍ ليُقارَن بينها بنظرةٍ لا بتنقّلٍ بين صور. */
-body.clean{grid-template-columns:repeat(3, 1fr)}
-body.clean #d{display:none}
+/* `?show=a,b,c` يُحدّد المعروضَ بالاسمِ بدلاً من إخفاءِ لوحةٍ
+   بعينِها (`#d`) — فإضافةُ لوحةٍ جديدةٍ كانت تَظهر في صفحةِ العرضِ
+   على المالكِ بلا قصدٍ منّي. */
+body.clean{grid-template-columns:repeat(var(--cols, 3), 1fr)}
+body.clean .tile{display:none}
+body.clean .tile.show{display:grid}
 body.clean .tag, body.clean .verdict, body.clean .note{display:none}
-body.clean .tile{width:393px; height:470px; grid-template-rows:1fr;
+/* ⚠️ العرضُ `auto` لا رقماً ثابتاً: كان 393px، فأربعُ لوحاتٍ
+   تَزيد على عرضِ الصفحةِ و**تُقطَع اثنتان من اللقطة**. والشبكةُ
+   هي التي تُوزّع العرضَ، واللوحةُ تَقبل ما تُعطى. */
+body.clean .tile{width:auto; height:470px; grid-template-rows:1fr;
   place-items:center}
 body.clean{--ain-main:168px}
 body.clean .mark-label{display:block}
@@ -245,6 +368,128 @@ body.one{--ain-main:300px}
   </div>
 </section>
 
+<!-- ══ درجاتُ سُمكِ العين — التركيبُ واحدٌ والمتغيّرُ السُّمكُ وحدَه ══ -->
+
+<section class="tile" id="e">
+  <span class="mark-label">1 · غليظة (الحالي)</span>
+  <span class="tag">هـ · وزن 700 — السُّمكُ الحاليّ</span>
+  <span class="verdict ok">للمقارنة</span>
+  <div class="stack">
+    <div class="lockup"><span class="ain">ع</span><span class="jamr">الجمر</span></div>
+  </div>
+  <div class="note">هذا هو السُّمكُ الذي رأيتَه. والثلاثةُ بعده أرقُّ منه
+    بالتدريج، والتركيبُ فيها واحدٌ لا يتغيّر.</div>
+</section>
+
+<section class="tile" id="f">
+  <span class="mark-label">2 · رفيعة</span>
+  <span class="tag">و · وزن 400 — رقعةُ عارفَ العادية</span>
+  <span class="verdict ok">خطُّ المصمّمِ نفسِه</span>
+  <div class="stack">
+    <div class="lockup"><span class="ain">ع</span><span class="jamr">الجمر</span></div>
+  </div>
+  <div class="note">ترقيقٌ <b>من الخطِّ نفسِه</b> لا من معالجةٍ عليه —
+    فنِسَبُ الحرفِ كما رسمها خطّاطُه. وجوفُ القوسِ أوسعُ هنا فالكلمةُ
+    أبعدُ عن الحبر.</div>
+</section>
+
+<section class="tile" id="g">
+  <span class="mark-label">3 · حدٌّ رقيق</span>
+  <span class="tag">ز · حدٌّ خارجيٌّ 0.019em وجوفٌ مفرَّغ</span>
+  <span class="verdict ok">الأرقُّ مع بقاءِ الحضور</span>
+  <div class="stack">
+    <div class="lockup"><span class="ain">ع</span><span class="jamr">الجمر</span></div>
+  </div>
+  <div class="note">العينُ <b>حدٌّ لا كتلة</b>، والكلمةُ مملوءةٌ داخلَها —
+    فيصير القوسُ إطاراً يَحمل الاسم. وهذه أكثرُها «فخامةً» في حكمي.</div>
+</section>
+
+<section class="tile" id="h">
+  <span class="mark-label">4 · شعريّة</span>
+  <span class="tag">ح · حدٌّ خارجيٌّ 0.010em — شعرة</span>
+  <span class="verdict maybe">تَضعف صغيرةً أو مطبوعة</span>
+  <div class="stack">
+    <div class="lockup"><span class="ain">ع</span><span class="jamr">الجمر</span></div>
+  </div>
+  <div class="note">أرقُّ ما يُمكن. <b>وأقولها قبل أن تختارها:</b> شعرةٌ
+    بهذا السُّمكِ تَختفي عند الطبعِ على ورقٍ ماصٍّ وفي الشاشاتِ الصغيرةِ
+    وعلى الحفر.</div>
+</section>
+
+<!-- ══ موديلا اللون — والعنابيُّ على سطحٍ يَحمله ══════════════════ -->
+
+<section class="tile light" id="i" style="--bg:#E6E2DA">
+  <span class="mark-label">عنابيٌّ على كريميّ</span>
+  <span class="tag">ط · الموديلُ العنابيّ — موضعُه الطبيعيّ</span>
+  <span class="verdict ok">تبايُن 9.72:1</span>
+  <div class="stack">
+    <div class="lockup"><span class="ain">ع</span><span class="jamr">الجمر</span></div>
+  </div>
+  <div class="note">للقائمةِ والكيسِ والبطاقةِ والورق. <b>وهذا هو الموديلُ
+    العنابيُّ الذي يَصلح</b> — العنابيُّ لونٌ غامقٌ فيحتاج سطحاً فاتحاً.</div>
+</section>
+
+<section class="tile" id="j" style="--bg:#5D1E21">
+  <span class="mark-label">أبيضُ على حقلٍ عنابيّ</span>
+  <span class="tag">ي · العكس — الحقلُ عنابيٌّ والعلامةُ بيضاء</span>
+  <span class="verdict ok">تبايُن 12.55:1</span>
+  <div class="stack">
+    <div class="lockup"><span class="ain">ع</span><span class="jamr">الجمر</span></div>
+  </div>
+  <div class="note">نفسُ لونِك العنابيِّ لكنْ حقلاً لا حرفاً. <b>أقوى
+    تبايُناً من الأبيضِ على الفحميِّ عمليّاً</b>، وأدفأُ منه.</div>
+</section>
+
+<section class="tile light" id="k" style="--bg:#E6E2DA">
+  <span class="mark-label">عنابيٌّ حدّاً رقيقاً</span>
+  <span class="tag">ك · عنابيٌّ على كريميّ بحدٍّ خارجيٍّ رقيق</span>
+  <span class="verdict ok">الترقيقُ واللونُ معاً</span>
+  <div class="stack">
+    <div class="lockup"><span class="ain">ع</span><span class="jamr">الجمر</span></div>
+  </div>
+  <div class="note">يَجمع ما طلبتَه في الاثنين: <b>السُّمكُ رفيعٌ واللونُ
+    عنابيّ</b>. والكلمةُ مملوءةٌ فتَبقى مقروءةً داخلَ الحدّ.</div>
+</section>
+
+
+<!-- ══ العينُ عنابيّةٌ والكلمةُ أوف-وايت — ثلاثُ طرقٍ تَصمد ══════════ -->
+
+
+<section class="tile light" id="n">
+  <span class="mark-label">1 · حدٌّ عنابيٌّ حولَ الكلمة</span>
+  <span class="tag">ن · الكلمةُ أوف-وايت بحدٍّ عنابيٍّ رقيق</span>
+  <span class="verdict ok">تُقرأ بحدِّها 9.72:1</span>
+  <div class="stack">
+    <div class="lockup"><span class="ain">ع</span><span class="jamr">الجمر</span></div>
+  </div>
+  <div class="note">بلا حوضٍ ولا تغييرِ لون: الكلمةُ أوف-وايت كما طلبتَ،
+    <b>وحدُّها عنابيٌّ رقيقٌ</b> فتُقرأ على السطحِ الفاتح. أخفُّ الثلاثةِ
+    وأقلُّها حضوراً.</div>
+</section>
+
+<section class="tile light" id="p">
+  <span class="mark-label">2 · هالةٌ عنابيّةٌ ناعمة</span>
+  <span class="tag">ف · هالةٌ عنابيّةٌ ناعمةٌ بدلَ الحدِّ المرسوم</span>
+  <span class="verdict ok">تُقرأ بهالتِها</span>
+  <div class="stack">
+    <div class="lockup"><span class="ain">ع</span><span class="jamr">الجمر</span></div>
+  </div>
+  <div class="note">نفسُ فكرةِ الحدِّ لكنْ أنعم — كحرفٍ أوف-وايت على ورقٍ
+    <b>تَشرَّب حِبرَه العنابيَّ حولَه</b>. أدفأُ من الحدِّ الحادّ.</div>
+</section>
+
+<section class="tile" id="o">
+  <span class="mark-label">3 · سطحٌ وسيطٌ محسوبٌ — على الحدّ</span>
+  <span class="tag">س · سطحٌ #9a7945 — الاثنان بلا حوضٍ ولا حدّ</span>
+  <span class="verdict maybe">3.10:1 و3.13:1 — الحدُّ بالضبط</span>
+  <div class="stack">
+    <div class="lockup"><span class="ain">ع</span><span class="jamr">الجمر</span></div>
+  </div>
+  <div class="note">السطحُ الوحيدُ الذي يُقرأ عليه الاثنان مباشرةً —
+    ذهبيُّك مُغمَّقاً 7%. <b>وأقولها صريحةً: كلاهما على الحدِّ الأدنى
+    بالضبط</b>، وشعارٌ طرفاه عند الحدِّ يَضعف في الطبعِ والشمس.</div>
+</section>
+
 <script>
 /* وضعُ القياس: ?v=a|b|c|d يَعزل علامةً، و?only=ain|jamr يُخفي الطرفَ
    الآخر. ولا نسخةَ ثانيةً من هندسةِ الشعارِ في أداةِ القياس — تُقاس
@@ -257,7 +502,19 @@ body.one{--ain-main:300px}
     var t = document.getElementById(v);
     if (t) t.classList.add("show");
   }
-  if (q.get("clean")) document.body.classList.add("clean");
+  if (q.get("clean")) {
+    document.body.classList.add("clean");
+    var ids = (q.get("show") || "a,b,c").split(",");
+    ids.forEach(function (id) {
+      var el = document.getElementById(id.trim());
+      if (el) el.classList.add("show");
+    });
+    document.body.style.setProperty("--cols", ids.length);
+    /* ومقاسُ العلامةِ يَتبع عددَ الأعمدة: أربعةُ أعمدةٍ بمقاسِ
+       ثلاثةٍ تَتراكب وتُقطَع. */
+    document.body.style.setProperty(
+      "--ain-main", ids.length >= 4 ? "116px" : "160px");
+  }
   if (only === "ain") document.body.classList.add("hide-jamr");
   if (only === "jamr") document.body.classList.add("hide-ain");
 })();
