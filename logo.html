@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>عالجمر — الشعار: اختر وضعاً</title>
+
+<!-- ══ لماذا هذه الصفحةُ موجودة ═══════════════════════════════════
+     سأل المالكُ «كيف ارى اللوقو» — ومسارُ ملفٍّ داخلَ مستودعٍ ليس
+     جواباً لمن يَفتح الهاتفَ. والموقعُ منشورٌ على GitHub Pages من
+     `main`، فصفحةٌ في الجذرِ تُفتَح برابطٍ واحدٍ يُكتَب باليد:
+
+         https://tihou74.github.io/ala-jamr/logo.html
+
+     ولا هندسةَ شعارٍ هنا: الصورُ **هي مَخرجُ** مختبرِ
+     docs/preview-harness/logo-ain.html بعد أن أقرّها حارسان
+     (خلوصُ الحبرِ والاحتواءُ في القوس). فنسخةٌ ثانيةٌ من التركيبِ
+     تَنحرف عن المقيسِ بعد أوّلِ تعديل.
+
+     والألوانُ والخطُّ من `assets/tokens.css` لا مكتوبةً هنا — وحارسُ
+     اللوحةِ يُسقِط أيَّ لونٍ رقميٍّ خارجَ ذلك الملفّ.
+     ══════════════════════════════════════════════════════════════ -->
+
+<link rel="stylesheet" href="assets/tokens.css">
+<style>
+*{box-sizing:border-box; margin:0; padding:0}
+body{background:var(--charcoal); color:var(--cream);
+     font-family:var(--font-body); line-height:1.8;
+     padding:28px 18px 64px}
+.wrap{max-width:1040px; margin:0 auto}
+h1{font-family:var(--font-display); font-weight:700;
+   font-size:clamp(30px, 7vw, 54px); line-height:1.25; margin-bottom:6px}
+.lede{color:var(--cream-200); font-size:clamp(15px, 3.6vw, 18px);
+      margin-bottom:8px}
+.rule{height:1px; margin:22px 0 30px;
+      background:linear-gradient(to left, transparent,
+        var(--gold), transparent)}
+h2{font-family:var(--font-display); font-weight:700; color:var(--gold);
+   font-size:clamp(20px, 4.6vw, 26px); margin:34px 0 14px}
+
+/* الثلاثةُ في صفٍّ على الحاسوبِ وعمودٍ على الهاتفِ — ولا قصَّ */
+.marks{display:grid; gap:20px;
+       grid-template-columns:repeat(auto-fit, minmax(240px, 1fr))}
+figure{background:var(--coal-850); border:1px solid var(--ash-600);
+       padding:10px 10px 16px}
+figure img{display:block; width:100%; height:auto}
+figcaption{margin-top:10px; text-align:center}
+figcaption b{display:block; font-family:var(--font-display);
+  font-weight:700; color:var(--gold); font-size:20px}
+figcaption span{display:block; color:var(--cream-200); font-size:14.5px}
+.pick{color:var(--glow-soft)}
+
+.wide{background:var(--coal-850); border:1px solid var(--ash-600);
+      padding:10px}
+.wide img{display:block; width:100%; height:auto}
+
+/* العينُ وحدَها: تُرسَم بالخطِّ لا صورةً — لا تركيبَ فيها يُقاس */
+.solo{display:flex; align-items:center; gap:clamp(16px, 5vw, 46px);
+      flex-wrap:wrap; background:var(--coal-850);
+      border:1px solid var(--ash-600); padding:22px 26px}
+.solo i{font-family:var(--font-display); font-weight:700; font-style:normal;
+        color:#fff; line-height:1}
+.s1{font-size:104px} .s2{font-size:46px} .s3{font-size:26px}
+.solo p{flex:1 1 260px; color:var(--cream-200); font-size:15px}
+
+table{width:100%; border-collapse:collapse; margin-top:10px; font-size:15px}
+th,td{text-align:right; padding:9px 10px;
+      border-bottom:1px solid var(--ash-600)}
+th{color:var(--gold); font-weight:400}
+.yes{color:var(--emerald-400)} .no{color:var(--burgundy-600)}
+.ask{margin-top:34px; border:1px solid var(--gold-700);
+     padding:20px 22px; background:var(--coal-800)}
+.ask b{color:var(--gold)}
+footer{margin-top:40px; color:var(--cream-400); font-size:13.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>الشعار — عينٌ تَحمل «الجمر» في قوسها</h1>
+  <p class="lede">أبيضُ ساطعٌ على فحميّ · خطُّ رقعةِ عارف · العينُ كبيرةٌ
+    والكلمةُ في جوفِ قوسِها، كما طلبتَ.</p>
+  <p class="lede">العينُ نفسُها في الثلاثة. <b>والمتغيّرُ وحدَه حجمُ
+    الكلمةِ في الجوفِ وميلُها.</b></p>
+  <div class="rule"></div>
+
+  <div class="marks">
+    <figure>
+      <img src="docs/preview/v9/mark-b.png" alt="الوضع ب — الكلمة أكبر">
+      <figcaption><b>ب</b><span class="pick">الكلمةُ أكبرُ وأوضح —
+        وهو ما أوصي به</span></figcaption>
+    </figure>
+    <figure>
+      <img src="docs/preview/v9/mark-c.png" alt="الوضع ج — الكلمة مائلة">
+      <figcaption><b>ج</b><span>مائلةٌ تتبع انحناءَ القوس</span></figcaption>
+    </figure>
+    <figure>
+      <img src="docs/preview/v9/mark-a.png" alt="الوضع أ — الكلمة أصغر">
+      <figcaption><b>أ</b><span>أصغرُ الثلاثِ — أبعدُها عن الحبر</span></figcaption>
+    </figure>
+  </div>
+
+  <h2>الثلاثةُ في صورةٍ واحدةٍ للمقارنة</h2>
+  <div class="wide">
+    <img src="docs/preview/v9/marks-3up.png"
+         alt="الأوضاع الثلاثة ج · ب · أ في صف واحد">
+  </div>
+
+  <h2>وأمرٌ يحتاج قرارَك: العلامةُ لا تصحّ صغيرةً</h2>
+  <div class="solo">
+    <i class="s1">ع</i><i class="s2">ع</i><i class="s3">ع</i>
+    <p>كلمةٌ بخمسةِ حروفٍ داخلَ قوسِ حرفٍ تصير خمسَ أخماسِه: تحت
+      <b>46 بكسلاً</b> تُقرأ «الجمر» لطخةً. فالعلامةُ نسختان —
+      <b>المركّبةُ</b> للواجهةِ واللوحةِ والتغليف، و<b>العينُ وحدَها</b>
+      لأيقونةِ المتصفّحِ وصورةِ حسابِ إنستغرامَ وختمِ الفاتورة.
+      وهذه هي العينُ عند 104 و46 و26 بكسلاً — تصحّ في الثلاثة.</p>
+  </div>
+
+  <h2>وما يُقال عن كلِّ وضعٍ مقيسٌ لا مُقدَّر</h2>
+  <table>
+    <tr><th>الوضع</th><th>لا تَلمس حبرَ العين</th><th>وهي داخلَ القوس</th></tr>
+    <tr><td>ب</td><td class="yes">خلوصٌ تامّ</td><td class="yes">نعم</td></tr>
+    <tr><td>ج</td><td class="yes">خلوصٌ تامّ</td><td class="yes">نعم</td></tr>
+    <tr><td>أ</td><td class="yes">خلوصٌ تامّ</td><td class="yes">نعم</td></tr>
+    <tr><td>د (مرفوضة)</td><td class="no">تلاصقٌ في 159 بكسل</td>
+        <td class="yes">نعم</td></tr>
+  </table>
+  <p class="lede" style="margin-top:12px">ولولا هذا القياسُ لَبقي وضعٌ
+    رابعٌ معروضاً عليك وهو مكسور: عينِي قالت إنّه سليمٌ، وقاسَته الأداةُ
+    مُلتصقاً.</p>
+
+  <div class="ask">
+    <b>ما أحتاجه منك سطرٌ واحد:</b>
+    <p>1. أيُّ وضعٍ — <b>ب</b> أم <b>ج</b> أم <b>أ</b>؟</p>
+    <p>2. العينُ وحدَها نسخةً للمقاساتِ الصغيرة — تُقرّها؟</p>
+    <p>ومتى أقررتَ، أُعيدُ بناءَ شكلِ الموقعِ كلِّه على هذه العلامة.</p>
+  </div>
+
+  <footer>
+    الصورُ مَخرجُ <code>docs/preview-harness/logo-ain.html</code> بعد أن
+    أقرّها حارسان: خلوصُ الحبرِ والاحتواءُ في القوس. والألوانُ والخطُّ
+    من <code>assets/tokens.css</code>.
+  </footer>
+
+</div>
+</body>
+</html>
