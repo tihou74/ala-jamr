@@ -84,6 +84,9 @@ run "لا صورةَ تتجاوز 2000 بكسل (تنقيباً في docs وasse
       -o -iname "*.jpeg" -o -iname "*.webp" -o -iname "*.gif" \) -print0 \
       | xargs -0 --no-run-if-empty python3 .kiro/tools/imgguard.py check'
 
+run "لا محتوى مقصوص في صفحات البروفايل" \
+    python3 .kiro/tools/check_print_overflow.py
+
 # محاسبةُ الحوارسِ نفسِها.
 # **وتُحاسَب بسلوكِها لا باسمِها**: كان الفحصُ على `check_*.py` وحدَها،
 # فأيُّ أداةٍ فيها `--selftest` باسمٍ آخرَ (section_shot · crop ·
