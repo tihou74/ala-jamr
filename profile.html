@@ -6,36 +6,34 @@
 <title>عالجمر — بروفايل المشروع</title>
 
 <!-- ===========================================================
-     بروفايل عالجمر — 12 صفحة A4
+     بروفايل عالجمر — 16 صفحة A4 · 11 صورة
 
-     إنتاجُ الـPDF طريقان، وكلاهما يُخرج العربيَّ سليماً:
-       1. من المتصفّح: افتح هذه الصفحة ثم Ctrl+P ⇒ Save as PDF ·
-          A4 · هوامش None · وفعّل "Background graphics".
-       2. من المستودع: `bash make-profile-pdf.sh` فيُولّد
-          `docs/ALAJAMR-PROFILE.pdf`.
+     تغييران بطلبِ المالكِ على النسخةِ الأولى:
+       1. «لم يعجبني اريد صور اكثر» ⇒ من 4 صورٍ في 12 صفحةً
+          إلى **11 صورةً في 16 صفحة**، وخمسُ صفحاتٍ منها صورةٌ
+          كاملةُ المساحةِ أو صفحةُ صورتَين.
+       2. «اللون الاسود لا تستعمله» ⇒ **أُخرج الفحميُّ من كلِّ
+          الأسطح**. ولم يبقَ في الملفِّ سطحٌ فحميٌّ واحد: الأسطحُ
+          زمرّديّةٌ ونبيذيّةٌ وكريميّة، والذهبيُّ للخطوطِ والعناوين.
+          وحتى حُجُبُ الصورِ (scrim) صارت زمرّديّةً ونبيذيّةً لا سوداء.
 
-     والخطُّ يُدمَج في الـPDF لأنّ ملفّاته **مستضافةٌ في المستودع**
-     (`assets/fonts/`) ويُقرأ بـ@font-face. ومُقاسٌ: الملفُّ المُنتَج
-     يحمل خطَّين مُدمجَين، لا صفراً كما كان قبل استضافتها.
-
-     والصورُ أربعٌ من `assets/img/` — وهي المستعملةُ في الموقعِ نفسِه
-     بعد مراجعةِ حقوقِ الدفعتَين. وحالتُها **مكتوبةٌ في الصفحةِ الأخيرة**
-     بلا تجميل: لم يصل بعد سطرُ تسليمِ الحقِّ من المصوّر، ولا الأصولُ
-     بأبعادِ الكاميرا.
+     إنتاجُ الـPDF: `bash make-profile-pdf.sh` ⇒ docs/ALAJAMR-PROFILE.pdf
+     أو من المتصفّح: Ctrl+P ⇒ Save as PDF · A4 · هوامش None ·
+     مع تفعيل "Background graphics".
      =========================================================== -->
 
-<link rel="stylesheet" href="assets/tokens.css?v=1">
+<link rel="stylesheet" href="assets/tokens.css?v=2">
 
 <style>
   @page { size: A4; margin: 0; }
 
-  /* border-box إلزاميٌّ هنا: صفحةٌ بـ297mm وpadding بلا border-box
-     تتجاوز الورقةَ فتُطبَع صفحتَين — مُقاسٌ (مستندُ صفحتَين خرج 4). */
+  /* border-box إلزاميّ: صفحةٌ بـ297mm وpadding بلا border-box تتجاوز
+     الورقةَ فتُطبَع صفحتَين — مُقاسٌ (مستندُ صفحتَين خرج 4). */
   * { box-sizing: border-box; }
 
   html, body {
     margin: 0; padding: 0;
-    background: var(--ash-600);
+    background: var(--emerald-900);
     font-family: var(--font-body);
     color: var(--cream);
   }
@@ -44,178 +42,164 @@
   .page {
     position: relative; width: 210mm; height: 297mm; overflow: hidden;
     break-after: page; page-break-after: always;
-    margin: 0 auto 6mm; background: var(--coal-900);
-    display: flex; flex-direction: column;
+    margin: 0 auto 6mm; display: flex; flex-direction: column;
+    background: var(--emerald-900);
   }
   .page:last-child { break-after: auto; page-break-after: auto; }
 
-  @media print {
-    body { background: none; }
-    .page { margin: 0; box-shadow: none; }
-    .screen-only { display: none !important; }
-  }
-  @media screen {
-    body { padding: 8mm 0; }
-    .page { box-shadow: 0 6mm 18mm rgba(0,0,0,.6); }
-  }
+  @media print { body { background: none; } .page { margin: 0; } .screen-only { display: none !important; } }
+  @media screen { body { padding: 8mm 0; } .page { box-shadow: 0 6mm 18mm rgba(12,38,28,.55); } }
 
-  /* ===== أسطح من لوحة المالك الخمس ===== */
-  .s-coal     { background: linear-gradient(180deg, var(--coal-900), var(--coal-950)); }
-  .s-emerald  { background: linear-gradient(180deg, var(--emerald-800), var(--emerald-900)); }
-  .s-emerald2 { background: linear-gradient(180deg, var(--emerald), var(--emerald-800)); }
-  .s-burgundy { background: linear-gradient(180deg, var(--burgundy-800), var(--burgundy-900)); }
-  .s-cream    { background: linear-gradient(180deg, var(--cream), var(--cream-dim)); color: var(--charcoal); }
+  /* ===== أسطح — بلا فحميٍّ ولا أسود ===== */
+  .s-em   { background: linear-gradient(180deg, var(--emerald-800), var(--emerald-900)); }
+  .s-em2  { background: linear-gradient(180deg, var(--emerald), var(--emerald-800)); }
+  .s-bg   { background: linear-gradient(180deg, var(--burgundy-800), var(--burgundy-900)); }
+  .s-bg2  { background: linear-gradient(180deg, var(--burgundy), var(--burgundy-800)); }
+  .s-cr   { background: linear-gradient(180deg, var(--cream), var(--cream-dim)); color: var(--emerald-900); }
 
-  .pad { padding: 17mm 16mm; flex: 1; display: flex; flex-direction: column; min-height: 0; }
-  .pad--tight { padding: 12mm 14mm; }
+  .pad { padding: 16mm 15mm; flex: 1; display: flex; flex-direction: column; min-height: 0; }
+  .pad--t { padding: 11mm 13mm; }
 
-  .ph {
-    display: flex; align-items: baseline; justify-content: space-between; gap: 8mm;
-    padding-bottom: 3.5mm; margin-bottom: 7mm; border-bottom: 0.4mm solid var(--rule-strong);
-  }
-  .ph__k { font-family: var(--font-display); font-size: 11pt; letter-spacing: .1em; color: var(--gold-200); }
+  .ph { display: flex; align-items: baseline; justify-content: space-between; gap: 8mm;
+        padding-bottom: 3.5mm; margin-bottom: 6.5mm; border-bottom: .4mm solid var(--rule-strong); }
+  .ph__k { font-family: var(--font-display); font-size: 11.5pt; letter-spacing: .08em; color: var(--gold-200); }
   .ph__n { font-size: 9pt; color: var(--gold-400); }
-  .s-cream .ph__k { color: var(--gold-700); }
-  .s-cream .ph__n { color: var(--ash-500); }
-  .s-cream .ph { border-bottom-color: rgba(110,86,49,.42); }
+  .s-cr .ph__k { color: var(--gold-700); }
+  .s-cr .ph__n { color: var(--emerald-600); }
+  .s-cr .ph { border-bottom-color: rgba(110,86,49,.45); }
 
-  h1, h2, h3 { font-family: var(--font-display); margin: 0; line-height: 1.3; font-weight: 400; }
+  h1,h2,h3 { font-family: var(--font-display); margin: 0; line-height: 1.3; font-weight: 400; }
   h2 { font-size: 27pt; margin-bottom: 5mm; }
   h3 { font-size: 13.5pt; margin-bottom: 1.5mm; }
-  p  { margin: 0 0 4mm; font-size: 12pt; line-height: 1.85; color: var(--cream-dim); }
-  .s-cream p { color: var(--ash-600); }
+  p { margin: 0 0 4mm; font-size: 12pt; line-height: 1.85; color: var(--cream-dim); }
+  .s-cr p { color: var(--emerald-800); }
   .lead { font-size: 13.5pt; line-height: 1.9; color: var(--cream); }
-  .s-cream .lead { color: var(--charcoal); }
+  .s-cr .lead { color: var(--emerald-900); }
   b, strong { font-weight: 700; color: var(--gold-200); }
-  .s-cream b, .s-cream strong { color: var(--gold-700); }
+  .s-cr b, .s-cr strong { color: var(--gold-700); }
 
-  .pfoot {
-    padding: 0 16mm 9mm; font-size: 8.5pt; color: var(--ash-400);
-    display: flex; justify-content: space-between; gap: 6mm;
+  .pfoot { padding: 0 15mm 8mm; font-size: 8.5pt; color: var(--emerald-400);
+           display: flex; justify-content: space-between; gap: 6mm; }
+  .s-cr .pfoot { color: var(--emerald-600); }
+  .s-bg .pfoot, .s-bg2 .pfoot { color: var(--burgundy-600); }
+
+  /* ===== صفحةُ صورةٍ كاملة ===== */
+  .full { position: absolute; inset: 0; }
+  .full img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* الحُجُبُ زمرّديّةٌ ونبيذيّةٌ — لا سوداء. قرارُ المالك: لا أسود. */
+  .scrim-em {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(12,38,28,.95) 0%, rgba(12,38,28,.7) 30%,
+      rgba(12,38,28,.25) 62%, rgba(12,38,28,.5) 100%);
   }
-  .s-cream .pfoot { color: var(--ash-500); }
+  .scrim-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(56,18,20,.95) 0%, rgba(56,18,20,.68) 30%,
+      rgba(56,18,20,.22) 62%, rgba(56,18,20,.5) 100%);
+  }
+  .onfull { position: relative; margin-top: auto; padding: 0 15mm 16mm; }
+  .onfull h2 { font-size: 30pt; margin-bottom: 4mm; }
+  .onfull p { font-size: 12.5pt; color: var(--cream-dim); max-width: 140mm; margin: 0; }
+  .kicker { display: block; font-family: var(--font-display); font-size: 11.5pt;
+            letter-spacing: .1em; color: var(--gold-200); margin-bottom: 3mm; }
 
   /* ===== الغلاف ===== */
-  .cover { justify-content: flex-end; position: relative; }
-  .cover__bg { position: absolute; inset: 0; }
-  .cover__bg img { width: 100%; height: 100%; object-fit: cover; opacity: .5; }
-  .cover__veil {
-    position: absolute; inset: 0;
-    background:
-      linear-gradient(to top, rgba(9,9,9,.97) 0%, rgba(9,9,9,.82) 34%, rgba(9,9,9,.45) 70%, rgba(9,9,9,.6) 100%),
-      radial-gradient(70% 50% at 50% 100%, rgba(166,130,74,.3) 0%, rgba(93,30,33,.2) 45%, rgba(9,9,9,0) 80%);
-  }
-  .cover__in { position: relative; padding: 0 18mm 24mm; text-align: center; }
-  .cover__name {
-    font-family: var(--font-display); font-size: 76pt; line-height: 1.1;
-    color: var(--cream); margin-bottom: 4mm;
-  }
+  .cover__name { font-family: var(--font-display); font-size: 78pt; line-height: 1.1;
+                 color: var(--cream); margin: 0 0 4mm; }
   .cover__rule { width: 56mm; height: .5mm; background: var(--gold); margin: 0 auto 5mm; }
   .cover__tag { font-family: var(--font-display); font-size: 17pt; color: var(--gold-200); margin-bottom: 3mm; }
-  .cover__sub { font-size: 11.5pt; color: var(--cream-200); margin: 0; }
-  .cover__badge {
-    display: inline-block; margin-top: 9mm; padding: 2mm 6mm;
-    border: .3mm solid var(--gold-600); border-radius: 20mm;
-    font-size: 10pt; letter-spacing: .1em; color: var(--gold-200);
-  }
+  .cover__badge { display: inline-block; margin-top: 8mm; padding: 2mm 6mm;
+                  border: .3mm solid var(--gold-600); border-radius: 20mm;
+                  font-size: 10pt; letter-spacing: .1em; color: var(--gold-200); }
 
-  /* ===== شبكات ===== */
-  .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
-  .g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 4.5mm; }
-  .card {
-    padding: 5.5mm; border: .3mm solid var(--rule); border-radius: 2mm;
-    background: rgba(230,226,218,.04);
-  }
-  .s-cream .card { background: rgba(255,255,255,.56); border-color: rgba(110,86,49,.24); }
+  /* ===== شبكات الصور ===== */
+  .duo { display: grid; grid-template-rows: 1fr 1fr; gap: 4mm; flex: 1; min-height: 0; }
+  .trio { display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: 1fr 1fr;
+          gap: 4mm; flex: 1; min-height: 0; }
+  .shot { position: relative; overflow: hidden; border-radius: 2mm; }
+  .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .shot--tall { grid-row: span 2; }
+  .shot__cap { position: absolute; inset-inline: 0; bottom: 0; padding: 3mm 4mm;
+               font-size: 9pt; color: var(--cream-dim);
+               background: linear-gradient(to top, rgba(12,38,28,.92), rgba(12,38,28,0)); }
+  .s-bg .shot__cap, .s-bg2 .shot__cap {
+               background: linear-gradient(to top, rgba(56,18,20,.92), rgba(56,18,20,0)); }
+
+  /* ===== بطاقات ===== */
+  .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4.5mm; }
+  .g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 4mm; }
+  .card { padding: 5mm; border: .3mm solid var(--rule); border-radius: 2mm;
+          background: rgba(230,226,218,.05); }
+  .s-cr .card { background: rgba(255,255,255,.55); border-color: rgba(110,86,49,.24); }
   .card h3 { color: var(--gold-200); }
-  .s-cream .card h3 { color: var(--charcoal); }
+  .s-cr .card h3 { color: var(--emerald-900); }
   .card p { margin: 0; font-size: 10.5pt; line-height: 1.7; }
   .tag { display: block; font-size: 8.5pt; letter-spacing: .08em; color: var(--gold-400); margin-bottom: 1.5mm; }
-  .s-cream .tag { color: var(--gold-700); }
-
-  /* ===== الصور ===== */
-  .shot { position: relative; overflow: hidden; border-radius: 2mm; background: var(--coal-850); }
-  .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .shot__cap {
-    position: absolute; inset-inline: 0; bottom: 0; padding: 3mm 4mm;
-    background: linear-gradient(to top, rgba(9,9,9,.9), rgba(9,9,9,0));
-    font-size: 9pt; color: var(--cream-dim);
-  }
-  .shots { display: grid; gap: 4mm; }
+  .s-cr .tag { color: var(--gold-700); }
 
   /* ===== اللوحة ===== */
-  .sw__row { display: flex; border-radius: 1.5mm; overflow: hidden; margin-bottom: 3.5mm; }
-  .sw__chip { width: 44mm; height: 20mm; flex: none; }
-  .sw__meta { flex: 1; padding: 3mm 5mm; background: rgba(230,226,218,.045); display: flex; flex-direction: column; justify-content: center; }
-  .sw__name { font-family: var(--font-display); font-size: 13pt; }
-  .sw__hex { font-size: 10pt; color: var(--gold-200); letter-spacing: .06em; }
-  .sw__use { font-size: 9.5pt; color: var(--cream-200); }
+  .sw__row { display: flex; border-radius: 1.5mm; overflow: hidden; margin-bottom: 3mm; }
+  .sw__chip { width: 42mm; height: 18mm; flex: none; }
+  .sw__meta { flex: 1; padding: 2.5mm 5mm; background: rgba(230,226,218,.05);
+              display: flex; flex-direction: column; justify-content: center; }
+  .sw__name { font-family: var(--font-display); font-size: 12.5pt; }
+  .sw__hex { font-size: 9.5pt; color: var(--gold-200); letter-spacing: .06em; }
 
   /* ===== المائدة ===== */
   .menu { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm 9mm; }
-  .menu h3 { color: var(--gold-200); padding-bottom: 2mm; margin-bottom: 2.5mm; border-bottom: .3mm solid var(--rule); }
+  .menu h3 { color: var(--gold-700); padding-bottom: 2mm; margin-bottom: 2.5mm;
+             border-bottom: .3mm solid rgba(110,86,49,.35); }
   .mi { margin-bottom: 2.5mm; }
-  .mi__n { font-size: 11.5pt; color: var(--cream); }
-  .mi__d { font-size: 9.5pt; color: var(--cream-200); line-height: 1.55; }
+  .mi__n { font-size: 11.5pt; color: var(--emerald-900); }
+  .mi__d { font-size: 9.5pt; color: var(--emerald-800); line-height: 1.55; }
 
-  /* ===== جداول وقوائم ===== */
+  /* ===== جداول وصفوف ===== */
   .tbl { width: 100%; border-collapse: collapse; font-size: 10pt; }
   .tbl th, .tbl td { text-align: start; padding: 2.5mm 3mm; border-bottom: .25mm solid var(--rule); vertical-align: top; }
   .tbl th { color: var(--gold-200); font-family: var(--font-display); font-size: 11pt; }
   .tbl td { color: var(--cream-dim); }
-  .s-cream .tbl th { color: var(--gold-700); }
-  .s-cream .tbl td { color: var(--ash-600); }
-  .s-cream .tbl th, .s-cream .tbl td { border-bottom-color: rgba(110,86,49,.26); }
-
-  .row { display: flex; gap: 5mm; align-items: baseline; padding-bottom: 2.8mm; margin-bottom: 2.8mm; border-bottom: .25mm dotted rgba(166,130,74,.42); }
-  .row__k { font-family: var(--font-display); font-size: 11.5pt; width: 54mm; flex: none; }
+  .row { display: flex; gap: 5mm; align-items: baseline; padding-bottom: 2.6mm;
+         margin-bottom: 2.6mm; border-bottom: .25mm dotted rgba(166,130,74,.45); }
+  .row__k { font-family: var(--font-display); font-size: 11.5pt; width: 52mm; flex: none; }
   .row__v { font-size: 10.5pt; color: var(--cream-200); }
-  .s-cream .row__v { color: var(--ash-600); }
   .pend { color: var(--gold-400); }
-  .s-cream .pend { color: var(--gold-700); }
 
-  .note {
-    padding: 5mm 6mm; border-radius: 2mm; margin-bottom: 5mm;
-    border-inline-start: 1mm solid var(--gold); background: rgba(166,130,74,.1);
-  }
+  .note { padding: 5mm 6mm; border-radius: 2mm; margin-bottom: 5mm;
+          border-inline-start: 1mm solid var(--gold); background: rgba(166,130,74,.12); }
   .note h3 { color: var(--gold-200); }
   .note p { margin: 0; font-size: 10.5pt; }
-  .s-cream .note { background: rgba(166,130,74,.14); }
-  .s-cream .note h3 { color: var(--gold-700); }
+  .s-cr .note h3 { color: var(--gold-700); }
 
-  .hint {
-    max-width: 210mm; margin: 0 auto 6mm; padding: 5mm 6mm; border-radius: 2mm;
-    background: var(--coal-800); border: .3mm solid var(--gold-600);
-    font-size: 10.5pt; line-height: 1.8; color: var(--cream-dim);
-  }
+  .hint { max-width: 210mm; margin: 0 auto 6mm; padding: 5mm 6mm; border-radius: 2mm;
+          background: var(--emerald-800); border: .3mm solid var(--gold-600);
+          font-size: 10.5pt; line-height: 1.8; color: var(--cream-dim); }
 </style>
 </head>
 <body>
 
 <div class="hint screen-only">
-  <b>لإنتاج الـPDF:</b> اضغط <b>Ctrl+P</b> (أو <b>Cmd+P</b>) ⇒ <b>Save as PDF</b> ·
-  المقاس <b>A4</b> · الهوامش <b>None</b> · وفعّل <b>Background graphics</b>
-  وإلّا طُبعت الصفحاتُ بيضاء. &nbsp;·&nbsp; عدد الصفحات: <b>12</b>.
+  <b>لإنتاج الـPDF:</b> Ctrl+P ⇒ <b>Save as PDF</b> · <b>A4</b> · هوامش <b>None</b> ·
+  وفعّل <b>Background graphics</b>. &nbsp;·&nbsp; <b>16 صفحة · 11 صورة · بلا أسود</b>.
 </div>
 
-<!-- ===================== 1 · الغلاف ===================== -->
-<section class="page cover">
-  <div class="cover__bg"><img src="assets/img/embers.jpg" alt="جمر متوهّج تحت شبكة الشيّ"></div>
-  <div class="cover__veil"></div>
-  <div class="cover__in">
-    <div class="cover__name">عالجمر</div>
+<!-- ============ 1 · الغلاف ============ -->
+<section class="page">
+  <div class="full"><img src="assets/img/hall-arch.jpg" alt="صالة بقوس يحمل سجّاداً ومصابيح دافئة"></div>
+  <div class="scrim-bg"></div>
+  <div class="onfull" style="text-align:center;padding-bottom:26mm">
+    <h1 class="cover__name">عالجمر</h1>
     <div class="cover__rule"></div>
     <div class="cover__tag">مطعم خليجي · مشاوي وعيش</div>
-    <p class="cover__sub">
+    <p style="margin-inline:auto;max-width:120mm">
       جمرٌ مكشوفٌ في الصالة، وعيشٌ على أصوله.<br>
       كلُّ أنواع الأرزّ الخليجي، ولحمٌ لا يعرف غير الجمر.
     </p>
-    <div class="cover__badge">بروفايل المشروع · قطر · نسخة أولى</div>
+    <div class="cover__badge">بروفايل المشروع · قطر · نسخة ثانية</div>
   </div>
 </section>
 
-<!-- ===================== 2 · المدخل ===================== -->
-<section class="page s-emerald">
+<!-- ============ 2 · المدخل ============ -->
+<section class="page s-em">
   <div class="pad">
     <div class="ph"><span class="ph__k">المدخل</span><span class="ph__n">02</span></div>
     <h2>لماذا يَطبخ هذا الساحلُ على الجمر</h2>
@@ -229,7 +213,7 @@
       طعماً. أمّا الجمرُ فهو النارُ بعد أن هَدَأت — حرارةٌ صافيةٌ ثابتةٌ
       تُنضِج من الداخل، وتُعطي العيشَ قاعاً ذهبياً لا يُصنَع على موقد.
     </p>
-    <div style="margin:4mm 0;padding:6mm 0;border-top:.3mm solid var(--rule-strong);border-bottom:.3mm solid var(--rule-strong)">
+    <div style="margin:3mm 0;padding:6mm 0;border-top:.3mm solid var(--rule-strong);border-bottom:.3mm solid var(--rule-strong)">
       <p style="margin:0;font-family:var(--font-display);font-size:19pt;line-height:1.65;color:var(--cream)">
         وبين اللهبِ والرمادِ ساعةٌ واحدة.<br>
         <span style="color:var(--gold-200)">تلك الساعةُ هي كلُّ المطبخ.</span>
@@ -242,8 +226,8 @@
     </p>
     <p>
       ثمّ تأتي السفرة: صينيّةٌ واحدةٌ في وسطِ المجلس، وعيشٌ مُفلفَلٌ تحت
-      اللحم، ويدٌ تُقسِّم. لا أطباقٌ منفصلةٌ لكلِّ واحد — فالخليجيُّ يأكل
-      جَمْعاً، والصينيّةُ الواحدةُ هي الدعوةُ نفسُها.
+      اللحم، ويدٌ تُقسِّم. فالخليجيُّ يأكل جَمْعاً، والصينيّةُ الواحدةُ هي
+      الدعوةُ نفسُها.
     </p>
     <p style="margin-top:auto;margin-bottom:0;font-family:var(--font-display);font-size:17pt;color:var(--cream)">
       ومن هذه الساعةِ أخذنا الاسم. <span style="color:var(--gold-200)">عالجمر</span>
@@ -252,90 +236,133 @@
   <div class="pfoot"><span>عالجمر · بروفايل المشروع</span><span>المدخل</span></div>
 </section>
 
-<!-- ===================== 3 · الخبرة ===================== -->
-<section class="page s-coal">
+<!-- ============ 3 · المجمر: صورة كاملة ============ -->
+<section class="page">
+  <div class="full"><img src="assets/img/kebab-skewers.jpg" alt="أسياخ كباب على الشبكة"></div>
+  <div class="scrim-bg"></div>
+  <div class="onfull">
+    <span class="kicker">الجمر</span>
+    <h2>الجمرُ تحتَه، لا اللهبُ فوقه</h2>
+    <p>
+      شوّاءٌ واقفٌ على الجمرِ طولَ الخدمة، وسريرُ فحمٍ يُجدَّد، ومسافةٌ
+      مقيسةٌ لكلِّ قطعة — فالريشُ ليس كالتكّة، والروبيانُ ليس كالحمور.
+    </p>
+  </div>
+</section>
+
+<!-- ============ 4 · مَن خلف المشروع ============ -->
+<section class="page s-cr">
   <div class="pad">
-    <div class="ph"><span class="ph__k">مَن خلف المشروع</span><span class="ph__n">03</span></div>
+    <div class="ph"><span class="ph__k">مَن خلف المشروع</span><span class="ph__n">04</span></div>
     <h2>ليس مشروعاً أوّل</h2>
     <p class="lead">
       صاحبُ عالجمر <b>مشغّلٌ قائمٌ في الدوحة</b>، يُدير مطعمَين عاملَين
       اليوم. وهذا الفرقُ بين فكرةٍ على ورقٍ ومشروعٍ يَعرِف صاحبُه المطبخَ
       والموظّفَ والموسمَ والمورّد.
     </p>
-    <div class="g2" style="margin-top:5mm">
-      <div class="card">
-        <span class="tag">مطعم قائم</span>
-        <h3>قيمر وكاهي</h3>
-        <p>مطعمٌ عاملٌ في الدوحة. <span class="pend">(يُؤكَّد الاسمُ وتُضاف
-        بياناتُه قبل تقديمِ هذا الملفّ لأيِّ جهة.)</span></p>
-      </div>
-      <div class="card">
-        <span class="tag">مطعم قائم</span>
-        <h3>شاي بوحمد</h3>
-        <p>مطعمٌ عاملٌ في الدوحة. <span class="pend">(يُؤكَّد الاسمُ وتُضاف
-        بياناتُه قبل تقديمِ هذا الملفّ لأيِّ جهة.)</span></p>
-      </div>
+    <div class="g2" style="margin-top:4mm">
+      <div class="card"><span class="tag">مطعم قائم</span><h3>قيمر وكاهي</h3>
+        <p>مطعمٌ عاملٌ في الدوحة. <span style="color:var(--gold-700)">(يُؤكَّد
+        الاسمُ وتُضاف بياناتُه قبل تقديمِ الملفِّ لأيِّ جهة.)</span></p></div>
+      <div class="card"><span class="tag">مطعم قائم</span><h3>شاي بوحمد</h3>
+        <p>مطعمٌ عاملٌ في الدوحة. <span style="color:var(--gold-700)">(يُؤكَّد
+        الاسمُ وتُضاف بياناتُه قبل تقديمِ الملفِّ لأيِّ جهة.)</span></p></div>
     </div>
-
-    <div class="note" style="margin-top:6mm">
-      <h3>لماذا هذه الصفحةُ أهمُّ صفحةٍ في الملفّ</h3>
+    <div class="note" style="margin-top:5mm">
+      <h3>لماذا هذه أهمُّ صفحةٍ في الملفّ</h3>
       <p>الجهةُ التي يُقدَّم لها هذا البروفايل — مالكُ عقارٍ أو مُشغّلُ
       مجمّعٍ أو مموّل — تَسأل سؤالاً واحداً قبل كلِّ شيء: <b>هل يَعرِف هذا
       الرجلُ ما يفعل؟</b> ومشغّلٌ له مطعمان يُجيب ذلك قبل أن يُقال.</p>
     </div>
-
-    <div class="g3" style="margin-top:6mm">
+    <div class="g3" style="margin-top:5mm">
       <div class="card"><span class="tag">ما يُختصَر</span><h3>فريقٌ مُدرَّب</h3>
         <p>طاقمُ خدمةٍ ومطبخٍ قائمٌ يُمكن نقلُ خبرتِه لا بناؤها من الصفر.</p></div>
       <div class="card"><span class="tag">ما يُختصَر</span><h3>موردون معروفون</h3>
         <p>سلاسلُ لحمٍ وأرزٍّ وفحمٍ مُجرَّبةٌ لا مُجازَفٌ بها.</p></div>
       <div class="card"><span class="tag">ما يُختصَر</span><h3>مصوّرون محترفون</h3>
-        <p>أصولٌ بصريّةٌ تُنتَج داخلياً، لا تُشترى جاهزة.</p></div>
+        <p>أصولٌ بصريّةٌ تُنتَج داخلياً لا تُشترى جاهزة.</p></div>
     </div>
-
-    <p style="margin-top:auto;margin-bottom:0;font-size:10pt;color:var(--ash-400)">
+    <p style="margin-top:auto;margin-bottom:0;font-size:10pt;color:var(--emerald-600)">
       الأرقامُ التشغيليّةُ (المساحةُ والمقاعدُ ومتوسّطُ الفاتورةِ وتكلفةُ
-      التجهيز) لم تُعطَ بعد، وتُضاف في الصفحةِ قبلَ الأخيرة.
+      التجهيز) لم تُعطَ بعد، وتُضاف في صفحةِ «ما يُستكمل».
     </p>
   </div>
   <div class="pfoot"><span>عالجمر · بروفايل المشروع</span><span>مَن خلف المشروع</span></div>
 </section>
 
-<!-- ===================== 4 · المفهوم ===================== -->
-<section class="page s-burgundy">
-  <div class="pad pad--tight">
-    <div class="ph"><span class="ph__k">المفهوم</span><span class="ph__n">04</span></div>
+<!-- ============ 5 · المفهوم ============ -->
+<section class="page s-bg">
+  <div class="pad pad--t">
+    <div class="ph"><span class="ph__k">المفهوم</span><span class="ph__n">05</span></div>
     <h2>الجمرُ هو الطاهي</h2>
-    <div class="shot" style="height:72mm;margin-bottom:5mm">
-      <img src="assets/img/grill-flame.jpg" alt="يدٌ بملقط وقطعة لحم أمام لهب عالٍ">
-      <span class="shot__cap">المجمرُ مكشوفٌ في الصالة — المشهدُ الذي يُرى ويُسمَع ويُشَمّ قبل الطلب</span>
+    <div class="shot" style="height:68mm;margin-bottom:5mm">
+      <img src="assets/img/grill-flame.jpg" alt="قطعة لحم أمام لهب على الشبكة">
+      <span class="shot__cap">المجمرُ مكشوفٌ في الصالة — ثلاثُ حواسَّ تعمل قبل أن يُوضَع الطلب</span>
     </div>
-    <p>
-      مطعمٌ خليجيٌّ محورُه شيئان: <b>الجمر</b> و<b>العيش</b>. والمجمرُ
-      مكشوفٌ بقصد — ثلاثُ حواسَّ تعمل قبل أن يُوضَع الطلب.
-    </p>
     <div class="g2">
       <div class="card"><span class="tag">المطبخ</span><h3>حرارةٌ لا لهب</h3>
         <p>يُنتظَر الفحمُ حتى يَسكُن ويَبيَضّ طرفُه. واللهبُ يَحرِق السطحَ
         ويُبقي الداخلَ نيّئاً.</p></div>
       <div class="card"><span class="tag">المطبخ</span><h3>مسافةٌ لكلِّ قطعة</h3>
-        <p>البُعدُ بين السيخِ والجمرِ مقيسٌ لكلِّ صنف: فالريشُ ليس كالتكّة،
-        والروبيانُ ليس كالحمور.</p></div>
+        <p>البُعدُ بين السيخِ والجمرِ مقيسٌ لكلِّ صنفٍ على حدة.</p></div>
       <div class="card"><span class="tag">المطبخ</span><h3>الحجرُ للمظبي</h3>
         <p>حجرٌ يُسخَّن على الجمر، واللحمُ عليه، وغطاءٌ فوقه — فيَنضج
         ببخارِ نفسِه.</p></div>
       <div class="card"><span class="tag">المطبخ</span><h3>تنّورٌ إلى جانبه</h3>
-        <p>الخبزُ يُلصَق على جدارِ التنّور ويَخرُج إلى المائدةِ مباشرةً —
-        لا يَنتظِر في سلّة.</p></div>
+        <p>الخبزُ يُلصَق على جدارِ التنّور ويَخرُج إلى المائدةِ مباشرةً.</p></div>
     </div>
   </div>
   <div class="pfoot"><span>عالجمر · بروفايل المشروع</span><span>المفهوم</span></div>
 </section>
 
-<!-- ===================== 5 · العيش ===================== -->
-<section class="page s-cream">
+<!-- ============ 6 · الكباب: صورة كاملة ============ -->
+<section class="page">
+  <div class="full"><img src="assets/img/grill-hand.jpg" alt="يد الشوّاء بملقط على الشبكة"></div>
+  <div class="scrim-em"></div>
+  <div class="onfull">
+    <span class="kicker">المشاوي</span>
+    <h2>ما يَستحقُّ الجمر</h2>
+    <p>
+      لحمٌ طازجٌ يُقطَّع في يومِه، وتوابلٌ قليلةٌ بقصد: ما كان طيّباً لا
+      يحتاج أن يُغطّى.
+    </p>
+  </div>
+</section>
+
+<!-- ============ 7 · المشاوي ============ -->
+<section class="page s-em2">
+  <div class="pad pad--t">
+    <div class="ph"><span class="ph__k">المشاوي</span><span class="ph__n">07</span></div>
+    <h2>من المجمر</h2>
+    <div class="g3">
+      <div class="card"><h3>كبابُ الجمر</h3>
+        <p>لحمٌ مفرومٌ بالدهنِ والبصلِ والبقدونس، يُعجَن باليدِ ويُلَفّ على السيخِ العريض.</p></div>
+      <div class="card"><h3>ريشُ الغنم</h3>
+        <p>ضلوعٌ صغيرةٌ بالملحِ والفلفلِ وحدهما، على جمرٍ عالٍ وزمنٍ قصير.</p></div>
+      <div class="card"><h3>شيش طاووق</h3>
+        <p>صدرُ دجاجٍ مُنقَّعٌ بالزباديِ والليمون، فيَخرُج طريّاً لا يَجفّ.</p></div>
+      <div class="card"><h3>حمورُ الخليج</h3>
+        <p>سمكةٌ كاملةٌ مشقوقةٌ بالبهارِ الأخضر، مشويّةٌ في شبكٍ على الجمر.</p></div>
+      <div class="card"><h3>روبيانٌ مشوي</h3>
+        <p>روبيانٌ كبيرٌ بقشرِه حتى يَحفظ ماءَه، مع زبدةِ الثومِ والليمون.</p></div>
+      <div class="card"><h3>تكّةُ لحم</h3>
+        <p>شقفٌ من الفخذِ بالدهنِ بين القطع، على جمرٍ هادئ.</p></div>
+      <div class="card"><h3>عرايس</h3>
+        <p>خبزٌ محشوٌّ كبابٌ ومشويٌّ على الشبكِ حتى يَقرمَش.</p></div>
+      <div class="card"><h3>المجمرُ المشكَّل</h3>
+        <p>صينيّةٌ للجَمْع: من كلِّ سيخٍ نصيب، وخبزُ تنّورٍ تحتها يَشرَب العصارة.</p></div>
+      <div class="card" style="background:rgba(166,130,74,.14);border-color:var(--gold-600)">
+        <h3>كلُّها على الفحم</h3>
+        <p>لا شيءَ في هذه القائمةِ يُطبَخ على غازٍ ولا في فرنٍ كهربائيّ.</p></div>
+    </div>
+  </div>
+  <div class="pfoot"><span>عالجمر · بروفايل المشروع</span><span>المشاوي</span></div>
+</section>
+
+<!-- ============ 8 · العيش ============ -->
+<section class="page s-cr">
   <div class="pad">
-    <div class="ph"><span class="ph__k">العيش</span><span class="ph__n">05</span></div>
+    <div class="ph"><span class="ph__k">العيش</span><span class="ph__n">08</span></div>
     <h2>كلُّ أنواع الأرزّ الخليجي</h2>
     <p class="lead" style="font-size:12.5pt">
       العيشُ عندنا ليس صحناً جانبياً. لكلِّ نوعٍ أرزُّه وبهارُه وطريقةُ
@@ -367,37 +394,29 @@
   <div class="pfoot"><span>عالجمر · بروفايل المشروع</span><span>العيش</span></div>
 </section>
 
-<!-- ===================== 6 · المشاوي ===================== -->
-<section class="page s-coal">
-  <div class="pad pad--tight">
-    <div class="ph"><span class="ph__k">المشاوي</span><span class="ph__n">06</span></div>
-    <h2>ما يَستحقُّ الجمر</h2>
-    <div class="shot" style="height:74mm;margin-bottom:5mm">
-      <img src="assets/img/kebab.jpg" alt="كباب على شبكة الشيّ ولهب">
-      <span class="shot__cap">لحمٌ طازجٌ يُقطَّع في يومِه، وتوابلٌ قليلةٌ بقصد: ما كان طيّباً لا يحتاج أن يُغطّى</span>
-    </div>
-    <div class="g3">
-      <div class="card"><h3>كبابُ الجمر</h3>
-        <p>لحمٌ مفرومٌ بالدهنِ والبصلِ والبقدونس، يُعجَن باليدِ ويُلَفّ على السيخِ العريض.</p></div>
-      <div class="card"><h3>ريشُ الغنم</h3>
-        <p>ضلوعٌ صغيرةٌ بالملحِ والفلفلِ وحدهما، على جمرٍ عالٍ وزمنٍ قصير.</p></div>
-      <div class="card"><h3>شيش طاووق</h3>
-        <p>صدرُ دجاجٍ مُنقَّعٌ بالزباديِ والليمون، فيَخرُج طريّاً لا يَجفّ.</p></div>
-      <div class="card"><h3>حمورُ الخليج</h3>
-        <p>سمكةٌ كاملةٌ مشقوقةٌ بالبهارِ الأخضر، مشويّةٌ في شبكٍ على الجمر.</p></div>
-      <div class="card"><h3>روبيانٌ مشوي</h3>
-        <p>روبيانٌ كبيرٌ بقشرِه حتى يَحفظ ماءَه، مع زبدةِ الثومِ والليمون.</p></div>
-      <div class="card"><h3>المجمرُ المشكَّل</h3>
-        <p>صينيّةٌ للجَمْع: من كلِّ سيخٍ نصيب، وخبزُ تنّورٍ تحتها يَشرَب العصارة.</p></div>
+<!-- ============ 9 · الصالة: صورتان ============ -->
+<section class="page s-bg">
+  <div class="pad pad--t">
+    <div class="ph"><span class="ph__k">الصالة</span><span class="ph__n">09</span></div>
+    <h2>سجّادٌ على الجدار، وضوءٌ منخفض</h2>
+    <div class="duo">
+      <div class="shot">
+        <img src="assets/img/hall-rugs.jpg" alt="جدار سجّاد كامل وحنايا كريميّة ومرآة">
+        <span class="shot__cap">جدارُ سجّادٍ كاملٌ وحنايا كريميّةٌ ومرآةٌ بقوس — الكريميُّ يَحمِل والنبيذيُّ يَملأ</span>
+      </div>
+      <div class="shot">
+        <img src="assets/img/hall-lamps.jpg" alt="قوس بسجّاد ومصابيح معلّقة وطاولات خشب">
+        <span class="shot__cap">قوسٌ يَحمِل سجّاداً مرقّعاً · مصابيحُ بضوءٍ دافئ · مساندُ بنقشِ النخلة</span>
+      </div>
     </div>
   </div>
-  <div class="pfoot"><span>عالجمر · بروفايل المشروع</span><span>المشاوي</span></div>
+  <div class="pfoot"><span>عالجمر · بروفايل المشروع</span><span>الصالة</span></div>
 </section>
 
-<!-- ===================== 7 · المائدة ===================== -->
-<section class="page s-emerald">
+<!-- ============ 10 · المائدة ============ -->
+<section class="page s-cr">
   <div class="pad">
-    <div class="ph"><span class="ph__k">المائدة</span><span class="ph__n">07</span></div>
+    <div class="ph"><span class="ph__k">المائدة</span><span class="ph__n">10</span></div>
     <h2>من القائمة</h2>
     <p>مُختارٌ أوّليٌّ من القائمةِ الأولى. <b>ولم تُكتَب أسعارٌ لأنّها لم
     تُقرَّر</b> — ورقمٌ يُكتَب قبل أن يُقرَّر يُلزِم المطعمَ بما لم يَختَره.</p>
@@ -439,12 +458,33 @@
   <div class="pfoot"><span>عالجمر · بروفايل المشروع</span><span>المائدة</span></div>
 </section>
 
-<!-- ===================== 8 · التجربة ===================== -->
-<section class="page s-emerald2">
-  <div class="pad pad--tight">
-    <div class="ph"><span class="ph__k">التجربة</span><span class="ph__n">08</span></div>
+<!-- ============ 11 · الأجواء: ثلاث صور ============ -->
+<section class="page s-em">
+  <div class="pad pad--t">
+    <div class="ph"><span class="ph__k">الأجواء</span><span class="ph__n">11</span></div>
+    <h2>الضوءُ أوّلُ ما يُحَسّ</h2>
+    <div class="trio">
+      <div class="shot shot--tall">
+        <img src="assets/img/hall-warm.jpg" alt="صالة بسجّادة حمراء على جدار كريمي ومصابيح إديسون">
+        <span class="shot__cap">سجّادةٌ واحدةٌ على جدارٍ كريميٍّ ومصابيحُ منخفضةٌ — الضبطُ لا الازدحام</span>
+      </div>
+      <div class="shot">
+        <img src="assets/img/kebab.jpg" alt="كباب على الشبكة">
+      </div>
+      <div class="shot">
+        <img src="assets/img/coals-grate.jpg" alt="جمر متوهّج تحت الشبكة">
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span>عالجمر · بروفايل المشروع</span><span>الأجواء</span></div>
+</section>
+
+<!-- ============ 12 · التجربة ============ -->
+<section class="page s-bg2">
+  <div class="pad pad--t">
+    <div class="ph"><span class="ph__k">التجربة</span><span class="ph__n">12</span></div>
     <h2>خمسُ نجومٍ تُقاس في التفاصيل</h2>
-    <div class="shot" style="height:66mm;margin-bottom:5mm">
+    <div class="shot" style="height:62mm;margin-bottom:5mm">
       <img src="assets/img/tea.jpg" alt="كوب شاي على طبق فوق سجّادة">
       <span class="shot__cap">الضيافةُ تبدأ قبل الطلب — لا بعد الحساب</span>
     </div>
@@ -464,63 +504,56 @@
   <div class="pfoot"><span>عالجمر · بروفايل المشروع</span><span>التجربة</span></div>
 </section>
 
-<!-- ===================== 9 · الهويّة ===================== -->
-<section class="page s-coal">
+<!-- ============ 13 · الهويّة ============ -->
+<section class="page s-cr">
   <div class="pad">
-    <div class="ph"><span class="ph__k">الهويّة البصريّة</span><span class="ph__n">09</span></div>
+    <div class="ph"><span class="ph__k">الهويّة البصريّة</span><span class="ph__n">13</span></div>
     <h2>اللوحةُ والخطّ</h2>
     <p>خمسةُ ألوانٍ لا أكثر، وكلُّ درجةٍ أخرى مُشتقّةٌ منها حسابياً.
     ويَحرُسها فحصٌ آليٌّ يُسقِط أيَّ لونٍ دخيل.</p>
-    <div style="margin-top:4mm">
+    <div style="margin-top:3mm">
       <div class="sw__row"><div class="sw__chip" style="background:#154230"></div>
-        <div class="sw__meta"><span class="sw__name">الزمرّدي — Emerald Green</span>
-        <span class="sw__hex">#154230</span>
-        <span class="sw__use">المدخلُ والمائدةُ والمجلس</span></div></div>
+        <div class="sw__meta" style="background:rgba(21,66,48,.08)"><span class="sw__name" style="color:var(--emerald-900)">الزمرّدي — Emerald Green</span>
+        <span class="sw__hex" style="color:var(--gold-700)">#154230</span></div></div>
       <div class="sw__row"><div class="sw__chip" style="background:#5D1E21"></div>
-        <div class="sw__meta"><span class="sw__name">النبيذي — Deep Burgundy</span>
-        <span class="sw__hex">#5D1E21</span>
-        <span class="sw__use">قاعُ توهّجِ الجمر · قسمُ المفهوم</span></div></div>
-      <div class="sw__row"><div class="sw__chip" style="background:#101111"></div>
-        <div class="sw__meta"><span class="sw__name">الفحمي — Charcoal Black</span>
-        <span class="sw__hex">#101111</span>
-        <span class="sw__use">السطحُ الأساسُ والواجهةُ والتذييل</span></div></div>
+        <div class="sw__meta" style="background:rgba(93,30,33,.08)"><span class="sw__name" style="color:var(--emerald-900)">النبيذي — Deep Burgundy</span>
+        <span class="sw__hex" style="color:var(--gold-700)">#5D1E21</span></div></div>
       <div class="sw__row"><div class="sw__chip" style="background:#A6824A"></div>
-        <div class="sw__meta"><span class="sw__name">الذهبي العتيق — Antique Gold</span>
-        <span class="sw__hex">#A6824A</span>
-        <span class="sw__use">الخطوطُ والعناوينُ الفرعيّةُ والحدود</span></div></div>
-      <div class="sw__row"><div class="sw__chip" style="background:#E6E2DA"></div>
-        <div class="sw__meta"><span class="sw__name">الكريمي — Soft Cream</span>
-        <span class="sw__hex">#E6E2DA</span>
-        <span class="sw__use">كلُّ النصِّ · وأسطحُ «العيش» الفاتحة</span></div></div>
+        <div class="sw__meta" style="background:rgba(166,130,74,.1)"><span class="sw__name" style="color:var(--emerald-900)">الذهبي العتيق — Antique Gold</span>
+        <span class="sw__hex" style="color:var(--gold-700)">#A6824A</span></div></div>
+      <div class="sw__row"><div class="sw__chip" style="background:#E6E2DA;border:.25mm solid rgba(110,86,49,.3)"></div>
+        <div class="sw__meta" style="background:rgba(230,226,218,.5)"><span class="sw__name" style="color:var(--emerald-900)">الكريمي — Soft Cream</span>
+        <span class="sw__hex" style="color:var(--gold-700)">#E6E2DA</span></div></div>
+    </div>
+    <div class="note" style="margin-top:4mm">
+      <h3>الأسودُ خارجَ الاستعمال</h3>
+      <p>بقرارِك: <b>لا يُستعمل الأسودُ ولا الفحميّ</b> في هذا الملفِّ ولا
+      في أسطحِه. فالأسطحُ زمرّديّةٌ ونبيذيّةٌ وكريميّة، والذهبيُّ للخطوطِ
+      والعناوين. وحتى حُجُبُ الصورِ زمرّديّةٌ ونبيذيّةٌ لا سوداء.</p>
     </div>
     <div class="g2" style="margin-top:4mm">
       <div class="card"><span class="tag">الخطّ والشعار</span><h3>رقعةُ عارف</h3>
         <p>الشعارُ هو <b>الاسمُ مكتوباً بخطِّ رقعةِ عارف</b> — لا رمزٌ ولا
-        علامةٌ مرسومة. والنصُّ بخطِّ أميري. ولا خطَّ هندسيّاً في المشروع.</p></div>
+        علامةٌ مرسومة. والنصُّ بخطِّ أميري.</p></div>
       <div class="card"><span class="tag">الأرقام</span><h3>بالرسمِ الغربي</h3>
         <p>كلُّ رقمٍ <span dir="ltr">0123456789</span>، ويُمنَع الخطُّ من
         استبدالِها تلقائياً. ويَحرُس ذلك فحصٌ آليّ.</p></div>
     </div>
-    <p style="margin-top:auto;margin-bottom:0;font-size:10pt;color:var(--ash-400)">
-      التبايُنُ مقيسٌ لا مُقدَّر: تسعُ تركيباتٍ من عشرٍ تمرُّ
-      <span dir="ltr">WCAG AA</span>، والكريميُّ على الفحميِّ
-      <span dir="ltr">14.6:1</span>.
-    </p>
   </div>
   <div class="pfoot"><span>عالجمر · بروفايل المشروع</span><span>الهويّة البصريّة</span></div>
 </section>
 
-<!-- ===================== 10 · الموقع الإلكتروني ===================== -->
-<section class="page s-cream">
+<!-- ============ 14 · الموقع الإلكتروني ============ -->
+<section class="page s-em2">
   <div class="pad">
-    <div class="ph"><span class="ph__k">الموقع الإلكتروني</span><span class="ph__n">10</span></div>
+    <div class="ph"><span class="ph__k">الموقع الإلكتروني</span><span class="ph__n">14</span></div>
     <h2>جاهزٌ ويعمل</h2>
-    <p class="lead" style="font-size:12.5pt">
+    <p class="lead">
       موقعُ المطعمِ مبنيٌّ بالكاملِ قبل الافتتاح: صفحةٌ عربيّةٌ واحدةٌ من
       اثني عشر قسماً، تَحمِل القصّةَ والمفهومَ والقائمةَ والهويّة.
     </p>
-    <table class="tbl" style="margin-top:4mm">
-      <tr><th style="width:52mm">القسم</th><th>ما فيه</th></tr>
+    <table class="tbl" style="margin-top:3mm">
+      <tr><th style="width:50mm">القسم</th><th>ما فيه</th></tr>
       <tr><td>الواجهة</td><td>الاسمُ بخطِّ الرقعةِ على جمرٍ متوهّج</td></tr>
       <tr><td>المدخل</td><td>قصّةُ الجمرِ والخليج</td></tr>
       <tr><td>الجمر</td><td>المجمرُ المكشوفُ وطريقةُ الطهي</td></tr>
@@ -530,29 +563,29 @@
       <tr><td>المجلس</td><td>أربعةُ أعمدةٍ لتجربةِ الخمسِ نجوم</td></tr>
       <tr><td>التواصل</td><td>حقولُ الافتتاحِ، معلَنةَ النقصِ لا مُلفَّقة</td></tr>
     </table>
-    <div class="note" style="margin-top:5mm">
+    <div class="note" style="margin-top:4mm">
       <h3>مبنيٌّ على الصدقِ لا على الوعد</h3>
-      <p>كلُّ حقلٍ لم يُحسَم بعد مكتوبٌ في الموقعِ <b>أنّه لم يُحسَم</b> —
-      المدينةُ والعنوانُ وتاريخُ الافتتاحُ والأسعار. وحقلٌ يوهِم باليقينِ
+      <p>كلُّ حقلٍ لم يُحسَم مكتوبٌ في الموقعِ <b>أنّه لم يُحسَم</b> —
+      المدينةُ والعنوانُ وتاريخُ الافتتاحِ والأسعار. وحقلٌ يوهِم باليقينِ
       وهو فارغٌ أسوأُ من حقلٍ يقول إنّه فارغ.</p>
     </div>
     <div class="g3" style="margin-top:auto">
       <div class="card"><h3>عربيٌّ أصلاً</h3><p>مبنيٌّ من اليمينِ إلى اليسار، لا مُترجَماً.</p></div>
       <div class="card"><h3>خطٌّ مستضافٌ محلياً</h3><p>لا يعتمد على خادمٍ خارجيٍّ قد يُحجَب.</p></div>
-      <div class="card"><h3>فحوصٌ آليّة</h3><p>تمنع لوناً دخيلاً أو رابطاً مكسوراً أو رقماً بغيرِ رسمِه.</p></div>
+      <div class="card"><h3>فحوصٌ آليّة</h3><p>تمنع لوناً دخيلاً أو رابطاً مكسوراً أو قصّاً في الطباعة.</p></div>
     </div>
   </div>
   <div class="pfoot"><span>عالجمر · بروفايل المشروع</span><span>الموقع الإلكتروني</span></div>
 </section>
 
-<!-- ===================== 11 · ما يُستكمل ===================== -->
-<section class="page s-coal">
+<!-- ============ 15 · ما يُستكمل ============ -->
+<section class="page s-em">
   <div class="pad">
-    <div class="ph"><span class="ph__k">ما يُستكمل</span><span class="ph__n">11</span></div>
+    <div class="ph"><span class="ph__k">ما يُستكمل</span><span class="ph__n">15</span></div>
     <h2>حقولٌ لم تُحسَم بعد</h2>
     <p>هذه النسخةُ تَذكُر ما لم يُقرَّر <b>على أنّه لم يُقرَّر</b>. وتُستكمَل
     قبل تقديمِ الملفِّ لأيِّ جهةٍ خارجيّة.</p>
-    <div style="margin-top:4mm">
+    <div style="margin-top:3mm">
       <div class="row"><span class="row__k">الدولة</span><span class="row__v">قطر ✓</span></div>
       <div class="row"><span class="row__k">المدينةُ والحيُّ والعنوان</span><span class="row__v pend">لم تُعطَ</span></div>
       <div class="row"><span class="row__k">تاريخُ الافتتاح</span><span class="row__v pend">لم يُحدَّد</span></div>
@@ -567,56 +600,58 @@
     </div>
     <div class="note" style="margin-top:auto;margin-bottom:0">
       <h3>الأولويّةُ الأولى: الأصولُ من المصوّر</h3>
-      <p>الصورُ في هذا الملفِّ قَصّاتُ ويب لا أصولُ كاميرا. تُطلَب الأصولُ
-      من المصوّرِ على <b>Google Drive</b> أو واتساب بوضع <b>«مستند»</b> لا
+      <p>صورُ هذا الملفِّ قَصّاتُ ويب لا أصولُ كاميرا. تُطلَب الأصولُ من
+      المصوّرِ على <b>Google Drive</b> أو واتساب بوضع <b>«مستند»</b> لا
       «صورة» — فوضعُ «صورة» هو الذي يُنتج 736 بكسلاً ويُفقد نصفَ التفاصيل.
-      ومعها <b>سطرٌ منه بتسليمِ الحقّ</b>.</p>
+      ومعها <b>سطرٌ منه بتسليمِ الحقّ</b>. وعندها تُطبَع الصورُ في حجمِ
+      صفحةٍ كاملةٍ بلا أن تَخشَن.</p>
     </div>
   </div>
   <div class="pfoot"><span>عالجمر · بروفايل المشروع</span><span>ما يُستكمل</span></div>
 </section>
 
-<!-- ===================== 12 · حالة الصور ===================== -->
-<section class="page s-coal">
+<!-- ============ 16 · حالة الصور ============ -->
+<section class="page s-bg">
   <div class="pad">
-    <div class="ph"><span class="ph__k">حالةُ الصورِ في هذا الملفّ</span><span class="ph__n">12</span></div>
-    <h2>أربعُ صورٍ، وحالةُ كلٍّ منها</h2>
-    <p>تُقال الحالةُ هنا بلا تجميلٍ، لأنّ الملفَّ قد يُقدَّم لمالكِ عقارٍ
-    أو مموّل — <b>وصورةٌ لا تُملَك تُقرأ مخاطرةً عليه هو.</b></p>
-    <table class="tbl" style="margin-top:4mm">
-      <tr><th style="width:40mm">الصورة</th><th>الحالة</th></tr>
-      <tr><td><span dir="ltr">embers.jpg</span><br>الغلاف</td>
-          <td><b>الأقربُ لأن تكون لك.</b> جمرٌ تحت شبكةِ شيٍّ، داكنةٌ حبيبيّةٌ
-          بإضاءةِ الجمرِ وحده وبلا نصٍّ ولا علامة — بصمةُ لقطةِ هاتفٍ في
-          مكانٍ معتم. ورفعتَها باسمِ المطعمِ نفسِه.</td></tr>
-      <tr><td><span dir="ltr">grill-flame.jpg</span><br>المفهوم</td>
-          <td>تصويرٌ احترافيٌّ بلا شكّ، ولا علامةَ مائيّةً فيه. لكنّ أبعادَه
-          قَصّةُ ويب <span dir="ltr">(735×805)</span> لا أصلُ كاميرا.</td></tr>
-      <tr><td><span dir="ltr">kebab.jpg</span><br>المشاوي</td>
-          <td>كذلك <span dir="ltr">(1050×1116)</span> — أعلاها دقّةً وأقربُها
-          لأصلٍ، ومع ذلك ليست بأبعادِ كاميرا.</td></tr>
-      <tr><td><span dir="ltr">tea.jpg</span><br>التجربة</td>
-          <td>نسبتُها <span dir="ltr">675×1200 = 9:16</span> بالضبط، وهي نسبةُ
-          شاشةِ هاتفٍ لا كاميرا — فالأغلبُ لقطةُ هاتفٍ أو قصّة. والأرجحُ
-          أنّها من أحدِ مطعميك، <b>ولم تُوسَم باسمٍ بالظنّ.</b></td></tr>
+    <div class="ph"><span class="ph__k">حالةُ الصورِ في هذا الملفّ</span><span class="ph__n">16</span></div>
+    <h2>إحدى عشرةَ صورةً، وحالةُ كلٍّ منها</h2>
+    <p>تُقال الحالةُ بلا تجميلٍ، لأنّ الملفَّ قد يُقدَّم لمالكِ عقارٍ أو
+    مموّل — <b>وصورةٌ لا تُملَك تُقرأ مخاطرةً عليه هو.</b></p>
+    <table class="tbl" style="margin-top:3mm">
+      <tr><th style="width:46mm">الصور</th><th>الحالة</th></tr>
+      <tr><td>الجمرُ والشبكة<br><span dir="ltr">coals-grate · embers</span></td>
+          <td><b>الأقربُ لأن تكون لك.</b> داكنةٌ حبيبيّةٌ بإضاءةِ الجمرِ
+          وحده، بلا نصٍّ ولا علامة — بصمةُ لقطةِ هاتفٍ في مكانٍ معتم.
+          وإحداها رفعتَها باسمِ المطعمِ نفسِه.</td></tr>
+      <tr><td>الصالاتُ الأربع<br><span dir="ltr">hall-arch · hall-rugs · hall-lamps · hall-warm</span></td>
+          <td><b>الأرجحُ أنّها صالاتُ مطعميك.</b> أفدتَ بذلك، وهي تطابق
+          لوحتَك: سجّادٌ نبيذيٌّ وجدارٌ كريميٌّ وضوءٌ ذهبيٌّ منخفض.
+          <b>ويُؤكَّد أيُّ صورةٍ لأيِّ مطعم</b> قبل أن تُوسَم باسم.</td></tr>
+      <tr><td>المجمرُ واللحم<br><span dir="ltr">grill-hand · grill-flame · kebab-skewers · kebab</span></td>
+          <td>تصويرٌ احترافيٌّ بلا شكّ ولا علامةَ مائيّةَ فيه. لكنّ أبعادَها
+          قَصّاتُ ويب لا أصولُ كاميرا — فلا يصحُّ النشرُ قبل أن يَصِل
+          الأصلُ من المصوّرِ ومعه سطرُ تسليمِ الحقّ.</td></tr>
+      <tr><td>الشاي<br><span dir="ltr">tea</span></td>
+          <td>نسبتُها <span dir="ltr">675×1200 = 9:16</span> بالضبط — نسبةُ
+          شاشةِ هاتفٍ لا كاميرا. والأرجحُ أنّها من أحدِ مطعميك،
+          <b>ولم تُوسَم باسمٍ بالظنّ.</b></td></tr>
     </table>
-
-    <div class="note" style="margin-top:5mm">
+    <div class="note" style="margin-top:4mm">
       <h3>ما استُبعد — ولماذا</h3>
-      <p>من دفعتَي الصورِ أُخرِجت صورٌ عدّة: واحدةٌ تحمل <b>علامةً مائيّةً
+      <p>من دفعتَي الصورِ أُخرِجت عدّةٌ: واحدةٌ تحمل <b>علامةً مائيّةً
       ظاهرةً لمصدرِ مخزون</b> في تسعةِ مواضع، ولوحةٌ زيتيّةٌ لفنّانٍ آخر،
-      وصالاتُ مطاعمَ أخرى، وقوالبُ تصميمٍ جاهزة. والتفصيلُ بالأدلّةِ في
-      <span dir="ltr">docs/RIGHTS-NOTICE.md</span> و
-      <span dir="ltr">RIGHTS-NOTICE-2.md</span> داخل المستودع.</p>
+      وصورةُ كتالوجِ سجّادٍ على خلفيّةٍ بيضاء، وقوالبُ تصميمٍ جاهزة، ومصغَّرةٌ
+      بـ<span dir="ltr">474</span> بكسلاً لا تَصلُح للطباعة.
+      والتفصيلُ بالأدلّةِ في <span dir="ltr">docs/RIGHTS-NOTICE.md</span>
+      و<span dir="ltr">RIGHTS-NOTICE-2.md</span>.</p>
     </div>
-
-    <p style="margin-top:auto;margin-bottom:0;font-size:10pt;color:var(--ash-400)">
-      الخطوة الواحدة التي تُغلِق هذا الباب نهائياً: <b>جلسةُ تصويرٍ واحدة
-      بمصوّرِك</b> عند جهوزيّةِ المطبخ، ومعها سطرٌ مكتوبٌ بتسليمِ الحقّ.
-      وبعدها لا يبقى في هذا الملفِّ ولا في الموقعِ صورةٌ لا تَملكُها.
+    <p style="margin-top:auto;margin-bottom:0;font-size:10pt;color:var(--burgundy-600)">
+      وصورةٌ واحدةٌ فيها علامةٌ باهتةٌ تُشبه توقيعاً عربياً
+      (<span dir="ltr">tea2</span>) — <b>لم تُستعمَل</b> حتى تُؤكّد أنّها
+      لك أو لمصوّرِك.
     </p>
   </div>
-  <div class="pfoot"><span>عالجمر · بروفايل المشروع · نسخة أولى</span><span>حالةُ الصور</span></div>
+  <div class="pfoot"><span>عالجمر · بروفايل المشروع · نسخة ثانية</span><span>حالةُ الصور</span></div>
 </section>
 
 </body>
